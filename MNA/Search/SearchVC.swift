@@ -91,7 +91,7 @@ class SearchVC: UIViewController {
         
         if isValidDate {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MMM-yyyy"
+            dateFormatter.dateFormat = "dd-MMM-yyyy"//"MMM d, yyyy"//
             let date = dateFormatter.string(from: datePicker.date)
 
             let setDateDiv = "$('.\(datediv)').html('\(date)');"

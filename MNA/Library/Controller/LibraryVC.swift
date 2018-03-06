@@ -409,20 +409,38 @@ extension  LibraryVC: UIWebViewDelegate{//,PdfReaderDelegate{
     
     func checkAndUpdatePDFWithURL(_ pdfUrl:String , DownloadUrl:NSURL){
         
-        
+        let fileManger = FileManager.default
         let destinationPath = CommonHelper.getApplicationDirectoryPath()
         let fileName =  URL(fileURLWithPath: pdfUrl).deletingPathExtension().lastPathComponent
-        // let fileUrl :NSURL = NSURL.fileURL(withPath: fileUrl) as NSURL
         self.openPdfPath   = "\(destinationPath)/pdffiles/\(fileName).pdf"
         
+        
+        let reachability = Reachability()!
+        if !reachability.isReachable {
+            
+            if fileManger.fileExists (atPath:self.openPdfPath){
+                let filename2 = NSURL.fileURL(withPath: pdfUrl).lastPathComponent
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.openPDFWithNewsPaperid(self.openPdfPath, fileName: filename2, NewspaperId: self.agendaId)
+                
+            }
+            return
+        }
+        
+        
+        
+        
+        
+        
+
     
-        let filemanager = FileManager.default
+        
 
         var fileSize : UInt64
         
         do {
             //return [FileAttributeKey : Any]
-            let attr = try filemanager.attributesOfItem(atPath: openPdfPath)
+            let attr = try fileManger.attributesOfItem(atPath: openPdfPath)
             fileSize = attr[FileAttributeKey.size] as! UInt64
             
             //if you convert to NSDictionary, you can get file size old way as well.
@@ -450,7 +468,6 @@ extension  LibraryVC: UIWebViewDelegate{//,PdfReaderDelegate{
             }else{
                let filename = NSURL.fileURL(withPath: pdfUrl).lastPathComponent
                 //open pdf
-                let fileManger = FileManager.default
                 
                 if fileManger.fileExists (atPath:self.openPdfPath){
 

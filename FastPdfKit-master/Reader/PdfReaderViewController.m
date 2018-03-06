@@ -7,7 +7,6 @@
 //
 
 #import "PdfReaderViewController.h"
-#import "CommentsPopupView.h"
 #import "CanvasViewController.h"
 
 
@@ -326,7 +325,26 @@
     commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
     //End
     
-    
+    if (self.mangeAnnotationObject != nil){
+        
+        NSString * jsonStr = [self.mangeAnnotationObject valueForKey:@"annotationObject"];
+        NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];
+        
+        
+        if (dictAnnotation !=nil && dictAnnotation.count>0) {
+            
+            for (NSDictionary *annotationObj in dictAnnotation) {
+                if ([[annotationObj objectForKey:@"id"] integerValue] == self.currentAnnotationId) {
+                    
+                    dismisSts = NO;
+                }
+            }
+            
+        }
+        
+        
+        
+    }
     
     commentView.point=touchedPoint;
     commentView.blDeletePushpin=YES;
