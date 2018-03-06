@@ -180,10 +180,10 @@ class AgendaVC: UIViewController, UIPopoverControllerDelegate, UIPopoverPresenta
         
         let mainStoryBoard = UIStoryboard(name: "Search", bundle: nil)
         let ViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
-        //navigationController?.pushViewController(ViewController,  animated: true)
-        self.present(ViewController, animated: true, completion: {
+        navigationController?.pushViewController(ViewController,  animated: true)
+        /*self.present(ViewController, animated: true, completion: {
             
-        })
+        })*/
         
         //self.readPdf()
         
