@@ -48,32 +48,8 @@ class SearchVC: UIViewController {
             let requestObj = URLRequest(url: url! as URL)
             webview.loadRequest(requestObj)
         }
-        
-        
-        
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-   
-    
-    
-    
-    
-    
+ 
     
     func setDateDiv(_ date:Date){
        
@@ -103,11 +79,9 @@ class SearchVC: UIViewController {
     
     
     @IBAction func donePressed(_ sender: Any) {
-    
-        self.setDateDiv(datePicker.date)
+     self.setDateDiv(datePicker.date)
         datePicker.isHidden = true
         doneView.isHidden = true
-        
     }
     
     
@@ -117,8 +91,6 @@ class SearchVC: UIViewController {
         doneView.isHidden = true
     
     }
-    
-    
     
     func showPicker(){
         if datePicker.isHidden {
@@ -130,16 +102,6 @@ class SearchVC: UIViewController {
         
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func openSerachPdf(_ arrUrl:NSArray, UploadId:String){
         
@@ -160,17 +122,17 @@ class SearchVC: UIViewController {
     func downloadFile(_ fileUrl:String , showProgressBar:Bool){
         
         let destinationPath = CommonHelper.getApplicationDirectoryPath()
-        let filename = URL(fileURLWithPath: self.openPdfPath).lastPathComponent
-        let fileNameWithoutExtension = URL(fileURLWithPath: self.openPdfPath).deletingPathExtension().lastPathComponent
+        let filename = URL(fileURLWithPath: fileUrl).lastPathComponent
+        let fileNameWithoutExtension = URL(fileURLWithPath: fileUrl).deletingPathExtension().lastPathComponent
         
         let fileMgr = FileManager.default
         self.openPdfPath = "\(destinationPath)/pdffiles/\(filename)"
-        if  fileMgr.fileExists(atPath: openPdfPath) {
-
-        self.deletefileName = filename
+        if !fileMgr.fileExists(atPath: openPdfPath) {
+            
+            self.deletefileName = filename
             
             
-        //Check netconncetion
+            //Check netconncetion
             let reachability = Reachability()!
             if !reachability.isReachable {
                 let alert = UIAlertController(title: "Alert", message: "No internet connection", preferredStyle: UIAlertControllerStyle.alert)
@@ -181,8 +143,8 @@ class SearchVC: UIViewController {
                 })
                 return
             }
-        //Done
-    
+            //Done
+            
             let fileURL:NSURL = URL(string: self.openPdfPath) as! NSURL
             
             //*********Download .json file
@@ -190,11 +152,11 @@ class SearchVC: UIViewController {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: self.arrJsonData, options: .prettyPrinted)
                 let jsonString =  String(bytes: jsonData, encoding: String.Encoding.utf8)
-                let jsonFileName:String = fileNameWithoutExtension
+                
                 //writing
                 do {
                     let documentsUrl: URL = CommonHelper.getDocDirPath()
-                    let writePathFileUrl =  documentsUrl.appendingPathComponent("pdffiles/\(filename).json")
+                    let writePathFileUrl =  documentsUrl.appendingPathComponent("pdffiles/\(fileNameWithoutExtension).json")
                     try jsonString?.write(to: writePathFileUrl as URL, atomically: false, encoding: .utf8)
                 }
                 catch {
@@ -202,15 +164,15 @@ class SearchVC: UIViewController {
                     print("Write  failed:  \(error)")
                 }
             } catch {
-                print("JSON serialization failed:  \(error)")
+                print("JSON serialization failed:`  \(error)")
             }
             //**********ENDED
             
             
             //Download files
-            let fileServerPathurl = NSURL.fileURL(withPath: fileUrl)
+            let fileServerPathurl:NSURL = URL(string: fileUrl) as! NSURL
             let documentsUrl: URL = CommonHelper.getDocDirPath()
-            let destinationFileUrl =  documentsUrl.appendingPathComponent("pdffiles/\(uploadId).pdf")
+            let destinationFileUrl =  documentsUrl.appendingPathComponent("pdffiles/\(filename)")
             
             
             
@@ -224,8 +186,6 @@ class SearchVC: UIViewController {
             
             self.request =  Alamofire.download("\(fileServerPathurl)", to:destination)
                 .downloadProgress { (progress) in
-                    
-                    let percent  = (String)(progress.fractionCompleted)
                     let scriptStr2 = "updateProgress(\(progress.fractionCompleted),1.0);"
                     self.webview.stringByEvaluatingJavaScript(from:scriptStr2 )
                 }
@@ -244,13 +204,13 @@ class SearchVC: UIViewController {
             
             
             /*MNAConnectionHelper.DownloadFiles(url: fileServerPathurl as URL, to: destinationFileUrl as URL,NewspaperId: self.uploadId, completion: { (status) in
-                DispatchQueue.main.async(execute: { () -> Void  in
-                    self.activityIndicator.stopAnimating()
-                    self.readPdf()
-                })
-                print("Successfully Download file \(destinationFileUrl)")
-            })*/
-        
+             DispatchQueue.main.async(execute: { () -> Void  in
+             self.activityIndicator.stopAnimating()
+             self.readPdf()
+             })
+             print("Successfully Download file \(destinationFileUrl)")
+             })*/
+            
             
             
             let  displaySearchResult = "$('#upProgress').css('display','inline'); $('.downloadBox').show();$('.DownloadName').text('\(arrJsonData[2])');"
@@ -287,42 +247,57 @@ class SearchVC: UIViewController {
     
     
     func readPdf(_ fileName:String){
-        self.webview.stringByEvaluatingJavaScript(from: "hideProgress();")
-   
-        let annotations = DBHelper.fetchRequestForEntityForName("Annotations", FilterExpression: "(newspaper_Id == \(self.uploadId))", SortBy: "", Ascending: true, Limit: 0)
         
-        if annotations.count > 0 {
+        
+        /*self.webview.stringByEvaluatingJavaScript(from: "hideProgress();")
+         
+         let annotations = DBHelper.fetchRequestForEntityForName("Annotations", FilterExpression: "(newspaper_Id == \(self.uploadId))", SortBy: "", Ascending: true, Limit: 0)
+         
+         if annotations.count > 0 {
+         
+         }else{
+         
+         }
+         
+         //getting annotations
+         
+         let annotationsList:[NSManagedObject] = DBHelper.fetchRequestForAnnotation("Annotations",FilterExpression: "(newspaper_Id == \(self.uploadId))")
+         if annotationsList.count > 0 {
+         
+         CommonHelper.fetchServerAnnotation(self.uploadId, completion: { (status) in
+         
+         
+         })
+         
+         }else{
+         CommonHelper.fetchServerAnnotation(self.uploadId, completion: { (status) in
+         
+         
+         })
+         }
+         
+         self.fetchCommentImage(annotations)
+         
+         let  fileName = URL(fileURLWithPath: self.openPdfPath).deletingPathExtension().lastPathComponent
+         //open pdf
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         appDelegate.openPDF(self.openPdfPath, fileName: fileName, NewspaperId: self.uploadId, PageNo:self.pageno, searchStr:self.searchKeyword)*/
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+        let   filePath = documentsDirectory.appendingPathComponent("pdffiles/\(fileName)")
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: filePath){
+            
+            DispatchQueue.main.async(execute: { () -> Void  in
+                self.activityIndicator.stopAnimating()
+            })
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            // appDelegate.openPDFWithNewsPaperid(self.openPdfPath, fileName: fileName, NewspaperId: self.uploadId)
+            appDelegate.openPDF(self.openPdfPath, fileName: fileName, NewspaperId: self.uploadId, PageNo:self.pageno, searchStr:self.searchKeyword)
             
         }else{
-            
+            print("  NOT exist.")
         }
-    
-        //getting annotations
-    
-        let annotationsList:[NSManagedObject] = DBHelper.fetchRequestForAnnotation("Annotations",FilterExpression: "(newspaper_Id == \(self.uploadId))")
-        if annotationsList.count > 0 {
-           
-            CommonHelper.fetchServerAnnotation(self.uploadId, completion: { (status) in
-                
-                
-            })
-            
-        }else{
-            CommonHelper.fetchServerAnnotation(self.uploadId, completion: { (status) in
-                
-                
-            })
-        }
-        
-        
-        
-        self.fetchCommentImage(annotations)
-        
-        let  fileName = URL(fileURLWithPath: self.openPdfPath).deletingPathExtension().lastPathComponent
-        //open pdf
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.openPDF(self.openPdfPath, fileName: fileName, NewspaperId: self.uploadId, PageNo:self.pageno, searchStr:self.searchKeyword)
-        
         
         
     }
@@ -342,10 +317,8 @@ class SearchVC: UIViewController {
     
     
     @IBAction func backClicked(_ sender: Any) {
-        DispatchQueue.main.async(execute: {
-            self.dismiss(animated: true, completion: nil)
-            //self.navigationController?.popToRootViewController(animated: true)
-        })
+        navigationController?.popViewController(animated: true)
+        
     }
 }
 
@@ -364,8 +337,9 @@ extension  SearchVC: UIWebViewDelegate{
         
         if let urlStr = request.url {
             let str = "\(urlStr)" as String
-            var   strUrl =  str.removingPercentEncoding
+            let   strUrl =  str.removingPercentEncoding
             let arrUrl = strUrl?.components(separatedBy: "@@@") as! NSArray
+            
             
             if arrUrl.count > 1{
                 
@@ -389,9 +363,11 @@ extension  SearchVC: UIWebViewDelegate{
                     
                 }else  if (arrUrl[1] as! String) == "openpdf" {
                     let str = (arrUrl[3] as! String)
-                 let   uploadId = str.removingPercentEncoding as! String
-                    
-                    self.pageno = arrUrl[4] as! Int
+                    let   uploadId = str.removingPercentEncoding as! String
+                    guard let pageNo = Int("\(arrUrl[4])") else{
+                        return true
+                    }
+                    self.pageno = pageNo
                     self.openSerachPdf(arrUrl, UploadId: uploadId)
                     
                 }
@@ -400,7 +376,7 @@ extension  SearchVC: UIWebViewDelegate{
                 
                 
                 if (arrUrl[1] as! String) == "pause" {
-
+                    
                     self.request?.suspend()
                     let alert = UIAlertController(title: "Alert", message: "Do you want to stop download?", preferredStyle: UIAlertControllerStyle.alert)
                     let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
@@ -426,14 +402,8 @@ extension  SearchVC: UIWebViewDelegate{
                 return false
                 
             }
-            
-            
-           return true
+            return true
         }
-        
-        
-        
-        
         return true
     }
     
@@ -458,16 +428,6 @@ extension  SearchVC: UIWebViewDelegate{
     func getSearchResult(_ strURL:String){
         
 
-        //let  url = URL(string:strURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-        
-        let allowedCharacterSet = (CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[] ").inverted)
-       // if let escapedString = strURL.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) {
-        //do something with escaped string
-        
-        // let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
-        //  if  let escapedString = strURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed){
-
-        
         
         let fullNameArr = strURL.components(separatedBy: "searchStr")
         
@@ -481,43 +441,7 @@ extension  SearchVC: UIWebViewDelegate{
         print("\(urlpath)")
         let url = NSURL (string: urlpath)
         
-     //let tourl = NSURL.fileURL(withPath: urlpath)
-        
-       /* Alamofire.request(.GET, urlpath, parameters: nil, encoding: .URL).responseString(completionHandler: {
-            (request: NSURLRequest, response: HTTPURLResponse, responseBody: String?, error: NSError?) -> Void in
-            
-            // Convert the response to NSData to handle with SwiftyJSON
-            if let data = (responseBody as NSString).dataUsingEncoding(NSUTF8StringEncoding) {
-                let json = JSON(data: data)
-                println(json)
-            }
-        })*/
-
-        
-        /*Alamofire.request(
-            URL(string: urlpath)!,
-            method: .get,
-            parameters: ["": ""])
-            .validate()
-            .responseJSON { (response) -> Void in
-                guard response.result.isSuccess else {
-                    print("Error while fetching remote rooms: \(response.result.error)")
-                    
-                    return
-                }
-                
-                guard let value = response.result.value as? [String: Any],
-                    let rows = value["rows"] as? [[String: Any]] else {
-                        print("Malformed data received from fetchAllRooms service  ")
-                        
-                        return
-                }
-                
-                print(response)
-                
-        }*/
-
-        
+     
         
         var request = URLRequest(url: url! as URL)
         request.httpMethod = "GET"
