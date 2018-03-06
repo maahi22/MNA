@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Annotations" representedClassName="Annotations" syncable="YES" codeGenerationType="class">
+        <attribute name="annotation_Sync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="annotationObject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newspaper_Id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="DefaultEditions" representedClassName="DefaultEditions" syncable="YES" codeGenerationType="class">
+        <attribute name="edition_Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Code" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Editions" representedClassName="Editions" syncable="YES" codeGenerationType="class">
+        <attribute name="edition_City" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Frequency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="edition_UpdatedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="publication_Id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newspapers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Newspapers" inverseName="editions" inverseEntity="Newspapers" syncable="YES"/>
+        <relationship name="publications" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publications" inverseName="editions" inverseEntity="Publications" syncable="YES"/>
+    </entity>
+    <entity name="MyLibrary" representedClassName="MyLibrary" syncable="YES" codeGenerationType="class">
+        <attribute name="edition_Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="file_Date" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="file_Image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="file_Path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="newspaper_Id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="publication_Code" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Newspapers" representedClassName="Newspapers" syncable="YES" codeGenerationType="class">
+        <attribute name="edition_Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newspaper_Date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="newspaper_Id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="newspaper_Image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newspaper_NextRelease" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newspaper_OrderDate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="newspaper_PageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="newspaper_Pdf" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="editions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Editions" inverseName="newspapers" inverseEntity="Editions" syncable="YES"/>
+    </entity>
+    <entity name="Publications" representedClassName="Publications" syncable="YES" codeGenerationType="class">
+        <attribute name="publication_City" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publication_UpdatedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="publisher_Id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="editions" toMany="YES" deletionRule="Cascade" destinationEntity="Editions" inverseName="publications" inverseEntity="Editions" syncable="YES"/>
+        <relationship name="publishers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publishers" inverseName="publications" inverseEntity="Publishers" syncable="YES"/>
+    </entity>
+    <entity name="Publishers" representedClassName="Publishers" syncable="YES" codeGenerationType="class">
+        <attribute name="publisher_Address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_City" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_ContactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_Country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_Email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_Id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_LandscapeSplashscreen" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_Logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_PotraitSplashscreen" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher_UpdatedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="publications" toMany="YES" deletionRule="Cascade" destinationEntity="Publications" inverseName="publishers" inverseEntity="Publications" syncable="YES"/>
+    </entity>
+    <entity name="Sections" representedClassName="Sections" syncable="YES" codeGenerationType="class">
+        <attribute name="edition_Id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="section_Frequency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="section_Id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="section_Name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Annotations" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="DefaultEditions" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="Editions" positionX="-36" positionY="36" width="128" height="210"/>
+        <element name="MyLibrary" positionX="-18" positionY="108" width="128" height="150"/>
+        <element name="Newspapers" positionX="0" positionY="135" width="128" height="180"/>
+        <element name="Publications" positionX="18" positionY="162" width="128" height="210"/>
+        <element name="Publishers" positionX="36" positionY="189" width="128" height="225"/>
+        <element name="Sections" positionX="-9" positionY="135" width="128" height="105"/>
+    </elements>
+</model>

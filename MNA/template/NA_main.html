@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+            
+            <title>Untitled Document</title>
+            <link href="resources/css/NACal.css" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" href="resources/css/fullcalendar.css">
+                <style type="text/css">
+                    /* Preloader */
+                    body{
+                        
+                        font-family: Arial,sans-serif !important;
+                    }
+                    #preloader {
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        right:0;
+                        bottom:0;
+                        background-color:#fff; /* change if the mask should have another color then white */
+                        z-index:99; /* makes sure it stays on top */
+                    }
+                    #status {
+                        width:200px;
+                        height:200px;
+                        position:absolute;
+                        left:50%; /* centers the loading animation horizontally one the screen */
+                        top:50%; /* centers the loading animation vertically one the screen */
+                        background-image:url(resources/images/status.gif); /* path to your loading animation */
+                        background-repeat:no-repeat;
+                        background-position:center;
+                        margin:-100px 0 0 -100px; /* is width and height divided by two */
+                    }
+                    #scroller {
+                        width:auto;
+                        position:absolute;
+                        z-index:1;
+                        padding: 10;
+                        
+                    }
+                    
+                    .downloadBox {
+                        width:237px;
+                        height:70px;
+                        position:fixed;
+                        left:50%; /* centers the loading animation horizontally one the screen */
+                        top:50%; /* centers the loading animation vertically one the screen */
+                        margin:-100px 0 0 -100px; /* is width and height divided by two */
+                        background-color: #CCC;
+                        display:none;
+                        padding:0 30px 30px 30px;
+                        border-radius:10px;
+                        box-shadow:0 5px 5px #999;
+                        border:1px solid #666;
+                        
+                    }
+                    .pbar .ui-progressbar-value {
+                        display:block !important
+                    }
+                    .pbar {
+                        overflow: hidden;
+                        height:20px;
+                        background-color:white;
+                        background-repeat:no-repeat;
+                        background-position:center;
+                        padding:0px;
+                        border-radius:5px;
+                    }
+                    .DownloadName{
+                        font-family:Arial, Helvetica, sans-serif;
+                        font-size:16px;
+                        color:#333;
+                        text-align:center;
+                        width:240px;
+                        height:20px;
+                        margin-top:10px;
+                        font-weight:bold;
+                        text-shadow:0 1px 1px #ffffff;
+                        margin-bottom:10px;
+                        
+                    }
+                    
+                    .DownloadPercent{
+                        font-family:Arial, Helvetica, sans-serif;
+                        font-size:14px;
+                        color:#333;
+                        text-align:center;
+                        width:240px;
+                        height:20px;
+                        margin-top:10px;
+                        font-weight:bold;
+                        text-shadow:0 1px 1px #ffffff;
+                        
+                    }
+                    .cancelDownload{
+                        width:24px;
+                        height:24px;
+                        float:right;
+                        margin-right: -27px;
+                        margin-top: 3px;
+                    }
+                    #upProgress{
+                        display: none;
+                        position: fixed;
+                        top: 0%;
+                        left: 0%;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #F9F9F9;
+                        z-index:1001;
+                        -moz-opacity: 0.8;
+                        opacity:.80;
+                        filter: alpha(opacity=80);
+                        padding-top: 20%;
+                        padding-left: 40%;
+                    }
+                    .percent {position:relative;text-align: right;}
+                    table thead {
+                        position: fixed;
+                        z-index: 999;
+                    }
+                    </style>
+                <script src="resources/js/jquery.min.js" type="text/javascript"></script>
+                <script src="resources/js/fullcalendar.min.js" type="text/javascript"></script>
+                <script src="resources/js/common.js" type="text/javascript"></script>
+                <script src="resources/js/moment.min.js" type="text/javascript"></script>
+                <!--<script src="resources/js/iScroll-lite.js" type="text/javascript"></script>-->
+                <script src="resources/js/unveil.min.js" type="text/javascript"></script>
+                <script>
+                    var SITE_URL='remoteUrl';
+                    
+                    var myScroll;
+                    //var SITE_URL = "http://202.123.27.106/";//"http://180.151.100.58:81/"
+                    $(document).ready(function() {
+                                      $.ajaxSetup({ cache: false });
+                                      var myURL = SITE_URL+"mnaservices2/webservice/webservice_publication_ios.php?encode=json&&method=publication&&publisherId=7";
+                                      
+                                      
+                                      $.ajax({
+                                             url: myURL,
+                                             type: 'GET',
+                                             data: {},
+                                             processData: true,
+                                             dataType: 'json',
+                                             success: function (data) {
+                                             var i = 0;
+                                             $.each(data, function (key) {
+                                                    i++;
+                                                    //var str = '<div id=' + data[key].Id + ' class="sideBarItem"><div class="Ag">' + data[key].Description + '</div></div>'
+                                                    var str = '<div id=' + data[key].Id + ' class="sideBarItem"><div class="Ag">' + data[key].Name+ '</div></div>'
+                                                    $('#pubs').append(str);
+                                                    $('#' + data[key].Id).bind('click', function () {
+                                                                               //removeActive($(this).attr("id"));
+                                                                               //$(this).addClass("active");
+                                                                               //$("#info").attr("pubName", data[key].Name);
+                                                                               //loadPubs(this.id, data[key].Name);
+                                                                               showSelection($(this).attr("id"),1,this.id,data[key].Name);
+                                                                               });
+                                                    });
+                                             if (i < 4) {
+                                             for (var j = i; j < 4; j++) {
+                                             var str = '<div class="sideBarItem"><div class="Ag"></div></div>';
+                                             $('#pubs').append(str)
+                                             
+                                             }
+                                             }
+                                             }
+                                             });
+                                      
+                                      //makeCalendar('agenda_json.json');
+                                      var today = new Date();
+                                      var year = today.getFullYear();
+                                      
+                                      
+                                      var month = today.getMonth() + 1;
+                                      month < 10 ? month = '0' + month : month;
+                                      makeCalendar(SITE_URL+'mnaservices2/webservice/webservice_agenda_ios.php?encode=json&&method=agenda&&agendaDate=' + year + '-' + month);
+                                      });
+                    
+                    $(window).load(function() {
+                                   $("#status").fadeOut(); // will first fade out the loading animation
+                                   $("#preloader").delay(10).fadeOut("slow", function() { // will fade out the white DIV that covers the website.
+                                                                     });
+                                   });
+                    
+                    /*function loaded() {
+                     setTimeout( function () {
+                     myScroll = new iScroll('ScrollYear');
+                     }, 2000);
+                     setTimeout(function () { myScroll.refresh(); }, 0);
+                     }*/
+//                    function loaded() {
+//                        myScroll = new iScroll('ScrollYear');
+//                    }
+                    //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+                    </script>
+                </head>
+    
+	<body>
+   		<!-- Preloader -->
+		<div id="preloader">
+			<div id="status">&nbsp;</div>
+		</div>
+        
+		<div class="WrapperDiv">
+            <div id="DatePicker" onClick="doClick('showcalender');"></div>
+            <div id="RefreshButton" onClick="doClick('refresh');"></div>
+			<div id="sideBar" class="SideBar">
+				<div id="pubs">
+					<div id='Agenda' class="sideBarItem active" onClick="getAgenda(this.id)")"><div class="Ag">	Agenda</div>
+                        </div>
+                        </div>
+                        <!-- <div class="Library">
+                        <div class="Lib" onClick="doClick('library');;"><img src="resources/images/Library.png" /></div>
+                        <div class="Set" onClick="doClick('settings');"><img src="resources/images/Setting.png" /></div>
+                        </div> -->
+                        </div>
+                        <div id="title" style="display:none; padding-left: 15px; margin-left: 55px; margin-top: 10px; font-family: Myriad Pro; font-size: 25px; color: #3a87ad">Title</div>
+                        <div id="MainDiv" class="MainDiv"></div>
+                        <div id="info" style="display:none" year="2013" json="|||jsonFilesList"></div>
+                        <div class="overlay" id="upProgress" style="display: none;">
+                        
+                        <div class="downloadBox">
+                        <div class="cancelDownload" onClick="cancelDownload()"><img src="resources/images/dnpdel.png" width="24" height="24" /></div>
+                        <div id="progress">
+                        
+                        <div class="DownloadName"></div>
+                        <div class="percent"></div>
+                        <div class="pbar"><img src="resources/images/barloader.gif" width="235" height="19" /></div>
+                        <div class="elapsed"></div>
+                        <div class="DownloadPercent"></div>
+                        </div>
+                        </div>
+                        </div>
+                        </body>
+                        </html>

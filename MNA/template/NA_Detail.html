@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>Untitled Document</title>
+		<link href="resources/css/NACal.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			/* Preloader */
+			#preloader {
+				position:absolute;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-color:#fff; /* change if the mask should have another color then white */
+				z-index:99; /* makes sure it stays on top */
+			}
+			#status {
+				width:200px;
+				height:200px;
+				position:absolute;
+				left:50%; /* centers the loading animation horizontally one the screen */
+				top:50%; /* centers the loading animation vertically one the screen */
+				background-image:url(resources/images/status.gif); /* path to your loading animation */
+				background-repeat:no-repeat;
+				background-position:center;
+				margin:-100px 0 0 -100px; /* is width and height divided by two */
+			}
+            
+            
+            /*For Download progress bar*/
+            
+            .downloadBox {
+                width:237px;
+                height:70px;
+                position:fixed;
+                left:50%; /* centers the loading animation horizontally one the screen */
+                top:50%; /* centers the loading animation vertically one the screen */
+                margin:-100px 0 0 -100px; /* is width and height divided by two */
+                background-color: #CCC;
+                display:none;
+                padding:0 30px 30px 30px;
+                border-radius:10px;
+                box-shadow:0 5px 5px #999;
+                border:1px solid #666;
+            }
+            .pbar .ui-progressbar-value {
+                display:block !important
+            }
+            .pbar {
+                overflow: hidden;
+                height:20px;
+                background-color:white;
+                background-repeat:no-repeat;
+                background-position:center;
+                padding:0px;
+                border-radius:5px;
+            }
+            .DownloadName{
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:16px;
+                color:#333;
+                text-align:center;
+                width:240px;
+                height:20px;
+                margin-top:10px;
+                font-weight:bold;
+                text-shadow:0 1px 1px #ffffff;
+                margin-bottom:10px;
+                
+            }
+            
+            .DownloadPercent{
+                font-family:Arial, Helvetica, sans-serif;
+                font-size:14px;
+                color:#333;
+                text-align:center;
+                width:240px;
+                height:20px;
+                margin-top:10px;
+                font-weight:bold;
+                text-shadow:0 1px 1px #ffffff;
+                
+            }
+            .cancelDownload{
+                width:24px;
+                height:24px;
+                float:right;
+                margin-right: -27px;
+                margin-top: 3px;
+            }
+            #upProgress{
+                display: none;
+                position: fixed;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                background-color: #F9F9F9;
+                z-index:1001;
+                -moz-opacity: 0.8;
+                opacity:.80;
+                filter: alpha(opacity=80);
+                padding-top: 20%;
+                padding-left: 40%;
+            }
+            .percent {position:relative;text-align: right;}
+            
+            </style>
+        <script>
+            var SITE_URL='remoteUrl';
+            //var SITE_URL = "http://202.123.27.106/"
+            </script>
+		<script src="resources/js/jquery.min.js" type="text/javascript"></script>
+		<script src="resources/js/fullcalendar.min.js" type="text/javascript"></script>
+		<script src="resources/js/common.js" type="text/javascript"></script>
+		<script src="resources/js/moment.min.js" type="text/javascript"></script>
+		<script src="resources/js/unveil.min.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+                              $.ajaxSetup({ cache: false });
+                              //Process the URL
+                              var myURL = window.location.href;
+                              //                                                           var pubCode = myURL.split("@@@")[1];
+                              //				var pubName = myURL.split("@@@")[2];
+                              //				var year = myURL.split("@@@")[3];
+                              //				var month = myURL.split("@@@")[4];
+                              var pubCode = 'MNAPubCode';
+                              var pubName = 'MNAPubName';
+                              var year = 'MNAPubYear';
+                              var month = 'MNAPubMonth';
+                              
+                              $("#info").attr("pub", pubCode);
+                              $("#info").attr("pubName", pubName);
+                              //$("#title").text(pubName);
+                              
+                              var startDate = moment(year + '-' + month + '-0' + 1)
+                              var startDate = new Date(startDate._d)
+                              //var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                              var endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+                              startDate = moment(startDate);
+                              endDate = moment(endDate);
+                              
+                              var myURL = SITE_URL+'mnaservices2/webservice/webservice_publication_ios.php?encode=json&&method=uploads&&publisherId=' + pubCode + '&&startDate=' + startDate.format("YYYY-MM-DD") + '&&endDate=' + endDate.format("YYYY-MM-DD");
+                              
+                              //alert(myURL);
+                              $.ajax({
+                                     url: myURL,
+                                     type: 'GET',
+                                     data: {},
+                                     processData: true,
+                                     dataType: 'json',
+                                     success: function (data) {
+                                     var i = 0;
+                                     if(data.length==0)
+                                     $('#latestDoc').html('<div class="LibNo" style="color:#000000;font-family: arial; font-size: 16px;">No document available for this month</div>');
+                                     $.each(data, function (key) {
+                                            i++;
+                                            var myDate = moment(data[key].PublishDate);
+                                            var myPDF = data[key].FileName;
+                                            var myThumb = myPDF.replace(".pdf", ".png");
+                                            var title=data[key].Title;
+                                            myDate = myDate.format('MMMM Do YYYY');
+                                            var str = '<div id="docItem' + key + '" class="DocItem"><div class="PdfThumb"><img src="resources/images/AlternateImage.png" data-src="' + myThumb +'"/></div><div class="DebDate"><div class="pdftitle">'+title+'</div>' + myDate + '</div></div>'
+                                            
+                                            $('#latestDoc').append(str);
+                                            $('#docItem' + key).click(function () {
+                                                                      downloadDetails(data[key].UploadId,$("#info").attr("pubname"),myDate,data[key].FileName,title);
+                                                                     });
+                                            });
+                                     }
+                                     }).fail(function() {//doClick('nointernet');
+                                            // $('#latestDoc').append('<div  class="LibNo" style="color:#000000;font-family: arial; font-size: 16px;margin-left:15px;">No documents found.</div>');
+                                             } );
+                              
+                              })
+            
+			
+			$(window).load(function() {
+                           $("#status").fadeOut(); // will first fade out the loading animation
+                           $("#preloader").delay(10).fadeOut("slow", function() { // will fade out the white DIV that covers the website.
+                                                             $("img").unveil().hide().fadeIn(1000).stop(true, true).error(function () {
+                                                                                                                          $(this).attr('src', 'resources/images/AlternateImage.png')
+                                                                                                                          });
+                                                             });
+                           });
+            
+            </script>
+	</head>
+    
+	<body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
+        </div>
+        <div class="WrapperDiv1">
+            <div id="title" style="padding-left: 40px; margin-top: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 25px; color: #3a87ad"></div>
+            <div class="DebateMain1">
+                <div id="latestDoc" class="latestDoc1">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div id="info" style="display:none" json="jsonFilesList"></div>
+        <div class="overlay" id="upProgress" style="display: none;">
+            
+            <div class="downloadBox">
+                <div class="cancelDownload" onClick="cancelDownload()"><img src="resources/images/dnpdel.png" width="24" height="24" /></div>
+                <div id="progress">
+                    
+                    <div class="DownloadName"></div>
+                    <div class="percent"></div>
+                    <div class="pbar"><img src="resources/images/barloader.gif" width="235" height="19" /></div>
+                    <div class="elapsed"></div>
+                    <div class="DownloadPercent"></div>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

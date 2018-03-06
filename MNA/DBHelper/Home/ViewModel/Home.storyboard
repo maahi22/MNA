@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--HomeVC-->
+        <scene sceneID="62i-fv-qFy">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="Bms-gj-dH6" customClass="HomeVC" customModule="MNA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6xd-0N-hnw">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-hB-uJy">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-Xy-eWq">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Library" id="Onk-DM-GTN">
+                                                <connections>
+                                                    <action selector="btnToolbarMyLibraryClicked:" destination="Bms-gj-dH6" id="SY7-Ff-ava"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="3og-IE-V4P"/>
+                                            <barButtonItem title="Alerts" id="l3g-vX-26b">
+                                                <connections>
+                                                    <action selector="btnToolbarAlertClicked:" destination="Bms-gj-dH6" id="jyh-KD-bUN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="IFU-6k-sFQ"/>
+                                            <barButtonItem title="Notice" id="2VF-Iq-Eyt">
+                                                <connections>
+                                                    <action selector="btnToolbarNoticeClicked:" destination="Bms-gj-dH6" id="pb6-vQ-Q1r"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="LEW-vX-kxX"/>
+                                            <barButtonItem systemItem="search" id="TC4-tE-cfx">
+                                                <connections>
+                                                    <action selector="btnToolbarSearchClicked:" destination="Bms-gj-dH6" id="UlX-9p-271"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="j7u-AO-TyO"/>
+                                            <barButtonItem title="Change Password" id="yYN-RO-mx3">
+                                                <connections>
+                                                    <action selector="btnSettingClicked:" destination="Bms-gj-dH6" id="09Y-41-Dbo"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="iYx-Pk-qJy"/>
+                                            <barButtonItem title="Log Out" id="dVn-BR-SSg">
+                                                <color key="tintColor" red="0.6588235294" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="btnToolbarLogOutClicked:" destination="Bms-gj-dH6" id="trm-vh-hwi"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="pg2-Xy-eWq" firstAttribute="leading" secondItem="u6F-hB-uJy" secondAttribute="leading" id="0gW-fO-duB"/>
+                                    <constraint firstAttribute="bottom" secondItem="pg2-Xy-eWq" secondAttribute="bottom" id="Hcm-zd-Fie"/>
+                                    <constraint firstItem="pg2-Xy-eWq" firstAttribute="top" secondItem="u6F-hB-uJy" secondAttribute="top" id="I62-bs-fbM"/>
+                                    <constraint firstAttribute="trailing" secondItem="pg2-Xy-eWq" secondAttribute="trailing" id="iEb-ah-rGP"/>
+                                    <constraint firstAttribute="height" constant="44" id="yPU-MX-aBW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emH-do-DZ3">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="724"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMC-iX-AeM">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="120.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Agenda"/>
+                                        <connections>
+                                            <action selector="sidebarClick:" destination="Bms-gj-dH6" eventType="touchUpInside" id="gbH-cP-C0s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pl-x0-dam">
+                                        <rect key="frame" x="0.0" y="120.5" width="50" height="121"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Debates"/>
+                                        <connections>
+                                            <action selector="sidebarClick:" destination="Bms-gj-dH6" eventType="touchUpInside" id="aZP-nh-ENm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNI-ld-3Ly">
+                                        <rect key="frame" x="0.0" y="241.5" width="50" height="120.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Bits"/>
+                                        <connections>
+                                            <action selector="sidebarClick:" destination="Bms-gj-dH6" eventType="touchUpInside" id="J2c-K7-fZF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1a-N0-x5q">
+                                        <rect key="frame" x="0.0" y="362" width="50" height="120.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Acts"/>
+                                        <connections>
+                                            <action selector="sidebarClick:" destination="Bms-gj-dH6" eventType="touchUpInside" id="TdJ-vy-1CG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eg-6C-6ax">
+                                        <rect key="frame" x="0.0" y="482.5" width="50" height="121"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="PQ"/>
+                                        <connections>
+                                            <action selector="sidebarClick:" destination="Bms-gj-dH6" eventType="touchUpInside" id="JQh-N1-T7Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xON-l8-A7n">
+                                        <rect key="frame" x="0.0" y="603.5" width="50" height="120.5"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0Eg-6C-6ax" secondAttribute="trailing" id="0r8-Fc-jSA"/>
+                                    <constraint firstItem="3pl-x0-dam" firstAttribute="height" secondItem="QMC-iX-AeM" secondAttribute="height" id="13P-Y7-dgY"/>
+                                    <constraint firstItem="QMC-iX-AeM" firstAttribute="top" secondItem="emH-do-DZ3" secondAttribute="top" id="1aS-ZU-4fU"/>
+                                    <constraint firstAttribute="trailing" secondItem="QMC-iX-AeM" secondAttribute="trailing" id="3yR-71-s2j"/>
+                                    <constraint firstItem="0Eg-6C-6ax" firstAttribute="top" secondItem="t1a-N0-x5q" secondAttribute="bottom" id="4bZ-xf-XUq"/>
+                                    <constraint firstItem="t1a-N0-x5q" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="7Hg-VT-njy"/>
+                                    <constraint firstAttribute="trailing" secondItem="xON-l8-A7n" secondAttribute="trailing" id="8QO-JA-BPD"/>
+                                    <constraint firstItem="3pl-x0-dam" firstAttribute="top" secondItem="QMC-iX-AeM" secondAttribute="bottom" id="9gr-rV-C7L"/>
+                                    <constraint firstItem="xON-l8-A7n" firstAttribute="top" secondItem="0Eg-6C-6ax" secondAttribute="bottom" id="CpI-WA-0D6"/>
+                                    <constraint firstItem="xON-l8-A7n" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="Egm-DG-j6x"/>
+                                    <constraint firstAttribute="trailing" secondItem="3pl-x0-dam" secondAttribute="trailing" id="H0Q-7l-UHQ"/>
+                                    <constraint firstItem="3pl-x0-dam" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="IJZ-IN-YrX"/>
+                                    <constraint firstItem="XNI-ld-3Ly" firstAttribute="height" secondItem="QMC-iX-AeM" secondAttribute="height" id="Lr0-8V-flb"/>
+                                    <constraint firstItem="XNI-ld-3Ly" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="UZr-0N-1Hq"/>
+                                    <constraint firstItem="t1a-N0-x5q" firstAttribute="top" secondItem="XNI-ld-3Ly" secondAttribute="bottom" id="UuU-Rd-uPx"/>
+                                    <constraint firstItem="QMC-iX-AeM" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="VU4-cR-91F"/>
+                                    <constraint firstItem="0Eg-6C-6ax" firstAttribute="height" secondItem="QMC-iX-AeM" secondAttribute="height" id="aBi-Pb-6mm"/>
+                                    <constraint firstAttribute="trailing" secondItem="t1a-N0-x5q" secondAttribute="trailing" id="lYS-ec-bkQ"/>
+                                    <constraint firstItem="t1a-N0-x5q" firstAttribute="height" secondItem="QMC-iX-AeM" secondAttribute="height" id="mDA-S3-i7w"/>
+                                    <constraint firstItem="XNI-ld-3Ly" firstAttribute="top" secondItem="3pl-x0-dam" secondAttribute="bottom" id="oLQ-7c-fvf"/>
+                                    <constraint firstAttribute="width" constant="50" id="raj-dk-k1l"/>
+                                    <constraint firstAttribute="trailing" secondItem="XNI-ld-3Ly" secondAttribute="trailing" id="vV9-ve-Bpt"/>
+                                    <constraint firstAttribute="bottom" secondItem="xON-l8-A7n" secondAttribute="bottom" id="vrf-0c-Trz"/>
+                                    <constraint firstItem="0Eg-6C-6ax" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="leading" id="ylA-h9-sJ5"/>
+                                    <constraint firstItem="xON-l8-A7n" firstAttribute="height" secondItem="QMC-iX-AeM" secondAttribute="height" id="zSN-qp-PYg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aih-lP-3MZ">
+                                <rect key="frame" x="50" y="20" width="974" height="704"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u6F-hB-uJy" firstAttribute="top" secondItem="Aih-lP-3MZ" secondAttribute="bottom" id="1wm-jM-cZM"/>
+                            <constraint firstItem="emH-do-DZ3" firstAttribute="top" secondItem="6xd-0N-hnw" secondAttribute="top" id="8on-ee-AQG"/>
+                            <constraint firstItem="emH-do-DZ3" firstAttribute="leading" secondItem="OeN-HO-CUd" secondAttribute="leading" id="9nq-GQ-ogs"/>
+                            <constraint firstItem="u6F-hB-uJy" firstAttribute="top" secondItem="emH-do-DZ3" secondAttribute="bottom" id="DVq-kx-3sv"/>
+                            <constraint firstItem="Aih-lP-3MZ" firstAttribute="top" secondItem="OeN-HO-CUd" secondAttribute="top" id="Z50-Sh-hx0"/>
+                            <constraint firstItem="u6F-hB-uJy" firstAttribute="leading" secondItem="OeN-HO-CUd" secondAttribute="leading" id="arf-8c-RRv"/>
+                            <constraint firstItem="OeN-HO-CUd" firstAttribute="trailing" secondItem="Aih-lP-3MZ" secondAttribute="trailing" id="bi3-oI-PaR"/>
+                            <constraint firstItem="Aih-lP-3MZ" firstAttribute="leading" secondItem="emH-do-DZ3" secondAttribute="trailing" id="iVk-Dc-9BE"/>
+                            <constraint firstItem="u6F-hB-uJy" firstAttribute="trailing" secondItem="OeN-HO-CUd" secondAttribute="trailing" id="jht-qD-yc8"/>
+                            <constraint firstItem="OeN-HO-CUd" firstAttribute="bottom" secondItem="u6F-hB-uJy" secondAttribute="bottom" id="ywM-Kw-z6H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OeN-HO-CUd"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnActs" destination="t1a-N0-x5q" id="kxQ-Ni-Tp1"/>
+                        <outlet property="btnAgenda" destination="QMC-iX-AeM" id="swF-AE-5h2"/>
+                        <outlet property="btnBits" destination="XNI-ld-3Ly" id="0kM-3M-b6o"/>
+                        <outlet property="btnDebate" destination="3pl-x0-dam" id="BRS-il-hEB"/>
+                        <outlet property="btnPQ" destination="0Eg-6C-6ax" id="Gr1-HF-LxC"/>
+                        <outlet property="detailView" destination="Aih-lP-3MZ" id="9c0-DN-6fN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fy-Hz-ylQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1545.1171875" y="158.59375"/>
+        </scene>
+    </scenes>
+</document>

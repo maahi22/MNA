@@ -1,0 +1,269 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Member Sitting App</title>
+		<link href="resources/css/Search.css" rel="stylesheet" type="text/css"/>
+		<script src="resources/js/jquery.min.js" type="text/javascript"></script>
+		<script src="resources/js/moment.min.js" type="text/javascript"></script>
+		<script src="resources/js/common.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function () {
+				$.ajaxSetup({ cache: false });
+				var myScroll;
+				var SITE_URL = "http://202.123.27.106/";
+				var myURL = SITE_URL+"mnaservices2/webservice/webservice_publication_ios.php?encode=json&&method=publication&&publisherId=7";
+				$.ajax({
+					url: myURL,
+					type: 'GET',
+					data: {},
+					processData: true,
+					dataType: 'json',
+					success: function (data) {
+						$("#info").attr("json", JSON.stringify(data));
+						var str="<option value='0'>Agenda</option>";
+						//var slotValues='pubtype@@@{"0" : "Agenda", ';
+						$.each(data, function (key) {
+							//slotValues+= "\"" + data[key].Id + "\"" + " : " + "\"" + data[key].Name + "\""+ ", ";
+							str+="<option value=\""+data[key].Id+"\">"+data[key].Name+"</option>";
+						});
+						$('.FindBox').append(str);
+						var now = new Date;
+				
+						$('.FromBox').text(moment(now).format('DD-MMM-YYYY'));
+						$('.ToBox').text(moment(now).format('DD-MMM-YYYY'));
+						$('.FromBox,.ToBox').bind('click', function () {
+							doClick($(this).attr("class"));
+						});
+					}
+				});
+			})
+			
+			function showWheelPub() {
+				var a = "{" + $("#info").attr("slot") + "}"
+				var slotValues = $.parseJSON(a);
+			}
+			
+			function searchClick() {
+				if ($("#searchtxt").val() != "") {
+                    //alert(moment($('.FromBox').text()).format('DD-MMM-YYYY'));
+                    
+					var SITE_URL = "http://202.123.27.106/"
+					var searchString =SITE_URL + "mna-app2/searchPdfFiles.do?publicationId=" + $('.FindBox :selected').val() + "&startDate=" + moment($('.FromBox').text()).format("YYYYMMDD") + "&endDate=" + moment($('.ToBox').text()).format("YYYYMMDD") + "&searchStr=" + $("#searchtxt").val();
+                    
+					doClick('search@@@'+searchString);
+					
+				} else {
+                    doClick('error');
+					//alert("Please type a search term in the search text box")
+				}
+			}
+			
+			function search(filepath) {
+				$.ajax({
+					url: filepath,
+					type: 'GET',
+					data: {},
+					processData: true,
+					dataType: 'json',
+					success: function (data) {
+						loadData(data)
+					}
+				});
+			}
+			
+			function loadData(data) {
+				var str='';
+				$.each(data[0], function (i) {
+                       $.each(data[0][i], function (key) {
+                              //Process the date
+                              var pdfPath = data[0][i][key].path;
+                              var x = pdfPath.split("\\");
+                              var pdfName = x[x.length - 1];
+                              var date = data[0][i][key].date;
+                              date = moment(date, "YYYYMMDD");
+                              var uploadId = data[0][i][key].ID;
+                              var m = { 0: 'JAN', 1: 'FEB', 2: 'MAR', 3: 'APR', 4: 'MAY', 5: 'JUN', 6: 'JUL', 7: 'AUG', 8: 'SEP', 9: 'OCT', 10: 'NOV', 11: 'DEC' };
+                              alert(m[date._d.getMonth()]);
+                              str+= '<div id="searchresult" class="searchresult" onclick="doClick(\'openpdf@@@'+ pdfPath+ '@@@' +  uploadId+ '@@@' + data[0][i][key].pageNo +'@@@' + moment(data[0][i][key].date).format('MMMM Do YYYY') + '@@@' + data[0][i][key].title  + '@@@' + $('.FindBox :selected').text() + '\');"><div class="CalendarWrapper"><div class="SCalyear">' + date.year() + '</div><div class="SCaldate">' + date.date() + '</div><div class="SCalmonth">' + m[date._d.getMonth()] + '</div></div><div id= "PdfTitle" class="PdfTitle">'+ data[0][i][key].title +'</div><div id= "SearchText" class="SearchText"><b>' + 'Found on page no. ' + data[0][i][key].pageNo + ' in text:  </b>'+ data[0][i][key].text + '</div></div>';
+                              });
+				})
+				$("#searchBody").html('');
+				$("#searchBody").append(str);
+				
+                //Process the text
+                var mySearchText = $("#searchtxt").val();
+                //var myFoundText = data[0][0][key].text;
+                var newText = highlightSearchTerms(mySearchText, true)
+			}
+			
+			function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag) {
+				// the highlightStartTag and highlightEndTag parameters are optional
+				if ((!highlightStartTag) || (!highlightEndTag)) {
+					highlightStartTag = "<b><font style='color:blue;'>";
+					highlightEndTag = "</font></b>";
+				}
+				
+				var newText = "";
+				var i = -1;
+				var lcSearchTerm = searchTerm.toLowerCase();
+				var lcBodyText = bodyText.toLowerCase();
+                
+				while (bodyText.length > 0) {
+					i = lcBodyText.indexOf(lcSearchTerm, i+1);
+					if (i < 0) {
+						newText += bodyText;
+						bodyText = "";
+					} else {
+						// skip anything inside an HTML tag
+						if (bodyText.lastIndexOf(">", i) >= bodyText.lastIndexOf("<", i)) {
+							// skip anything inside a <script> block
+							if (lcBodyText.lastIndexOf("/script>", i) >= lcBodyText.lastIndexOf("<script", i)) {
+								newText += bodyText.substring(0, i) + highlightStartTag + bodyText.substr(i, searchTerm.length) + highlightEndTag;
+								bodyText = bodyText.substr(i + searchTerm.length);
+								lcBodyText = bodyText.toLowerCase();
+								i = -1;
+							}
+						}
+					}
+				}
+				return newText;
+			}
+			
+			function highlightSearchTerms(searchText, treatAsPhrase, warnOnFailure, highlightStartTag, highlightEndTag) {
+				if (treatAsPhrase) {
+					searchArray = [searchText];
+				} else {
+					searchArray = searchText.split(" ");
+				}
+				if (!document.body || typeof(document.body.innerHTML) == "undefined") {
+					if (warnOnFailure) {
+						alert("Sorry, for some reason the text of this page is unavailable. Searching will not work.");
+					}
+					return false;
+				}
+                
+				var bodyText = document.body.innerHTML;
+				for (var i = 0; i < searchArray.length; i++) {
+					bodyText = doHighlight(bodyText, searchArray[i], highlightStartTag, highlightEndTag);
+				}
+                
+				document.body.innerHTML = bodyText;
+				return true;
+			}
+            
+			function doClick(refId) {
+                //window.location.replace(refId);
+                window.location.href="@@@"+refId;
+            }
+            </script>
+        <style type="text/css">
+            
+            .downloadBox {
+            width:237px;
+            height:70px;
+            position:fixed;
+            left:50%; /* centers the loading animation horizontally one the screen */
+            top:50%; /* centers the loading animation vertically one the screen */
+            margin:-100px 0 0 -100px; /* is width and height divided by two */
+            background-color: #CCC;
+            display:none;
+            padding:0 30px 30px 30px;
+            border-radius:10px;
+            box-shadow:0 5px 5px #999;
+            border:1px solid #666;
+        }
+            .pbar .ui-progressbar-value {
+				display:block !important
+			}
+			.pbar {
+				overflow: hidden;
+				height:20px;
+				background-color:white;
+				background-repeat:no-repeat;
+				background-position:center;
+				padding:0px;
+				border-radius:5px;
+			}
+			.DownloadName{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:16px;
+				color:#333;
+				text-align:center;
+				width:240px;
+				height:20px;
+				margin-top:10px;
+				font-weight:bold;
+				text-shadow:0 1px 1px #ffffff;
+				margin-bottom:10px;
+				
+			}
+			
+			.DownloadPercent{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:14px;
+				color:#333;
+				text-align:center;
+				width:240px;
+				height:20px;
+				margin-top:10px;
+				font-weight:bold;
+				text-shadow:0 1px 1px #ffffff;
+				
+			}
+			.cancelDownload{
+				width:24px;
+				height:24px;
+				float:right;
+				margin-right: -27px;
+				margin-top: 3px;
+			}
+			.percent {position:relative;text-align: right;}
+			.elapsed {position:relative;text-align: right;}
+            </style>
+	</head>
+	<body>
+		<div id="searchMain" class="searchMain">
+			<div class="searchtop">
+				<table width="938">
+					<tr style="font-family:Arial;">
+						<td width="412" height="48" style="padding-top: 5px;">
+							<input type="text" class="textsearch" id="searchtxt"></input>
+							<div id="searchbtn" class="searchbutton" onClick="searchClick()"></div>
+						</td>
+						<td width="278">
+							<div style="font-size:12px">Find in </div>
+							<!--<div class="FindBox">Agenda</div>-->
+							<select class="FindBox">
+                                <!--<option>Just Once</option>-->
+                                
+                            </select>
+						</td>
+						<td width="123">
+							<div style="font-size:12px">From </div>
+							<div class="FromBox"></div>
+						</td>
+						<td width="105">
+							<div style="font-size:12px">To </div>
+							<div class="ToBox"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="searchBody">
+			</div>
+		</div>
+		<div id="info" style="display:none" json="" slot="" myDiv=""></div>
+		<div id="search" style="display:none" find="5" from="20130601" to="20130630"></div>
+        <div class="downloadBox">
+            <div class="cancelDownload" onClick="cancelDownload()"><img src="resources/images/dnpdel.png" width="24" height="24" /></div>
+			<div id="progress">
+                
+                <div class="DownloadName"></div>
+                <div class="percent"></div>
+                <div class="pbar"><img src="resources/images/barloader.gif" width="235" height="19" /></div>
+                <div class="elapsed"></div>
+                <div class="DownloadPercent"></div>
+			</div>
+		</div>
+	</body>
+</html>

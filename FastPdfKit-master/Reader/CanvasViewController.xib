@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CanvasViewController">
+            <connections>
+                <outlet property="mainImage" destination="64f-Sc-UBf" id="Gqd-c1-uZ4"/>
+                <outlet property="tempDrawImage" destination="xT6-z6-AuH" id="6rQ-EU-o1B"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64f-Sc-UBf">
+                    <rect key="frame" x="0.0" y="44" width="500" height="456"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-z6-AuH">
+                    <rect key="frame" x="0.0" y="44" width="500" height="456"/>
+                </imageView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="xU8-pm-Bzm">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4zN-TX-Vsq"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem image="eraser.png" style="plain" id="nOA-gn-zlI">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="eraserPressed:" destination="-1" id="7I0-Ef-J5o"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="pen.png" style="plain" id="FFf-34-FeP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="pencilPressed:" destination="-1" id="IwA-gH-7Vw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="82e-F6-qth"/>
+                        <barButtonItem title="Reset" id="cqL-Lg-fix">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="reset:" destination="-1" id="029-Up-Zgi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="save" id="HDG-Vw-hZX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="save:" destination="-1" id="z8g-Ff-pxf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="cancel" id="dML-sH-DZ6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismissView:" destination="-1" id="0hN-aI-6pb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Delete" id="bGt-8O-H8A">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="delete1:" destination="-1" id="NvM-Qd-Bt6"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xT6-z6-AuH" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="2zw-7w-s9c"/>
+                <constraint firstItem="xT6-z6-AuH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gfa-vJ-TkC"/>
+                <constraint firstAttribute="bottom" secondItem="64f-Sc-UBf" secondAttribute="bottom" id="HaK-Ia-WKb"/>
+                <constraint firstItem="xU8-pm-Bzm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LkJ-ju-VbM"/>
+                <constraint firstItem="64f-Sc-UBf" firstAttribute="top" secondItem="xU8-pm-Bzm" secondAttribute="bottom" id="M6B-vM-Thz"/>
+                <constraint firstItem="64f-Sc-UBf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Nf3-AZ-uj4"/>
+                <constraint firstItem="64f-Sc-UBf" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="QBL-Ur-QHY"/>
+                <constraint firstItem="xU8-pm-Bzm" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Tfd-Cp-lkP"/>
+                <constraint firstItem="xT6-z6-AuH" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="aWH-es-VKM"/>
+                <constraint firstItem="xT6-z6-AuH" firstAttribute="top" secondItem="xU8-pm-Bzm" secondAttribute="bottom" id="rFv-9t-D8v"/>
+                <constraint firstItem="xU8-pm-Bzm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vme-Zb-VhC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="eraser.png" width="16" height="16"/>
+        <image name="pen.png" width="16" height="16"/>
+    </resources>
+</document>

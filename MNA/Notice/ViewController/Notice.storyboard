@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--NoticeVC-->
+        <scene sceneID="Cwu-q4-MFn">
+            <objects>
+                <viewController storyboardIdentifier="NoticeVC" id="8l7-IQ-HFm" customClass="NoticeVC" customModule="MNA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ieq-OS-eLs">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="XJv-TP-d67">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <barButtonItem title="Back" id="Ed6-DS-YhY">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="btnBackClicked:" destination="8l7-IQ-HFm" id="spt-ma-ChC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="II0-0Z-HFR"/>
+                                    <barButtonItem systemItem="refresh" id="MDv-XQ-Gn2">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="refreshView:" destination="8l7-IQ-HFm" id="ePR-Ee-dgz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="3yb-D2-RVA"/>
+                                    <barButtonItem systemItem="rewind" id="m5W-Nn-fJb">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="RewindBackward:" destination="8l7-IQ-HFm" id="G4y-Cu-mQp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="cAp-oj-dwF"/>
+                                    <barButtonItem systemItem="fastForward" id="Zls-bR-dLQ">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="FastForwad:" destination="8l7-IQ-HFm" id="enr-Fv-cqS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="BYj-Lr-7EO"/>
+                                    <barButtonItem systemItem="stop" id="x2I-v7-Opp">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="cancelCross:" destination="8l7-IQ-HFm" id="APM-hO-NdM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSW-Km-aww">
+                                <rect key="frame" x="0.0" y="40" width="1024" height="684"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8l7-IQ-HFm" id="TIn-Bt-oc7"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-Gl-7Pn">
+                                <rect key="frame" x="493" y="375" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iVv-Gl-7Pn" firstAttribute="centerY" secondItem="1zl-dP-3HN" secondAttribute="centerY" id="PNE-Fv-P4W"/>
+                            <constraint firstItem="1zl-dP-3HN" firstAttribute="bottom" secondItem="XJv-TP-d67" secondAttribute="bottom" id="Sjb-Hj-KII"/>
+                            <constraint firstItem="iVv-Gl-7Pn" firstAttribute="centerX" secondItem="1zl-dP-3HN" secondAttribute="centerX" id="TqY-Hz-fJY"/>
+                            <constraint firstAttribute="trailing" secondItem="XJv-TP-d67" secondAttribute="trailing" id="Vvw-gH-VWV"/>
+                            <constraint firstItem="PSW-Km-aww" firstAttribute="leading" secondItem="1zl-dP-3HN" secondAttribute="leading" id="cYr-zc-wIz"/>
+                            <constraint firstItem="XJv-TP-d67" firstAttribute="top" secondItem="PSW-Km-aww" secondAttribute="bottom" id="cZK-nl-50C"/>
+                            <constraint firstItem="XJv-TP-d67" firstAttribute="leading" secondItem="1zl-dP-3HN" secondAttribute="leading" id="hm6-sf-d8X"/>
+                            <constraint firstItem="PSW-Km-aww" firstAttribute="top" secondItem="1zl-dP-3HN" secondAttribute="top" constant="20" id="oKV-kJ-diJ"/>
+                            <constraint firstItem="1zl-dP-3HN" firstAttribute="trailing" secondItem="PSW-Km-aww" secondAttribute="trailing" id="ybs-mI-kP4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1zl-dP-3HN"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="iVv-Gl-7Pn" id="mYP-OD-C8Q"/>
+                        <outlet property="barbtnForwad" destination="Zls-bR-dLQ" id="R76-hX-l7z"/>
+                        <outlet property="barbtnRewind" destination="m5W-Nn-fJb" id="tba-I1-aFM"/>
+                        <outlet property="webview" destination="PSW-Km-aww" id="bpw-4x-RdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVh-s7-3ON" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="222"/>
+        </scene>
+    </scenes>
+</document>

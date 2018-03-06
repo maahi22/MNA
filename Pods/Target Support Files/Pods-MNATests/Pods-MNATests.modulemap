@@ -1,0 +1,6 @@
+framework module Pods_MNATests {
+  umbrella header "Pods-MNATests-umbrella.h"
+
+  export *
+  module * { export * }
+}

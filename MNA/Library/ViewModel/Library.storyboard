@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LibraryVC-->
+        <scene sceneID="W6K-Wk-Seg">
+            <objects>
+                <viewController storyboardIdentifier="LibraryVC" id="hiQ-Sc-mUD" customClass="LibraryVC" customModule="MNA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hxM-Cl-mFa">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="B1V-ef-Vgj">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="eh9-g1-aLI">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="backClicked:" destination="hiQ-Sc-mUD" id="z4r-uZ-hxA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxk-mV-0Ij">
+                                <rect key="frame" x="0.0" y="40" width="1024" height="694"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hiQ-Sc-mUD" id="RjF-MW-PGQ"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nLK-W8-Gxd">
+                                <rect key="frame" x="494" y="375.5" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dxk-mV-0Ij" firstAttribute="leading" secondItem="Uuh-jG-jeG" secondAttribute="leading" id="1oZ-8G-cLm"/>
+                            <constraint firstItem="Uuh-jG-jeG" firstAttribute="bottom" secondItem="Dxk-mV-0Ij" secondAttribute="bottom" constant="34" id="3F0-vj-iCf"/>
+                            <constraint firstItem="Uuh-jG-jeG" firstAttribute="bottom" secondItem="B1V-ef-Vgj" secondAttribute="bottom" id="A2G-MY-4aL"/>
+                            <constraint firstItem="Uuh-jG-jeG" firstAttribute="trailing" secondItem="Dxk-mV-0Ij" secondAttribute="trailing" id="RaV-qn-0dn"/>
+                            <constraint firstItem="nLK-W8-Gxd" firstAttribute="centerY" secondItem="Uuh-jG-jeG" secondAttribute="centerY" id="Xlk-yf-L8r"/>
+                            <constraint firstItem="B1V-ef-Vgj" firstAttribute="leading" secondItem="Uuh-jG-jeG" secondAttribute="leading" id="cZ1-WY-t4W"/>
+                            <constraint firstItem="nLK-W8-Gxd" firstAttribute="centerX" secondItem="Uuh-jG-jeG" secondAttribute="centerX" id="uzP-bQ-UIC"/>
+                            <constraint firstItem="Dxk-mV-0Ij" firstAttribute="top" secondItem="Uuh-jG-jeG" secondAttribute="top" constant="20" id="wef-Of-pym"/>
+                            <constraint firstAttribute="trailing" secondItem="B1V-ef-Vgj" secondAttribute="trailing" id="wiG-cb-gr4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uuh-jG-jeG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OcX-qi-hT0"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="nLK-W8-Gxd" id="rR4-Qt-Lfa"/>
+                        <outlet property="webview" destination="Dxk-mV-0Ij" id="NlF-g3-Ph3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agz-ze-vfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="-177"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6OX-VX-Ypr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A6v-KU-SD0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gFJ-Fs-e1S">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yra-p4-gfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="-177"/>
+        </scene>
+    </scenes>
+</document>

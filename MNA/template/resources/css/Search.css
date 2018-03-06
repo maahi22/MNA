@@ -1,0 +1,187 @@
+@charset "utf-8";
+body{margin:0px; padding:0px;background-color: #dfe3ed;}
+.searchMain {
+	height: 768px;
+	width: 1024px;
+	padding-top: 22px;
+	overflow: auto;
+	/*background-image:url(../images/AgendaBg.png);*/
+}
+.searchtop {
+	width:943px;
+	height:52px;
+	margin-left: 44px;
+	margin-right:auto;
+/*	position:fixed;
+*/	background-color:#dfe3ed;
+	margin-top: -24px;
+	padding-top: 24px;
+}
+.searchresult{
+	height:78px;
+	width:872px; /*edited by Ajmal*/
+
+	margin-top:10px;
+	border-bottom:1px solid black;
+	
+}
+
+.searchbutton {
+	width:51px;
+	height:41px;
+	background-image:url(../images/Search.png);
+	float: left;
+	margin-left: -8px;
+	cursor:pointer;
+}
+.textsearch{
+	width: 350px;
+	height: 36px;
+	float: left;
+	-moz-border-top-left-radius: 15px;
+	-moz-border-bottom-left-radius: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	border: 1px solid #9197A6;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 2px;
+	font-size:20px;
+	
+}
+*:focus {
+    outline: none;
+}
+.CalendarWrapper{
+	height: 71px;
+	width: 64px;
+	background-image: url(../images/SearchCal.png);
+	background-repeat: no-repeat;
+	float: right;
+	zoom:.7;
+	margin:0px;
+	overflow: hidden;
+	margin-top: -19px;
+	margin-bottom: 0px;
+	margin-right: -17px
+}
+.SCalyear{
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFF;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	height: 19px;
+	width: 65px;
+	text-align: center;
+	line-height: 30px;
+}
+.SCaldate {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 34px;
+	color: #000;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	height: 11px;
+	width: 65px;
+	text-align: center;
+	line-height: 38px;
+}
+.SCalmonth{
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	height: 24px;
+	width: 64px;
+	text-align: center;
+	line-height: 55px;
+}
+.SearchText{
+	width: 860px; /*edited by Ajmal*/
+	height: 57px;
+	float: left;
+	margin-top: 8px;
+	margin-left: 10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	line-height:19px;
+	overflow:hidden;
+}
+.PdfTitle{
+	width:250px;
+	height:53px;
+	float:left;
+	margin-top: 7px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-align:center;
+	display:-webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	line-height:19px;
+	padding:2px;
+	color:#48577d;
+	overflow:hidden;
+	
+}
+.FindBox{
+	width:240px;
+	height:26px;
+	border:#9197A6 solid 1px;
+	padding-left:2px;
+	padding-top:1px;
+	font-size:16px;
+}
+
+.FromBox{
+	width:101px;
+	height:20px;
+	border:#9197A6 solid 1px;
+	padding-left:2px;
+	padding-top:1px;
+	font-size:16px;
+    border-radius:4px;
+    padding-top:3px;
+
+}
+.ToBox{
+	width:101px;
+	height:20px;
+	border:#9197A6 solid 1px;
+	padding-left:2px;
+	padding-top:1px;
+	font-size:16px;
+    border-radius:4px;
+    padding-top:3px;
+}
+
+/*Added by Ajmal on 10th July 2013*/
+.searchbody{
+	width: 930px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+.resultsfoundtxt{
+	font-size:15px;
+	font-weight:normal;
+	color:#666666;
+	font-style:italic;
+}
+
+.AccordionPanelOpen .resultsfoundtxt{
+	color:#FFFFFF;
+}
+.searchresultlast {
+    height: 78px;
+    width: 872px;
+    margin-top: 10px;
+}

@@ -1,0 +1,40 @@
+PODS:
+  - AEXML (4.2.2)
+  - Alamofire (4.6.0)
+  - AlamofireSwiftyJSON (1.0.0):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.0)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
+  - GoogleAnalytics (3.17.0)
+  - IQKeyboardManagerSwift (5.0.6)
+  - ReachabilitySwift (4.1.0)
+  - SwiftSignatureView (2.0.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - AEXML
+  - AlamofireSwiftyJSON
+  - Crashlytics
+  - Fabric
+  - GoogleAnalytics
+  - IQKeyboardManagerSwift
+  - ReachabilitySwift
+  - SwiftSignatureView
+
+SPEC CHECKSUMS:
+  AEXML: 5ebafc1b75e0bcf0f1b09b8ca8fed2d5a199479b
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireSwiftyJSON: 78908b766483a28aa5cc90fd191a687467042973
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  SwiftSignatureView: aacf6b4fb9108d79b76af1d3f23a50ff50a0a98f
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: dfe403ece3e2ee5b23d81e97e75a069faf35f4c2
+
+COCOAPODS: 1.3.1

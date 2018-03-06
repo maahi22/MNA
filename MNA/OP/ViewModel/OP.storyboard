@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--OPVC-->
+        <scene sceneID="KeE-lm-9uj">
+            <objects>
+                <viewController storyboardIdentifier="OPVC" id="2IC-Bh-cEd" customClass="OPVC" customModule="MNA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7tC-Ry-BcD">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M34-R4-xxO">
+                                <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2IC-Bh-cEd" id="ctq-1h-LUC"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="LCK-xA-r4b">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back" id="Hen-nG-d6Y">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="backClicked:" destination="2IC-Bh-cEd" id="nQu-FM-0ef"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DS3-OU-Efk">
+                                <rect key="frame" x="473" y="393" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hZg-KP-VQj">
+                                <rect key="frame" x="493" y="397" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M34-R4-xxO" firstAttribute="leading" secondItem="OKr-fd-UIV" secondAttribute="leading" id="1du-Vr-I7w"/>
+                            <constraint firstItem="hZg-KP-VQj" firstAttribute="centerX" secondItem="OKr-fd-UIV" secondAttribute="centerX" id="9jq-6r-0gF"/>
+                            <constraint firstItem="M34-R4-xxO" firstAttribute="top" secondItem="OKr-fd-UIV" secondAttribute="top" id="EXV-c7-gmp"/>
+                            <constraint firstItem="hZg-KP-VQj" firstAttribute="centerY" secondItem="OKr-fd-UIV" secondAttribute="centerY" id="O21-WE-qya"/>
+                            <constraint firstItem="LCK-xA-r4b" firstAttribute="top" secondItem="M34-R4-xxO" secondAttribute="bottom" id="eJ7-zT-xdw"/>
+                            <constraint firstItem="OKr-fd-UIV" firstAttribute="trailing" secondItem="M34-R4-xxO" secondAttribute="trailing" id="gb9-Qo-SHv"/>
+                            <constraint firstItem="OKr-fd-UIV" firstAttribute="bottom" secondItem="LCK-xA-r4b" secondAttribute="bottom" id="n3G-ca-vso"/>
+                            <constraint firstAttribute="trailing" secondItem="LCK-xA-r4b" secondAttribute="trailing" id="s2O-XG-p1Y"/>
+                            <constraint firstItem="LCK-xA-r4b" firstAttribute="leading" secondItem="OKr-fd-UIV" secondAttribute="leading" id="xUu-kY-vhg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OKr-fd-UIV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kXI-cu-BTe"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="hZg-KP-VQj" id="CGu-yy-Rca"/>
+                        <outlet property="progressBarView" destination="DS3-OU-Efk" id="1yc-QN-m6N"/>
+                        <outlet property="webview" destination="M34-R4-xxO" id="gAH-Uu-NbK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J1P-aC-jTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-353.90625" y="338.28125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Njr-dH-uzv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="put-e6-1bA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Zw-hm-EW5">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2IC-Bh-cEd" kind="relationship" relationship="rootViewController" id="UOj-Cs-fLy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccQ-if-1Ue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1026" y="338"/>
+        </scene>
+    </scenes>
+</document>

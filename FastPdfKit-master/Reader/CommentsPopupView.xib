@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+            <string>Helvetica-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentsPopupView">
+            <connections>
+                <outlet property="btnApply" destination="TIA-8t-D2A" id="4di-gF-gzg"/>
+                <outlet property="btnDelete" destination="6xL-M6-420" id="pZC-GI-07j"/>
+                <outlet property="lblcreationDate" destination="YAw-yb-bm5" id="SZ4-cA-mIg"/>
+                <outlet property="textTitle" destination="Z5I-GR-UxG" id="YLO-Vj-Qu3"/>
+                <outlet property="textViewComment" destination="nA3-OJ-gQG" id="jnE-h3-YP7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="282" height="152"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Z5I-GR-UxG">
+                    <rect key="frame" x="5" y="0.0" width="272" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="pgT-vp-fSJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="2.5629997253417969e-05" blue="8.7022781372070312e-06" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="DCH-1I-SCQ">
+                    <rect key="frame" x="0.0" y="0.0" width="282" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="ZzJ-Mv-Z27"/>
+                    </constraints>
+                    <items/>
+                </toolbar>
+                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-M6-420">
+                    <rect key="frame" x="222" y="127" width="45" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="v5K-M0-C7V"/>
+                        <constraint firstAttribute="width" constant="45" id="vM2-aQ-KXm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnCommentDelete:" destination="-1" eventType="touchUpInside" id="1lC-oF-qb4"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA3-OJ-gQG">
+                    <rect key="frame" x="5" y="49" width="272" height="73"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIA-8t-D2A">
+                    <rect key="frame" x="15" y="127" width="45" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="OtI-Cp-Oha"/>
+                        <constraint firstAttribute="width" constant="45" id="e0H-mU-aje"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <state key="normal" title="Apply"/>
+                    <connections>
+                        <action selector="btnCommentDone:" destination="-1" eventType="touchUpInside" id="au8-Jm-56B"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="YAw-yb-bm5">
+                    <rect key="frame" x="5" y="24" width="272" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="aK4-hA-3km"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="2.5629997253417969e-05" blue="8.7022781372070312e-06" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6xL-M6-420" firstAttribute="top" secondItem="nA3-OJ-gQG" secondAttribute="bottom" constant="5" id="4mZ-zT-o35"/>
+                <constraint firstAttribute="bottom" secondItem="TIA-8t-D2A" secondAttribute="bottom" constant="5" id="6hT-sE-7d0"/>
+                <constraint firstItem="DCH-1I-SCQ" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="MRo-i5-rFM"/>
+                <constraint firstItem="YAw-yb-bm5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="OcD-QL-u7i"/>
+                <constraint firstAttribute="bottom" secondItem="6xL-M6-420" secondAttribute="bottom" constant="5" id="ST0-IJ-prN"/>
+                <constraint firstItem="Z5I-GR-UxG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TPx-HP-hd9"/>
+                <constraint firstItem="nA3-OJ-gQG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="V14-W1-G9K"/>
+                <constraint firstItem="TIA-8t-D2A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="WNG-zw-9fw"/>
+                <constraint firstItem="nA3-OJ-gQG" firstAttribute="top" secondItem="DCH-1I-SCQ" secondAttribute="bottom" constant="5" id="aDN-Cr-dpU"/>
+                <constraint firstAttribute="trailing" secondItem="6xL-M6-420" secondAttribute="trailing" constant="15" id="b9W-aP-XjO"/>
+                <constraint firstAttribute="trailing" secondItem="Z5I-GR-UxG" secondAttribute="trailing" constant="5" id="ij7-oo-Fto"/>
+                <constraint firstAttribute="trailing" secondItem="nA3-OJ-gQG" secondAttribute="trailing" constant="5" id="pdd-iv-GhH"/>
+                <constraint firstAttribute="trailing" secondItem="YAw-yb-bm5" secondAttribute="trailing" constant="5" id="ps6-IR-gZB"/>
+                <constraint firstItem="YAw-yb-bm5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="qKk-xp-YE3"/>
+                <constraint firstItem="Z5I-GR-UxG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="xJx-UU-khE"/>
+                <constraint firstItem="DCH-1I-SCQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yXp-YC-WEH"/>
+                <constraint firstItem="DCH-1I-SCQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yfT-gk-Vr9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-40" y="49.5"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_MNA {
+  umbrella header "Pods-MNA-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1;" />
+		<title>Order Paper List View Page</title>
+		<!--Common CSS for landscape and portrait iPad specific start-->
+		<style type="text/css">
+			/* Preloader */
+			#preloader {
+				position:absolute;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-color:#fff; /* change if the mask should have another color then white */
+				z-index:99; /* makes sure it stays on top */
+			}
+			#status {
+				width:200px;
+				height:200px;
+				position:absolute;
+				left:50%; /* centers the loading animation horizontally one the screen */
+				top:50%; /* centers the loading animation vertically one the screen */
+				background-image:url(resources/images/status.gif); /* path to your loading animation */
+				background-repeat:no-repeat;
+				background-position:center;
+				margin:-100px 0 0 -100px; /* is width and height divided by two */
+			}
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
+			.OPCompleteWrapper{
+				width:100%;
+				height:auto;
+				float:left;
+			}
+			.OPHeaderWrapper{
+				width:100%;
+				height:120px;
+				background-color:#7690CF;
+			}
+            
+			.OPCalanderWrapper{
+				height:106px;
+				width:96px;
+				background-image:url(resources/images/calander-bg.png);
+				background-repeat:no-repeat;
+				margin-left: 3%;
+				float: left;
+				margin-top: 5px;
+				padding-top: 8px;
+				padding-left: 10px;
+			}
+			.OPCalYear{
+				float:left;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:18px;
+				color:#FFF;
+				font-weight:bold;
+				margin:0px;
+				padding:0px;
+				height:22px;
+				width:82px;
+				text-align:center;
+				line-height:22px;
+			}
+			.OPCalDate{
+				float:left;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:54px;
+				color:#000;
+				font-weight:bold;
+				margin:0px;
+				padding:0px;
+				height:48px;
+				width:82px;
+				text-align:center;
+				line-height:48px;
+			}
+			.OPCalMonth{
+				float:left;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:20px;
+				color:#000;
+				font-weight:bold;
+				margin:0px;
+				padding:0px;
+				height:24px;
+				width:82px;
+				text-align:center;
+				line-height:20px;
+			}
+			.OPHeaderTextWrapper{
+				float:left;
+				height:100px;
+				width:auto;
+				color:#FFF;
+				font-family:Arial, Helvetica, sans-serif;
+				margin-top:12px;
+				margin-left:5px;
+			}
+			.OPHeaderTextWrapper h1,
+			.OPHeaderTextWrapper h2{
+				margin:0px;
+				padding:0px;
+			}
+            
+			.OPHeaderTextWrapper h1{
+				font-size:30px;
+				margin-bottom:10px;
+			}
+			.OPHeaderTextWrapper h2{
+				font-size:20px;
+			}
+            
+			.OPHeaderPDFIcon{
+				float:right;
+				width:63px;
+				height:63px;
+				margin-right:40px;
+				margin-top: 30px;
+			}
+            
+			.OPBodyWrapper{
+				float:left;
+				height:auto;
+				width:100%;
+				min-height:100px;
+                padding-bottom:30px;
+			}
+			.firstLevelWrapper{
+				font-family:Arial, Helvetica, sans-serif;
+				color:#000;
+				padding-bottom:0px;
+				margin-top:10px;
+				min-height:75px;
+				margin-left:3%;
+				margin-right:3%;
+				border-bottom:2px solid #48577D;
+				float:left;
+				width:94%;
+			}
+            
+			.firstLevelWrapper h1{
+				font-family:Arial, Helvetica, sans-serif;
+				color:#000;
+				font-weight:bold;
+				font-size:20px;
+				margin:0px;
+				padding:0px;
+				padding-top: 20px;
+			}
+			.commonTextWrapper{
+				float:left;
+				width:600px;
+				height:auto;
+				min-height: 75px;
+			}
+			.firstLevelWrapper .commonTextWrapper p{
+				margin:0px;
+				padding:0px;
+				font-size:16px;
+				line-height:20px;
+				font-family:Arial, Helvetica, sans-serif;
+                margin-left:24px;
+				margin-bottom: 10px;
+			}
+			.commonPDFIcon{
+				float:right;
+				width:63px;
+				height:63px;
+				margin-right:12px;
+				margin-top: 0px;
+			}
+            
+			.secondLevelWrapper{
+				font-family:Arial, Helvetica, sans-serif;
+				color:#000;
+				padding-bottom:5px;
+				margin-top:10px;
+				min-height:75px;
+				margin-left:3%;
+				margin-right:3%;
+				border-bottom:1px dotted #48577D;
+				float:left;
+				width:90%;
+				padding-left:4%
+			}
+			.secondLevelWrapper h1{
+				font-family:Arial, Helvetica, sans-serif;
+				color:#000;
+				font-weight:bold;
+				font-size:18px;
+				margin:0px;
+				padding-top:20px;
+			}
+            
+			.secondLevelWrapper .commonTextWrapper p{
+				margin:0px;
+				padding:0px;
+				font-size:14px;
+				line-height:20px;
+				font-family:Arial, Helvetica, sans-serif;
+				margin-bottom: 0px;
+			}
+			.valighh1{
+				display:-webkit-box;
+				-webkit-box-align:center;
+			}
+			.OPHeaderPDFIcon img,
+			.commonPDFIcon img{
+				border:none;
+				width:50px;
+				margin-top:20px;
+			}
+            
+            .downloadBox {
+				width:237px;
+				height:70px;
+				position:fixed;
+				left:50%; /* centers the loading animation horizontally one the screen */
+				top:50%; /* centers the loading animation vertically one the screen */
+				margin:-100px 0 0 -100px; /* is width and height divided by two */
+				background-color: #CCC;
+				display:none;
+				padding:0 30px 30px 30px;
+				border-radius:10px;
+				box-shadow:0 5px 5px #999;
+				border:1px solid #666;
+			}
+            .pbar .ui-progressbar-value {
+				display:block !important
+			}
+			.pbar {
+				overflow: hidden;
+				height:20px;
+				background-color:white;
+				background-repeat:no-repeat;
+				background-position:center;
+				padding:0px;
+				border-radius:5px;
+			}
+			.DownloadName{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:16px;
+				color:#333;
+				text-align:center;
+				width:240px;
+				height:20px;
+				margin-top:10px;
+				font-weight:bold;
+				text-shadow:0 1px 1px #ffffff;
+				margin-bottom:10px;
+				
+			}
+			
+			.DownloadPercent{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:14px;
+				color:#333;
+				text-align:center;
+				width:240px;
+				height:20px;
+				margin-top:10px;
+				font-weight:bold;
+				text-shadow:0 1px 1px #ffffff;
+				
+			}
+			.cancelDownload{
+				width:24px;
+				height:24px;
+				float:right;
+				margin-right: -27px;
+				margin-top: 3px;
+			}
+            #upProgress{
+                display: none;
+                position: fixed;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                background-color: #F9F9F9;
+                z-index:1001;
+                -moz-opacity: 0.8;
+                opacity:.80;
+                filter: alpha(opacity=80);
+                padding-top: 20%;
+                padding-left: 40%;
+            }
+			.percent {position:relative;text-align: right;}
+			.elapsed {position:relative;text-align: right;}
+            .LibNo{font-family:Arial, Helvetica, sans-serif;
+                font-size:12px;
+                color: #FFFFFF;
+                text-align: center;
+                margin-top: 25px;
+                position: absolute;
+                width: 100%;
+            }
+			<!--Common CSS for landscape and portrait iPad specific ends-->
+            </style>
+        <script>
+            var SITE_URL='remoteUrl';
+			//var SITE_URL = "http://180.151.100.58:81/"
+            </script>
+		<script src="resources/js/jquery.min.js" type="text/javascript"></script>
+		<script src="resources/js/moment.min.js" type="text/javascript"></script>
+        <script src="resources/js/common.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+                              $.ajaxSetup({ cache: false });
+                              //var a = window.location.href;
+                              //var myItem = a.substr(a.indexOf("#") + 1);
+                              //myItem = myItem.replace(/%20/g, " ")
+                              var myItem = 'selectedDate';
+                              getDetails(myItem);
+                              
+                              function getDetails(myItem) {
+                              var orderDate = new Date(myItem);
+                              //orderDate = moment(orderDate);
+                              var startDate = moment(orderDate);
+                              var endDate = moment(orderDate);
+                              startDate = startDate.subtract('d', 1);
+                              endDate = endDate.add('d', 1);
+                              startDate = startDate.format("YYYY-MM-DD");
+                              endDate = endDate.format("YYYY-MM-DD");
+                              
+                              var url =SITE_URL+'mnaservices2/webservice/webservice_agenda_ios.php?encode=json&&method=agenda&&startDate=' + startDate + '&&endDate=' + endDate;
+                              
+                              //url="http://180.151.100.58:81/mnaservices/webservice/webservice_agenda_ios.php?encode=json&&method=agenda&&startDate=2013-04-21&&endDate=2013-04-23";
+                              
+                               //alert(url);
+                              $.getJSON(url, function (data) {
+                                        
+                                        if (data.length > 0) {
+                                        
+                                        $.each(data[0].order, function (i) {
+                                               loadDetails(data[0], orderDate)
+                                               return false;
+                                               });
+                                        }
+                                       
+                                        }).fail(function(){
+                                                doClick('nointernet');$('.OPBodyWrapper').append('<div  class="LibNo" style="color:#000000;font-family: arial; font-size: 16px;margin-left:15px;">No documents found.</div>');
+                                                });
+                              
+                              }
+                              
+                              function loadDetails(myData, orderDate) {
+                              str = '';
+                              //Load Level 1 information
+                              $('#AgendaName').html(myData.AgendaName);
+                              $('#Session').html(myData.Session + '&nbsp;&nbsp;' + myData.Number);
+                              if (myData.AgendaFileName != "") {
+                              //str+= '<img src="resources/images/op-icon-pdf.png" onClick="doClick(\'2' + myData.AgendaId + '@@@' + myData.AgendaFileName + '@@@'+myData.AgendaName+ '@@@'+myData.AgendaDate+'\')"/>'
+                              str+= '<img src="resources/images/op-icon-pdf.png" onClick="downloadForOrderPage(2'+myData.AgendaId+',\''+myData.AgendaFileName+'\',\''+myData.AgendaName+'\',\''+moment(myData.AgendaDate).format('MMMM Do YYYY')+'\')"/>'
+                              } else {
+                              str+= ' '
+                              }
+                              $('#L1PDFIcon').append(str);
+                              $('.OPCalYear').html(orderDate.getFullYear().toString());
+                              var monthArray = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+                              $('.OPCalDate').html(orderDate.getDate());
+                              $('.OPCalMonth').html(monthArray[orderDate.getMonth()]);
+                              
+                              //Load Level 2 information
+                              myData = myData.order
+							  str = '';
+                              $.each(myData, function (j) {
+                                     str+= '<div class="firstLevelWrapper"><div class="commonTextWrapper"><h1>' + (j+1) +'. ' + myData[j].OrderName;
+                                     if (myData[j].OrderStartTime != "00:00:00" && myData[j].OrderEndTime != "00:00:00") {
+                                     str+= ' (' + myData[j].OrderStartTime.substr(0, myData[j].OrderStartTime.length -3) + ' to ' +  myData[j].OrderEndTime.substr(0, myData[j].OrderEndTime.length -3) + ')</h1>'
+                                     }
+                                     
+                                     if (myData[j].Description != "") {
+                                     str+= '<p>' + myData[j].Description + '</p></div>'
+                                     } else {
+                                     str+= '</div>'
+                                     }
+                                     
+                                     if (myData[j].OrderFileName != "") {
+                                     // str+= '<div class="commonPDFIcon" onClick="doClick(\'3' + myData[j].AgendaOrderId + "@@@" + myData[j].OrderFileName + '@@@'+myData[j].OrderName+ '@@@'+myData[j].AgendaOrderDate+ '\')"><img src="resources/images/op-icon-pdf.png" /></a></div></div>'
+                                     str+= '<div class="commonPDFIcon" onClick="downloadForOrderPage(3'+myData[j].AgendaOrderId+',\''+myData[j].OrderFileName+'\',\''+myData[j].OrderName+'\',\''+moment(myData[j].AgendaOrderDate).format('MMMM Do YYYY') +'\')"><img src="resources/images/op-icon-pdf.png" /></a></div></div>'
+                                     } else {
+                                     str+= '</div>'
+                                     }
+                                     
+                                     //Process the sob orders==================================
+                                     if (myData[j].suborder.length > 0) {
+                                     $.each(myData[j].suborder, function (k) {
+                                            str+= '<div class="secondLevelWrapper"><div class="commonTextWrapper"><h1>' + myData[j].suborder[k].SubOrderName;
+                                            if (myData[j].suborder[k].SubOrderStartTime != "00:00:00" && myData[j].suborder[k].SubOrderEndTime != "00:00:00") {
+                                            str+= ' (' + myData[j].suborder[k].SubOrderStartTime.substr(0, myData[j].suborder[k].SubOrderStartTime.length - 3) + ' to ' + myData[j].suborder[k].SubOrderEndTime.substr(0, myData[j].suborder[k].SubOrderEndTime.length - 3) + ')</h1>';
+                                            } else {
+                                            str+= '</h1>';
+                                            }
+                                            
+                                            myData[j].OrderStartTime.substr(0, myData[j].OrderStartTime.length -3)
+                                            
+                                            if (myData[j].suborder[k].Description != "") {
+                                            str+= '<p>' +  myData[j].suborder[k].Description + '</p></div>'
+                                            } else {
+                                            str+= '</div>'
+                                            }
+                                            
+                                            if (myData[j].suborder[k].SubOrderFileName != "") {
+                                            //str+= '<div class="commonPDFIcon" onClick="doClick(\'4' + myData[j].suborder[k].AgendaOrderDescId + '@@@' + myData[j].suborder[k].SubOrderFileName+ '@@@'+myData[j].suborder[k].SubOrderName+ '@@@'+myData[j].AgendaOrderDate+ '\')"> <img src="resources/images/op-icon-pdf.png" /></div></div>'
+                                            str+= '<div class="commonPDFIcon" onClick="downloadForOrderPage(4'+myData[j].suborder[k].AgendaOrderDescId +',\''+myData[j].suborder[k].SubOrderFileName+'\',\''+myData[j].suborder[k].SubOrderName+'\',\''+ moment(myData[j].AgendaOrderDate).format('MMMM Do YYYY') +'\')"> <img src="resources/images/op-icon-pdf.png" /></div></div>'
+                                            } else {
+                                            str+= '</div>'
+                                            }
+                                            });
+                                     }
+                                     //========================================================
+                                     });
+                              $('.OPBodyWrapper').append(str);
+                              }
+                              
+                              $("tr:odd").css("background-color", "#a6b5d1");
+                              });
+			
+			$(window).load(function() {
+                           $("#status").fadeOut(); // will first fade out the loading animation
+                           $("#preloader").delay(10).fadeOut("slow", function() { // will fade out the white DIV that covers the website.
+                                                             });
+                           });
+            
+            function doClick(refId) {
+                window.location.href="@@@"+refId;
+            }
+            </script>
+	</head>
+    
+	<body>
+		<!-- Preloader -->
+		<div id="preloader">
+			<div id="status">&nbsp;</div>
+		</div>
+		<div class="OPCompleteWrapper">
+			<div class="OPHeaderWrapper">
+				<div class="OPCalanderWrapper">
+					<div class="OPCalYear"></div>
+					<div class="OPCalDate"></div>
+					<div class="OPCalMonth"></div>
+				</div>
+				<div class="OPHeaderTextWrapper">
+					<h1>ORDER PAPER</h1>
+					<h2 id="AgendaName"></h2>
+					<h2 id="Session"></h2>
+				</div>
+				<div id="L1PDFIcon" class="OPHeaderPDFIcon"></div>
+			</div>
+            
+			<!--iScroll should start from here-->
+			<div class="OPBodyWrapper">
+                
+			</div>
+			<!--iScroll should end here-->
+		</div>
+        <div class="overlay" id="upProgress" style="display: none;">
+            <div class="downloadBox">
+                <div class="cancelDownload" onClick="cancelDownload()"><img src="resources/images/dnpdel.png" width="24" height="24" /></div>
+                <div id="progress">
+                    
+                    <div class="DownloadName"></div>
+                    <div class="percent"></div>
+                    <div class="pbar"><img src="resources/images/barloader.gif" width="235" height="19" /></div>
+                    <div class="elapsed"></div>
+                    <div class="DownloadPercent"></div>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

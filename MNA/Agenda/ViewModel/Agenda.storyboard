@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AgendaVC-->
+        <scene sceneID="RrM-o0-sc5">
+            <objects>
+                <viewController storyboardIdentifier="AgendaVC" id="YSm-WK-MvT" customClass="AgendaVC" customModule="MNA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r9n-gy-3jk">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-qt-FSn">
+                                <rect key="frame" x="0.0" y="20" width="1024" height="704"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YSm-WK-MvT" id="pov-Wb-VgS"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-7g-24a">
+                                <rect key="frame" x="493.5" y="397.5" width="37" height="37"/>
+                                <color key="color" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILw-gt-O7m">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="1Nr-Ud-24T">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Library" id="hNW-HV-M42">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnToolbarMyLibraryClicked:" destination="YSm-WK-MvT" id="vCC-lM-nmf"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="KpV-rS-jIw"/>
+                                            <barButtonItem title="Alerts" id="fv4-ij-A04">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnToolbarAlertClicked:" destination="YSm-WK-MvT" id="dP2-h9-was"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="cdm-Go-orA"/>
+                                            <barButtonItem title="Notice" id="85v-fJ-hnr">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnToolbarNoticeClicked:" destination="YSm-WK-MvT" id="U5r-Vf-g4V"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6B8-QU-LAh"/>
+                                            <barButtonItem systemItem="search" id="If9-wR-hGB">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnToolbarSearchClicked:" destination="YSm-WK-MvT" id="JLx-y1-KHA"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="V70-gU-SOm"/>
+                                            <barButtonItem title="Change Password" id="65v-nP-RI6">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnSettingClicked:" destination="YSm-WK-MvT" id="aNb-KG-raY"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="iaI-aE-LFM"/>
+                                            <barButtonItem title="Log Out" id="Twg-Zf-HZ5">
+                                                <color key="tintColor" red="0.6588235294" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="btnToolbarLogOutClicked:" destination="YSm-WK-MvT" id="w1j-3o-xYW"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1Nr-Ud-24T" secondAttribute="bottom" id="F4Q-f7-LIC"/>
+                                    <constraint firstItem="1Nr-Ud-24T" firstAttribute="top" secondItem="ILw-gt-O7m" secondAttribute="top" id="Gh1-c6-hVP"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Nr-Ud-24T" secondAttribute="trailing" id="gZq-iN-Kdq"/>
+                                    <constraint firstAttribute="height" constant="44" id="p1c-wz-nBv"/>
+                                    <constraint firstItem="1Nr-Ud-24T" firstAttribute="leading" secondItem="ILw-gt-O7m" secondAttribute="leading" id="sBP-7I-9n9"/>
+                                </constraints>
+                            </view>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0IB-CX-uy6">
+                                <rect key="frame" x="0.0" y="508" width="1024" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="IU0-GK-1AL"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="536234225.73336601">
+                                    <!--2017-12-29 09:57:05 +0000-->
+                                </date>
+                            </datePicker>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eri-9o-xL4">
+                                <rect key="frame" x="0.0" y="444" width="1024" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAy-3i-hqi">
+                                        <rect key="frame" x="10" y="10" width="80" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Bht-zd-uCu"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelDatePicker:" destination="YSm-WK-MvT" eventType="touchUpInside" id="DIv-vU-RKW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jq-7M-qPA">
+                                        <rect key="frame" x="929" y="10" width="80" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="aOL-GP-g6K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="pickerDonePressed:" destination="YSm-WK-MvT" eventType="touchUpInside" id="RAl-u8-Pdx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7Jq-7M-qPA" secondAttribute="bottom" constant="10" id="7Ky-q2-df2"/>
+                                    <constraint firstItem="7Jq-7M-qPA" firstAttribute="top" secondItem="Eri-9o-xL4" secondAttribute="top" constant="10" id="BNj-8X-2xe"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Jq-7M-qPA" secondAttribute="trailing" constant="15" id="Q3y-pV-gf5"/>
+                                    <constraint firstAttribute="bottom" secondItem="OAy-3i-hqi" secondAttribute="bottom" constant="10" id="RVm-i6-iuq"/>
+                                    <constraint firstItem="OAy-3i-hqi" firstAttribute="top" secondItem="Eri-9o-xL4" secondAttribute="top" constant="10" id="e0m-sh-oaR"/>
+                                    <constraint firstAttribute="height" constant="64" id="hiw-gG-jfv"/>
+                                    <constraint firstItem="OAy-3i-hqi" firstAttribute="leading" secondItem="Eri-9o-xL4" secondAttribute="leading" constant="10" id="p00-V2-fOV"/>
+                                </constraints>
+                            </view>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TKd-q2-6Wa">
+                                <rect key="frame" x="437" y="388" width="150" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="A06-3B-Ad0"/>
+                                    <constraint firstAttribute="height" constant="5" id="AHb-ys-REL"/>
+                                </constraints>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0IB-CX-uy6" firstAttribute="leading" secondItem="DGH-mx-Ulc" secondAttribute="leading" id="0Wp-T2-Bhb"/>
+                            <constraint firstItem="vCZ-7g-24a" firstAttribute="centerX" secondItem="DGH-mx-Ulc" secondAttribute="centerX" id="0vI-t2-0gV"/>
+                            <constraint firstItem="Eri-9o-xL4" firstAttribute="top" secondItem="TKd-q2-6Wa" secondAttribute="bottom" constant="51" id="2a5-Eb-uTo"/>
+                            <constraint firstItem="ILw-gt-O7m" firstAttribute="top" secondItem="0IB-CX-uy6" secondAttribute="bottom" id="9Vm-rq-lGK"/>
+                            <constraint firstItem="vCZ-7g-24a" firstAttribute="centerY" secondItem="DGH-mx-Ulc" secondAttribute="centerY" id="Kcx-WD-ZE1"/>
+                            <constraint firstItem="Eri-9o-xL4" firstAttribute="leading" secondItem="DGH-mx-Ulc" secondAttribute="leading" id="KyD-kH-ar7"/>
+                            <constraint firstItem="Puy-qt-FSn" firstAttribute="leading" secondItem="DGH-mx-Ulc" secondAttribute="leading" id="OWa-WP-wbe"/>
+                            <constraint firstItem="DGH-mx-Ulc" firstAttribute="bottom" secondItem="ILw-gt-O7m" secondAttribute="bottom" id="S4q-E4-t2D"/>
+                            <constraint firstItem="Puy-qt-FSn" firstAttribute="top" secondItem="r9n-gy-3jk" secondAttribute="top" constant="20" id="cYL-uu-Xdy"/>
+                            <constraint firstItem="Puy-qt-FSn" firstAttribute="trailing" secondItem="DGH-mx-Ulc" secondAttribute="trailing" id="dPR-wv-lVK"/>
+                            <constraint firstItem="ILw-gt-O7m" firstAttribute="top" secondItem="Puy-qt-FSn" secondAttribute="bottom" id="e2u-z1-hDH"/>
+                            <constraint firstItem="0IB-CX-uy6" firstAttribute="top" secondItem="Eri-9o-xL4" secondAttribute="bottom" id="hMt-0c-id0"/>
+                            <constraint firstItem="TKd-q2-6Wa" firstAttribute="centerX" secondItem="DGH-mx-Ulc" secondAttribute="centerX" id="nVA-zn-5tT"/>
+                            <constraint firstItem="0IB-CX-uy6" firstAttribute="trailing" secondItem="DGH-mx-Ulc" secondAttribute="trailing" id="o25-ze-DgW"/>
+                            <constraint firstItem="Eri-9o-xL4" firstAttribute="trailing" secondItem="DGH-mx-Ulc" secondAttribute="trailing" id="rol-mJ-3bw"/>
+                            <constraint firstItem="ILw-gt-O7m" firstAttribute="trailing" secondItem="DGH-mx-Ulc" secondAttribute="trailing" id="ueG-u2-LCj"/>
+                            <constraint firstItem="ILw-gt-O7m" firstAttribute="leading" secondItem="DGH-mx-Ulc" secondAttribute="leading" id="vnD-Lh-EYN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DGH-mx-Ulc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fau-UD-doO"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="vCZ-7g-24a" id="tes-3q-ZcC"/>
+                        <outlet property="datePicker" destination="0IB-CX-uy6" id="KMv-M2-CLD"/>
+                        <outlet property="doneView" destination="Eri-9o-xL4" id="zdQ-gO-uUo"/>
+                        <outlet property="progressBarView" destination="TKd-q2-6Wa" id="HbG-yX-rkN"/>
+                        <outlet property="webview" destination="Puy-qt-FSn" id="g1y-hH-hmX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHB-WW-AAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669.3359375" y="158.59375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iOo-8S-Gvv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WEW-on-hBd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gl8-iC-Z29">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YSm-WK-MvT" kind="relationship" relationship="rootViewController" id="exU-kd-ssX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSX-aD-Ccy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023" y="136"/>
+        </scene>
+    </scenes>
+</document>
