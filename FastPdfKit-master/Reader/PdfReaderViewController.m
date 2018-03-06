@@ -331,7 +331,7 @@
         NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];
         
         
-        if (dictAnnotation !=nil && dictAnnotation.count>0) {
+        if (dictAnnotation !=nil && dictAnnotation.count>0 && self.currentAnnotationId != nil) {
             
             for (NSDictionary *annotationObj in dictAnnotation) {
                 if ([[annotationObj objectForKey:@"id"] integerValue] == self.currentAnnotationId) {

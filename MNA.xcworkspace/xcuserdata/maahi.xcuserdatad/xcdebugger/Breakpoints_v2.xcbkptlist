@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "541965709.61634"
+            timestampString = "542057710.86731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "541965709.616819"
+            timestampString = "542057710.86787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.133239"
+            timestampString = "542057883.778658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.133341"
+            timestampString = "542057883.778731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.1334161"
+            timestampString = "542057883.778789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "283"
@@ -377,22 +377,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.325994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "-ShowCommentPopup:AnnotationId:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MNA/OP/Controller/OPVC.swift"
             timestampString = "541445150.3546979"
             startingColumnNumber = "9223372036854775807"
@@ -426,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/CanvasViewController.m"
-            timestampString = "542043747.297861"
+            timestampString = "542057883.779031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -442,7 +426,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CanvasViewController.m"
-                  timestampString = "542046107.998493"
+                  timestampString = "542057924.202179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -457,7 +441,7 @@
                   moduleName = "FastPdfKit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CanvasViewController.m"
-                  timestampString = "542046108.000419"
+                  timestampString = "542057924.205305"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -474,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.1344579"
+            timestampString = "542057883.77908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "657"
@@ -506,22 +490,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Library/Controller/LibraryVC.swift"
-            timestampString = "542046162.134636"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
-            landmarkName = "checkAndUpdatePDFWithURL(_:DownloadUrl:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MNA/Library/Controller/LibraryVC.swift"
             timestampString = "542046162.134708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -534,7 +502,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Library/Controller/LibraryVC.swift"
@@ -550,7 +518,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Library/Controller/LibraryVC.swift"
@@ -570,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "541965709.61971"
+            timestampString = "542057710.86915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -586,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "541965709.620185"
+            timestampString = "542057710.8694561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
@@ -650,7 +618,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/MNA/Login/LoginVC.swift"
-                  timestampString = "542046108.044336"
+                  timestampString = "542057924.271677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -665,7 +633,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/MNA/Login/LoginVC.swift"
-                  timestampString = "542046108.046258"
+                  timestampString = "542057924.275583"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "140"
@@ -681,44 +649,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MNA/Search/SearchVC.swift"
-            timestampString = "542050117.326288"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
-            landmarkName = "SearchVC"
-            landmarkType = "21">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MNA/Search/SearchVC.swift"
-            timestampString = "542050117.326648"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
-            landmarkName = "webView(_:shouldStartLoadWith:navigationType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.135017"
+            timestampString = "542057883.779231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "725"
-            endingLineNumber = "725"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
             landmarkName = "pdf_SaveCanvas(_:jsonString:draw:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.3269221"
+            timestampString = "542057883.779281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "656"
@@ -746,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.3269809"
+            timestampString = "542057883.779332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "762"
@@ -762,7 +698,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "541965709.621761"
+            timestampString = "542057710.870629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
@@ -806,27 +742,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.32708"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
-            landmarkName = "-addPushPin:PushPinImage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.327131"
+            timestampString = "542057883.7794189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "418"
@@ -842,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.327185"
+            timestampString = "542057883.779469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "820"
@@ -858,39 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.327234"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577"
-            landmarkName = "-addPushPin:Tag:PushPinImage:CommentType:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.327274"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "-ActivePuspin:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.3273129"
+            timestampString = "542057883.779518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -906,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542050117.327352"
+            timestampString = "542057883.779564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "603"
@@ -970,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.138711"
+            timestampString = "542057883.7796479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "737"
-            endingLineNumber = "737"
+            startingLineNumber = "748"
+            endingLineNumber = "748"
             landmarkName = "pdf_SaveCanvas(_:jsonString:draw:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/CanvasViewController.m"
-            timestampString = "542043747.2987601"
+            timestampString = "542057883.779693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -1002,7 +890,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CanvasViewController.m"
-                  timestampString = "542046108.099936"
+                  timestampString = "542057924.345803"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -1017,7 +905,7 @@
                   moduleName = "FastPdfKit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CanvasViewController.m"
-                  timestampString = "542046108.101842"
+                  timestampString = "542057924.349381"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -1030,7 +918,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Library/Controller/LibraryVC.swift"
@@ -1046,7 +934,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Library/Controller/LibraryVC.swift"
@@ -1055,22 +943,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "468"
             endingLineNumber = "468"
-            landmarkName = "checkAndUpdatePDFWithURL(_:DownloadUrl:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MNA/Library/Controller/LibraryVC.swift"
-            timestampString = "542046162.138967"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
             landmarkName = "checkAndUpdatePDFWithURL(_:DownloadUrl:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1097,14 +969,94 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.139106"
+            filePath = "FastPdfKit-master/Reader/CommentViewController.m"
+            timestampString = "542057883.779776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "580"
-            endingLineNumber = "580"
-            landmarkName = "openPDFWithNewsPaperid(_:fileName:NewspaperId:)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-btnCommentDone:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "MNA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.363741"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "FastPdfKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.3671401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FastPdfKit-master/Reader/CommentViewController.m"
+            timestampString = "542057883.780192"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-btnCommentDone:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "MNA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.374698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "877">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "FastPdfKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.377066"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "877">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1114,13 +1066,157 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542046162.139169"
+            timestampString = "542057883.78047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
-            landmarkName = "openPDFWithNewsPaperid(_:fileName:NewspaperId:)"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "pdf_SaveComment(_:saveCommentText:newspaperId:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MNA.AppDelegate.pdf_SaveComment(Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, saveCommentText: Swift.String, newspaperId: Swift.Int) -&gt; ()"
+                  moduleName = "MNA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/MNA/AppDelegate.swift"
+                  timestampString = "542057924.384002"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "848"
+                  endingLineNumber = "848"
+                  offsetFromSymbolStart = "4384">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in MNA.AppDelegate.pdf_SaveComment(Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, saveCommentText: Swift.String, newspaperId: Swift.Int) -&gt; ()"
+                  moduleName = "MNA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/MNA/AppDelegate.swift"
+                  timestampString = "542057924.387055"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "850"
+                  endingLineNumber = "850"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MNA/Methods/CommonHelper.swift"
+            timestampString = "542057710.87422"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "saveServerAnnotations(jsonString:NewsPaperId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MNA/Methods/CommonHelper.swift"
+            timestampString = "542057710.874728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "saveServerAnnotations(jsonString:NewsPaperId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
+            timestampString = "542057883.780547"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1129"
+            endingLineNumber = "1129"
+            landmarkName = "-SaveComment:CommentText:NewspaperId:AnnotationId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
+            timestampString = "542057883.780594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1128"
+            endingLineNumber = "1128"
+            landmarkName = "-SaveComment:CommentText:NewspaperId:AnnotationId:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FastPdfKit-master/Reader/CommentViewController.m"
+            timestampString = "542057883.780638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-btnCommentDone:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "MNA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.417116"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "1846">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommentViewController btnCommentDone:]"
+                  moduleName = "FastPdfKit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maahi/Documents/GitHub/MNA/FastPdfKit-master/Reader/CommentViewController.m"
+                  timestampString = "542057924.419085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "1846">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
