@@ -16,7 +16,7 @@
 @protocol PdfReaderDelegate <NSObject>
 -(void)Pdf_ResetCanvas:(NSString*)selDictionary;
 -(void)Pdf_SaveCanvas:(NSInteger)newspaperId  JsonString:(NSString*)jsonString  Draw:(UIImage*)drawImage FileName:(NSString*)fileName;
--(void)Pdf_DeleteCanvas:(NSString*)anotationId NewsPaperId:(NSString*)newsPaperId;
+-(void)Pdf_DeleteCanvas:(NSString*)anotationId NewsPaperId:(NSInteger)newsPaperId;
 
 
 -(void)Pdf_SaveComment:(NSString*)JsonString  saveCommentText:(NSString*)CommentText NewspaperId :(NSInteger)newspaperId;

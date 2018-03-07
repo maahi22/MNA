@@ -1101,14 +1101,14 @@
 }
 
 
--(void)SaveCanvaswithNewsid:(NSString *)newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
+-(void)SaveCanvaswithNewsid:(NSInteger )newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
     self.dismisSts = NO;
-    self.currentAnnotationId = anoatationId.integerValue;
-     NSLog(@"SaveCanvaswithNewsid pdf reader  %@  %@",newsId,jsonString);
-    NSInteger val = newsId.integerValue;
-    [self.pdfdelegate  Pdf_SaveCanvas:val JsonString:jsonString Draw:image FileName:fileName];
+    self.currentAnnotationId = [anoatationId integerValue];
+    //NSLog(@"SaveCanvaswithNewsid pdf reader  %ld  %@",(long)newsId,jsonString);
+    //NSInteger val = newsId.integerValue;
+    [self.pdfdelegate  Pdf_SaveCanvas:newsId JsonString:jsonString Draw:image FileName:fileName];
 }
--(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSString *)newsPaperId{
+-(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSInteger)newsPaperId{
     self.dismisSts = NO;
     NSLog(@"DeleteCanvas pdf reader");
     [self.pdfdelegate Pdf_DeleteCanvas:anotationId NewsPaperId:newsPaperId];

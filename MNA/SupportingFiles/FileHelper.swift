@@ -50,10 +50,8 @@ class FileHelper: NSObject {
     
     
     
-    class func SaveImageAtPtah(_ filePath :NSURL , fileName : String ,image:UIImage) -> Bool {
+    class func SaveImageAtPtah(_ filePath :NSURL  ,image:UIImage) -> Bool {
         var success = false
-        
-        
         
         do {
             try UIImagePNGRepresentation(image)!.write(to: filePath as URL)

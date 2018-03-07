@@ -745,7 +745,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let documentsUrl: URL = CommonHelper.getDocDirPath()
             let imgPath = documentsUrl.appendingPathComponent("CanvasImage/\(fileName!)")//imgfolderPath + fileName
            // let urlPath  = NSURL (string: imgPath)
-            FileHelper.SaveImageAtPtah(imgPath as NSURL, fileName: fileName, image: drawImage)
+            FileHelper.SaveImageAtPtah(imgPath as NSURL, image: drawImage)
             //ENDED
             
             let alert = UIAlertController(title: "Alert", message: "Canvas info save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
@@ -804,10 +804,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
-    func pdf_DeleteCanvas(_ anotationId: String! , newsPaperId  :String) {
+    func pdf_DeleteCanvas(_ anotationId: String! , newsPaperId  :Int) {
         
         print("pdf_DeleteCanvas ---  \(anotationId) id \(newsPaperId)")
-    
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
         

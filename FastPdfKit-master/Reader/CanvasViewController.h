@@ -15,7 +15,7 @@
 @optional
 -(void)ResetCanvas:(NSString*)str;
 -(void)SaveCanvaswithNewsid:(NSInteger)newsId JsonString:(NSString*)jsonString AnnotationId:(NSNumber*)anoatationId DrawImage:(UIImage*)image  FileName:(NSString*)fileName;
--(void)DeleteCanvas:(NSString*)anotationId NewsPaperId:(NSString*)newsPaperId;
+-(void)DeleteCanvas:(NSString*)anotationId NewsPaperId:(NSInteger)newsPaperId;
 -(void)CancelCanvas:(NSInteger)tagId NewsPaperId:(NSString*)newsPaperId;
 @end
 
