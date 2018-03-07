@@ -456,10 +456,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             pdfViewController.fileName = documentName
             
             // We are adding an image overlay on the first page on the bottom left corner
-            var ovManager:OverlayManager = OverlayManager()
+           /* var ovManager:OverlayManager = OverlayManager()
             ovManager.documentManager = documentManager
             ovManager.searchKeyword = searchStr
-            pdfViewController.add(ovManager)
+            pdfViewController.add(ovManager)*/
+            
+            pdfViewController.searchStr = searchStr
+            pdfViewController.documentManagerSearch = documentManager
+            
             
             
             //*****ZoomSize

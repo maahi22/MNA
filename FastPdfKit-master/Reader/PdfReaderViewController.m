@@ -8,6 +8,8 @@
 
 #import "PdfReaderViewController.h"
 #import "CanvasViewController.h"
+#import "OverlayManager.h"
+
 
 
 @interface PdfReaderViewController ()
@@ -37,6 +39,8 @@
 @synthesize selectedArea;
 @synthesize currentPinTag;
 @synthesize dismisSts;
+@synthesize searchStr;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,6 +52,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    if (searchStr.length >0){
+        // We are adding an image overlay on the first page on the bottom left corner
+      
+        OverlayManager *ovManager = [[OverlayManager alloc] init];
+        ovManager.documentManager = self.documentManagerSearch;
+        ovManager.searchKeyword = searchStr;
+       // [self addOverlayDataSource:ovManager];
+    }
+    
+    
+    
+    
+    
     // Do any additional setup after loading the view.
     self.dismisSts = NO;
     blActivateComment=NO;

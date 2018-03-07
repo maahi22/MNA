@@ -86,5 +86,9 @@
 -(void)ShowCommentCanvas:(CGPoint) touchedPoint AnnotationId:(NSNumber *) annotationId;
 -(void)addPushPin:(CGPoint) point Tag:(int) tagValue PushPinImage:(NSString *) image CommentType:(NSString *)commentType;
 
+//For Search
+@property (nonatomic, retain) NSString *searchStr;
+@property (nonatomic, retain) MFDocumentManager *documentManagerSearch ;
+
 
 @end

@@ -172,6 +172,8 @@
 		18333176204672010061228B /* CommentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 183330EA20466E290061228B /* CommentViewController.h */; };
 		18333178204672310061228B /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183330EB20466E290061228B /* CommentViewController.m */; };
 		1833317F2046B2BE0061228B /* IProofData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833317E2046B2BE0061228B /* IProofData.m */; };
+		1834326B2050138F0046A2EA /* OverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F72F156204EF8A8001B8A78 /* OverlayManager.m */; };
+		1834326C2050139A0046A2EA /* OverlayManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F72F155204EF8A8001B8A78 /* OverlayManager.h */; };
 		3922492614683424004A3EB1 /* NewsstandKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39224923146832B3004A3EB1 /* NewsstandKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6F9FBD1A1356F2CD006884F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9FBD191356F2CD006884F5 /* AVFoundation.framework */; };
 		950B37C0125CBEA5007BDDA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 950B37BF125CBEA5007BDDA1 /* CoreGraphics.framework */; };
@@ -1218,6 +1220,7 @@
 				0116E7DB1F67D5FC0074EF6E /* MFTextItem.h in Headers */,
 				0116E7DC1F67D5FC0074EF6E /* Stuff.h in Headers */,
 				0116E7C41F67D5C20074EF6E /* TextSearchOperation.h in Headers */,
+				1834326C2050139A0046A2EA /* OverlayManager.h in Headers */,
 				18333176204672010061228B /* CommentViewController.h in Headers */,
 				0F85A3172033421C00392415 /* CanvasViewController.h in Headers */,
 				0F85A30720333FB700392415 /* PdfReaderViewController.h in Headers */,
@@ -1442,6 +1445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1834326B2050138F0046A2EA /* OverlayManager.m in Sources */,
 				18333178204672310061228B /* CommentViewController.m in Sources */,
 				0F85A3152033421000392415 /* CanvasViewController.m in Sources */,
 				0F85A30620333FAC00392415 /* PdfReaderViewController.m in Sources */,
