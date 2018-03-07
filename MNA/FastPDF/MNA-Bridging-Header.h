@@ -7,6 +7,5 @@
 #import <FastPdfKit/MFDocumentViewControllerDelegate.h>
 #import <FastPdfKit/FPKGlyphBox.h>
 #import "PdfReaderViewController.h"
-#import "CommentsPopupView.h"
 #import "CanvasViewController.h"
 

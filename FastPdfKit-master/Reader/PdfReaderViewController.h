@@ -9,7 +9,6 @@
 #import <FastPdfKit/FastPdfKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "CanvasViewController.h"
-#import "CommentsPopupView.h"
 #import "CommentViewController.h"
 #import <CoreData/CoreData.h>
 

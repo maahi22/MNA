@@ -117,22 +117,24 @@
         if (zmScale<1.0) {
             zmScale=1;
         }
-        float x1=point.x/zmScale;
-        float y1=point.y/zmScale;
+        float x1=self.point.x/zmScale;
+        float y1=self.point.y/zmScale;
         
         
-        NSNumber *annotationId=[self getAnnotationId:self.newspaperId];
-        if (self.annotationId!=nil) {
-            annotationId=self.annotationId;
+        NSNumber *annId=[self getAnnotationId:self.newspaperId];
+        if (self.annotationId != nil && [self.annotationId integerValue] != 0) {
+            annId = self.annotationId;
+        }else{
+            self.annotationId = annId;
         }
         
         
         NSString *strComment=[self.textViewComment.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         strComment=[strComment stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
         
-        NSString *annotationJson=[NSString stringWithFormat:@"{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":[{\"id\":%@,\"type\":\"text\",\"PointX\":%f,\"PointY\":%f,\"createdOn\":%qi,\"pageNumber\":%d,\"annotationText\":\"%@\",\"imageName\":\"\",\"borderThickness\":0,\"drawingType \": \"p\",\"lineColor\":0,\"height \":0,\"width\":0,\"lineThickness \":0,\"xInMinus\" : false,\"yInMinus\":false}]}",self.userId,self.newspaperId,annotationId,x1,y1,(long long)ti,self.page,strComment];
+        NSString *annotationJson=[NSString stringWithFormat:@"{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":[{\"id\":%@,\"type\":\"text\",\"PointX\":%f,\"PointY\":%f,\"createdOn\":%qi,\"pageNumber\":%d,\"annotationText\":\"%@\",\"imageName\":\"\",\"borderThickness\":0,\"drawingType \": \"p\",\"lineColor\":0,\"height \":0,\"width\":0,\"lineThickness \":0,\"xInMinus\" : false,\"yInMinus\":false}]}",self.userId,self.newspaperId,annId,x1,y1,(long long)ti,self.page,strComment];
         
-        [self.delegate SaveComment:annotationJson CommentText:strComment NewspaperId:self.newspaperId AnnotationId:annotationId];
+        [self.delegate SaveComment:annotationJson CommentText:strComment NewspaperId:[self.newspaperId integerValue] AnnotationId:annId];
         
         
         
@@ -166,9 +168,6 @@
     
     NSString * jsonStr = [self.mangeAnnotationObj valueForKey:@"annotationObject"];
     NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];
-    //NSDictionary *dictAnnotation =  [self jsonStrToDictionart:jsonStr];
-    
-    
     
     NSNumber *annotationId=nil;
     if (dictAnnotation !=nil && dictAnnotation.count>0) {
@@ -177,6 +176,13 @@
             if ([[annotationObj objectForKey:@"id"] isEqualToNumber:annotationId]) {
                 annotationId=[NSNumber numberWithInt:dictAnnotation.count+2];
             }
+        }
+        
+        
+        if (annotationId == 0) {
+            NSDictionary *annObj = dictAnnotation.lastObject;
+            annotationId = [NSNumber numberWithInt:[[annObj objectForKey:@"id"] integerValue] + 1];
+            
         }
         
     }else{
@@ -258,7 +264,7 @@
 
 - (BOOL)getComments:(NSNumber *) annotationId{
     
-    if (self.mangeAnnotationObj != nil) {
+    if (self.mangeAnnotationObj != nil && annotationId != nil) {
         
         NSString * jsonStr = [self.mangeAnnotationObj valueForKey:@"annotationObject"];
         NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];

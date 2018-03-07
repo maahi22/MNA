@@ -717,6 +717,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //**********        pdfController Delegate methods
     func pdf_ResetCanvas(_ selDictionary: String!) {
         
@@ -828,14 +839,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let alert = UIAlertController(title: "Alert", message: "Please insert your comments and click Apply.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            return
         }else{//Add comment
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.getContext()
             
             //first Add annoatation in server
-            
+            CommonHelper.saveServerAnnotations(jsonString: JsonString, NewsPaperId: newspaperId) { (status) in
+                
+                let alert = UIAlertController(title: "Alert", message: "Comment info save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    
+                }))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
             
             //add from local core data
+            
+            
+            
+            
+            
+            
+            
           /*  CommonHelper.saveServerAnnotations(jsonString: JsonString, NewsPaperId: newspaperId, completion: { (status) in
                 //save
             

@@ -158,19 +158,14 @@
 		0F27A8732030AB4C001FD829 /* TextDisplayView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0F27A8702030AA6F001FD829 /* TextDisplayView.xib */; };
 		0F2B5453202F715000CAE9D9 /* TextDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2B5452202F715000CAE9D9 /* TextDisplayView.xib */; };
 		0F2B54552030004800CAE9D9 /* TextDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2B5452202F715000CAE9D9 /* TextDisplayView.xib */; };
+		0F72F157204EF8A8001B8A78 /* OverlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F72F156204EF8A8001B8A78 /* OverlayManager.m */; };
 		0F85A30620333FAC00392415 /* PdfReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F26421F20333B6700AFE541 /* PdfReaderViewController.m */; };
 		0F85A30720333FB700392415 /* PdfReaderViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F26421E20333B6700AFE541 /* PdfReaderViewController.h */; };
 		0F85A3112033420000392415 /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85A30B203341FF00392415 /* CanvasViewController.m */; };
-		0F85A3122033420000392415 /* CommentsPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85A30D203341FF00392415 /* CommentsPopupView.m */; };
-		0F85A3132033420000392415 /* CommentsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85A30E2033420000392415 /* CommentsPopupView.xib */; };
 		0F85A3142033420000392415 /* CanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85A3102033420000392415 /* CanvasViewController.xib */; };
 		0F85A3152033421000392415 /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85A30B203341FF00392415 /* CanvasViewController.m */; };
-		0F85A3162033421000392415 /* CommentsPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F85A30D203341FF00392415 /* CommentsPopupView.m */; };
 		0F85A3172033421C00392415 /* CanvasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F85A30F2033420000392415 /* CanvasViewController.h */; };
-		0F85A3182033421C00392415 /* CommentsPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F85A30C203341FF00392415 /* CommentsPopupView.h */; };
 		0F85A3192033422500392415 /* CanvasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85A3102033420000392415 /* CanvasViewController.xib */; };
-		0F85A31A2033422500392415 /* CommentsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F85A30E2033420000392415 /* CommentsPopupView.xib */; };
-		0F85A31B2033485B00392415 /* CommentsPopupView.xib in Headers */ = {isa = PBXBuildFile; fileRef = 0F85A30E2033420000392415 /* CommentsPopupView.xib */; };
 		183330EC20466E290061228B /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183330E920466E280061228B /* CommentViewController.xib */; };
 		183330ED20466E290061228B /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183330EB20466E290061228B /* CommentViewController.m */; };
 		18333174204671D90061228B /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183330E920466E280061228B /* CommentViewController.xib */; };
@@ -405,10 +400,9 @@
 		0F26421F20333B6700AFE541 /* PdfReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfReaderViewController.m; sourceTree = "<group>"; };
 		0F27A8702030AA6F001FD829 /* TextDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TextDisplayView.xib; path = ../MNA/FastPDF/TextDisplayView.xib; sourceTree = "<group>"; };
 		0F2B5452202F715000CAE9D9 /* TextDisplayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextDisplayView.xib; sourceTree = "<group>"; };
+		0F72F155204EF8A8001B8A78 /* OverlayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayManager.h; sourceTree = "<group>"; };
+		0F72F156204EF8A8001B8A78 /* OverlayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayManager.m; sourceTree = "<group>"; };
 		0F85A30B203341FF00392415 /* CanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasViewController.m; sourceTree = "<group>"; };
-		0F85A30C203341FF00392415 /* CommentsPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPopupView.h; sourceTree = "<group>"; };
-		0F85A30D203341FF00392415 /* CommentsPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPopupView.m; sourceTree = "<group>"; };
-		0F85A30E2033420000392415 /* CommentsPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsPopupView.xib; sourceTree = "<group>"; };
 		0F85A30F2033420000392415 /* CanvasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasViewController.h; sourceTree = "<group>"; };
 		0F85A3102033420000392415 /* CanvasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanvasViewController.xib; sourceTree = "<group>"; };
 		183330E920466E280061228B /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
@@ -880,12 +874,11 @@
 				183330E920466E280061228B /* CommentViewController.xib */,
 				0F26421E20333B6700AFE541 /* PdfReaderViewController.h */,
 				0F26421F20333B6700AFE541 /* PdfReaderViewController.m */,
+				0F72F155204EF8A8001B8A78 /* OverlayManager.h */,
+				0F72F156204EF8A8001B8A78 /* OverlayManager.m */,
 				0F85A30F2033420000392415 /* CanvasViewController.h */,
 				0F85A30B203341FF00392415 /* CanvasViewController.m */,
 				0F85A3102033420000392415 /* CanvasViewController.xib */,
-				0F85A30C203341FF00392415 /* CommentsPopupView.h */,
-				0F85A30D203341FF00392415 /* CommentsPopupView.m */,
-				0F85A30E2033420000392415 /* CommentsPopupView.xib */,
 				01BC081413C75D3A0077CE63 /* Bookmarks */,
 				0123603113CC917600861EB7 /* Multimedia */,
 				01BC081913C75D3A0077CE63 /* Outline */,
@@ -1226,9 +1219,7 @@
 				0116E7DC1F67D5FC0074EF6E /* Stuff.h in Headers */,
 				0116E7C41F67D5C20074EF6E /* TextSearchOperation.h in Headers */,
 				18333176204672010061228B /* CommentViewController.h in Headers */,
-				0F85A31B2033485B00392415 /* CommentsPopupView.xib in Headers */,
 				0F85A3172033421C00392415 /* CanvasViewController.h in Headers */,
-				0F85A3182033421C00392415 /* CommentsPopupView.h in Headers */,
 				0F85A30720333FB700392415 /* PdfReaderViewController.h in Headers */,
 				0F27A8722030AB31001FD829 /* TextDisplayView.xib in Headers */,
 			);
@@ -1372,7 +1363,6 @@
 			files = (
 				18333174204671D90061228B /* CommentViewController.xib in Resources */,
 				0F85A3192033422500392415 /* CanvasViewController.xib in Resources */,
-				0F85A31A2033422500392415 /* CommentsPopupView.xib in Resources */,
 				0F2B54552030004800CAE9D9 /* TextDisplayView.xib in Resources */,
 				0137C7851F66D64E003A3380 /* AudioViewController.xib in Resources */,
 				0137C7831F66D26D003A3380 /* BookmarkView.xib in Resources */,
@@ -1397,7 +1387,6 @@
 				0F2B5453202F715000CAE9D9 /* TextDisplayView.xib in Resources */,
 				95B8BD6113CCA59800195F0F /* ManualCrypt.pdf in Resources */,
 				01157E4F1F66F66E00BA3E8A /* Simple.xcassets in Resources */,
-				0F85A3132033420000392415 /* CommentsPopupView.xib in Resources */,
 				0116E7911F67D0680074EF6E /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1455,7 +1444,6 @@
 			files = (
 				18333178204672310061228B /* CommentViewController.m in Sources */,
 				0F85A3152033421000392415 /* CanvasViewController.m in Sources */,
-				0F85A3162033421000392415 /* CommentsPopupView.m in Sources */,
 				0F85A30620333FAC00392415 /* PdfReaderViewController.m in Sources */,
 				0F27A8732030AB4C001FD829 /* TextDisplayView.xib in Sources */,
 				01A5FD161F66A04800943CFB /* AudioViewController.m in Sources */,
@@ -1488,12 +1476,12 @@
 				01F84DD61A00F55500AB4996 /* unzip.c in Sources */,
 				010D14E013CB002300FD6F08 /* FastPDFKit_SampleAppDelegate.m in Sources */,
 				956A056F14039F38003AE44D /* Drawable.m in Sources */,
+				0F72F157204EF8A8001B8A78 /* OverlayManager.m in Sources */,
 				1833317F2046B2BE0061228B /* IProofData.m in Sources */,
 				0F26422020333B6700AFE541 /* PdfReaderViewController.m in Sources */,
 				956A057014039F38003AE44D /* OverlayManager.m in Sources */,
 				01157E511F66F7CE00BA3E8A /* main.m in Sources */,
 				01142A2E15CFC38E001B5374 /* MenuViewController.m in Sources */,
-				0F85A3122033420000392415 /* CommentsPopupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

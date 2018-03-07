@@ -234,9 +234,7 @@ BOOL dataExist ;
 
 
 -(NSNumber *)getAnnotationId:(NSNumber *) newspaperId {
-   // Annotations *annotation=[self fetchRequestForEntityForName:@"Annotations" withFilter:[NSString stringWithFormat:@"newspaper_Id==%@",newspaperId]];
-    
-    //NSDictionary *dictAnnotation=//[[[SBJSON alloc] init] objectWithString:annotation.annotationObject];
+  
     if (self.mangeAnnotationObj == nil) {
         
         return [NSNumber numberWithInt:1];
@@ -261,6 +259,12 @@ BOOL dataExist ;
             if ([[annotationObj objectForKey:@"id"] isEqualToNumber:annotationId]) {
                 annotationId=[NSNumber numberWithInt:dictAnnotation.count+2];
             }
+        }
+        
+        if (annotationId == 0) {
+            NSDictionary *annObj = dictAnnotation.lastObject;
+            annotationId = [NSNumber numberWithInt:[[annObj objectForKey:@"id"] integerValue] + 1];
+            
         }
         
     }else{
@@ -312,7 +316,7 @@ BOOL dataExist ;
     UIGraphicsEndImageContext();
     
     
-    [self.delegate SaveCanvaswithNewsid:self.newspaperId JsonString:annotationJson AnnotationId:annotationId DrawImage:SaveImage  FileName:fileName];
+    [self.delegate SaveCanvaswithNewsid:[self.newspaperId integerValue] JsonString:annotationJson AnnotationId:annotationId DrawImage:SaveImage  FileName:fileName];
     
     [self dismissModalViewControllerAnimated:true];
     NSLog(@"save Canvas");
