@@ -263,7 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //Push Notification
     //https://makeapppie.com/2017/01/03/basic-push-notifications-in-ios-10-and-swift/
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Registration failed!")
+        print("didFailToRegisterForRemoteNotificationsWithError Registration failed!")
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -464,6 +464,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             pdfViewController.searchStr = searchStr
             pdfViewController.documentManagerSearch = documentManager
             
+            pdfViewController.callOverlay()
             
             
             //*****ZoomSize

@@ -1,14 +1,17 @@
 //
 //  OverlayManager.m
-//  FPKSimpleApp
+//  FastPdfKit
 //
-//  Created by Maahi on 06/03/18.
+//  Created by Matteo Gavagnin on 8/21/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "OverlayManager.h"
 #import <FastPdfKit/FPKGlyphBox.h>
-#import "MFDocumentManager.h"
+
 //#import "Drawable.h"
+
+
 @implementation OverlayManager
 @synthesize searchKeyword;
 @synthesize documentManager;
@@ -27,7 +30,7 @@
             [drawables addObject:selectedView];
         }
         return drawables;
-        
+
     }
     return nil;
 }
@@ -82,6 +85,7 @@
     
     return YES;
 }
+
 
 
 @end

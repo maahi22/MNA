@@ -1,20 +1,20 @@
 //
 //  OverlayManager.h
-//  FPKSimpleApp
+//  FastPdfKit
 //
-//  Created by Maahi on 06/03/18.
+//  Created by Matteo Gavagnin on 8/21/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <FastPdfKit/MFDocumentOverlayDataSource.h>
-@class MFDocumentManager;
+#import "MFDocumentManager.h"
+//@class MFDocumentManager;
 
-
-@interface OverlayManager : NSObject<MFDocumentOverlayDataSource>
+@interface OverlayManager : NSObject <MFDocumentOverlayDataSource>
 
 @property (nonatomic,retain) MFDocumentManager *documentManager;
 @property (nonatomic,retain) NSString *searchKeyword;
 @property (nonatomic,retain) NSMutableArray *glyphBoxes;
 @property (nonatomic,retain) NSMutableArray *selectedArea;
-
 @end

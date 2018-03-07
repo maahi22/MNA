@@ -18,7 +18,6 @@
 		0F23C1541FFAA0D70011454E /* template in Resources */ = {isa = PBXBuildFile; fileRef = 0F23C1531FFAA0D70011454E /* template */; };
 		0F27DEA11FF6BDCF003C3243 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27DEA01FF6BDCF003C3243 /* DBHelper.swift */; };
 		0F8C7763202A1282004C5C49 /* SwiftSignatureView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8C7764202A1282004C5C49 /* SwiftSignatureView.framework */; };
-		0FA08D232013A97900734059 /* OverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA08D222013A97900734059 /* OverlayManager.swift */; };
 		0FB34A562041223400345156 /* String+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34A552041223400345156 /* String+Methods.swift */; };
 		0FD341E420013B9900F33FE9 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD341E320013B9900F33FE9 /* Search.storyboard */; };
 		0FD341E620013D7F00F33FE9 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD341E520013D7F00F33FE9 /* SearchVC.swift */; };
@@ -72,7 +71,6 @@
 		18D6EC382003575C003AA433 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6EC372003575C003AA433 /* PDFKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		18E636541FFBA507008737D4 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E636531FFBA507008737D4 /* Comments.storyboard */; };
 		18E6365D1FFBAE1E008737D4 /* CellStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E6365C1FFBAE1E008737D4 /* CellStoryboard.storyboard */; };
-		18EC0E42202321F800888AD0 /* PdfReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC0E41202321F800888AD0 /* PdfReaderVC.swift */; };
 		725ED54188C90880D19EA428 /* Pods_MNAUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491794437AF01927124CAEA3 /* Pods_MNAUITests.framework */; };
 		886061FF47ABC8ADD8985C3F /* Pods_MNATests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD36732958C23919A1B02F /* Pods_MNATests.framework */; };
 		EF4A014AF47B56CA5D9A183D /* Pods_MNA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C78175E69F275CA5808195 /* Pods_MNA.framework */; };
@@ -157,7 +155,6 @@
 		0F23C1531FFAA0D70011454E /* template */ = {isa = PBXFileReference; lastKnownFileType = folder; path = template; sourceTree = "<group>"; };
 		0F27DEA01FF6BDCF003C3243 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		0F8C7764202A1282004C5C49 /* SwiftSignatureView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSignatureView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FA08D222013A97900734059 /* OverlayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayManager.swift; sourceTree = "<group>"; };
 		0FA08D242013ACE200734059 /* MNA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNA-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FB34A552041223400345156 /* String+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Methods.swift"; sourceTree = "<group>"; };
 		0FCC3C83203B4674000DCEAE /* PdfReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PdfReaderViewController.h; path = "FastPdfKit-master/Reader/PdfReaderViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -222,7 +219,6 @@
 		18D6EC372003575C003AA433 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		18E636531FFBA507008737D4 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
 		18E6365C1FFBAE1E008737D4 /* CellStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CellStoryboard.storyboard; sourceTree = "<group>"; };
-		18EC0E41202321F800888AD0 /* PdfReaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfReaderVC.swift; sourceTree = "<group>"; };
 		19C78175E69F275CA5808195 /* Pods_MNA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		491794437AF01927124CAEA3 /* Pods_MNAUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNAUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F60F9B9FE215DBB0B8B10C /* Pods-MNATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNATests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MNATests/Pods-MNATests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -315,9 +311,7 @@
 		0FA08D0D2013A68400734059 /* FastPDF */ = {
 			isa = PBXGroup;
 			children = (
-				0FA08D222013A97900734059 /* OverlayManager.swift */,
 				0FA08D242013ACE200734059 /* MNA-Bridging-Header.h */,
-				18EC0E41202321F800888AD0 /* PdfReaderVC.swift */,
 			);
 			path = FastPDF;
 			sourceTree = "<group>";
@@ -1090,7 +1084,6 @@
 			files = (
 				1868EFE11FFB650D00180C10 /* APIHelper.swift in Sources */,
 				1858E64D1FF617CF00BCB854 /* ViewController.swift in Sources */,
-				18EC0E42202321F800888AD0 /* PdfReaderVC.swift in Sources */,
 				1858E6531FF617CF00BCB854 /* MNA.xcdatamodeld in Sources */,
 				18076C111FFCC18E0097ADA6 /* AlertModel.swift in Sources */,
 				031C794B1FFBEA910098F281 /* LazyImage.swift in Sources */,
@@ -1099,7 +1092,6 @@
 				1858E6A91FF6290200BCB854 /* CustomDatePickerVC.swift in Sources */,
 				1858E68D1FF626BE00BCB854 /* SplashViewController.swift in Sources */,
 				031C794D1FFBEA990098F281 /* AppUtility.swift in Sources */,
-				0FA08D232013A97900734059 /* OverlayManager.swift in Sources */,
 				1858E6A11FF628A400BCB854 /* SettingVC.swift in Sources */,
 				1858E6A71FF628E800BCB854 /* AlertVC.swift in Sources */,
 				18432F412036A8D90053B6D7 /* CanvasViewController.m in Sources */,
@@ -1305,6 +1297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4DXG3KAS43;
+				GCC_OPTIMIZATION_LEVEL = 1;
 				INFOPLIST_FILE = MNA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

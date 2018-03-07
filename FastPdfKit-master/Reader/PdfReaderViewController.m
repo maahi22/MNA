@@ -54,18 +54,6 @@
     [super viewDidLoad];
     
     
-    if (searchStr.length >0){
-        // We are adding an image overlay on the first page on the bottom left corner
-      
-        OverlayManager *ovManager = [[OverlayManager alloc] init];
-        ovManager.documentManager = self.documentManagerSearch;
-        ovManager.searchKeyword = searchStr;
-       // [self addOverlayDataSource:ovManager];
-    }
-    
-    
-    
-    
     
     // Do any additional setup after loading the view.
     self.dismisSts = NO;
@@ -86,7 +74,31 @@
     longPress.minimumPressDuration = 1.0;
     [self.view addGestureRecognizer:longPress];
    
+    
+    
+    
+    
 }
+
+-(void)callOverlay{
+    if (searchStr.length >0){
+        // We are adding an image overlay on the first page on the bottom left corner
+        OverlayManager *ovManager = [[OverlayManager alloc] init];
+        ovManager.documentManager = self.documentManagerSearch;
+        ovManager.searchKeyword = searchStr;
+       // [self addOverlayDataSource:ovManager];
+        
+    }
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+   
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

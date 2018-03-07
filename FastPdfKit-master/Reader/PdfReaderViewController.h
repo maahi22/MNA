@@ -89,6 +89,6 @@
 //For Search
 @property (nonatomic, retain) NSString *searchStr;
 @property (nonatomic, retain) MFDocumentManager *documentManagerSearch ;
-
+-(void)callOverlay;
 
 @end
