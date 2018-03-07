@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/SupportingFiles/FileHelper.swift"
-            timestampString = "542108915.16387"
+            timestampString = "542111625.15949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/SupportingFiles/FileHelper.swift"
-            timestampString = "542108915.163987"
+            timestampString = "542111625.159636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542108915.1640919"
+            timestampString = "542111625.15975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "642"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542108915.164162"
+            timestampString = "542111625.159838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "641"
@@ -192,47 +192,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542108915.164239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "-ShowCommentCanvas:AnnotationId:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FastPdfKit-master/Reader/PdfReaderViewController.m"
-            timestampString = "542108915.164309"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
-            landmarkName = "-ShowCommentCanvas:AnnotationId:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542108915.1643831"
+            timestampString = "542111625.159946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "820"
-            endingLineNumber = "820"
+            startingLineNumber = "851"
+            endingLineNumber = "851"
             landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
             <Locations>
@@ -244,11 +212,11 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/MNA/MNA/AppDelegate.swift"
-                  timestampString = "542108921.937057"
+                  timestampString = "542111637.338451"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "820"
-                  endingLineNumber = "820"
+                  startingLineNumber = "851"
+                  endingLineNumber = "851"
                   offsetFromSymbolStart = "1645">
                </Location>
                <Location
@@ -259,11 +227,11 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/MNA/MNA/AppDelegate.swift"
-                  timestampString = "542108921.938809"
+                  timestampString = "542111637.340221"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "821"
-                  endingLineNumber = "821"
+                  startingLineNumber = "852"
+                  endingLineNumber = "852"
                   offsetFromSymbolStart = "59">
                </Location>
             </Locations>
@@ -276,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "542108915.236824"
+            timestampString = "542111625.189151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "421"
@@ -292,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/Methods/CommonHelper.swift"
-            timestampString = "542108915.237173"
+            timestampString = "542111625.1895289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "452"
@@ -308,7 +276,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/MNA/MNA/Methods/CommonHelper.swift"
-                  timestampString = "542108921.948236"
+                  timestampString = "542111637.3478431"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "452"
@@ -323,7 +291,7 @@
                   moduleName = "MNA"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/MNA/MNA/Methods/CommonHelper.swift"
-                  timestampString = "542108921.951571"
+                  timestampString = "542111637.349593"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "454"

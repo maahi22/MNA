@@ -740,7 +740,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("pdf_DeleteComment App delegate ---  \(newspaperId)")
         CommonHelper.saveServerAnnotations(jsonString: jsonString, NewsPaperId: newspaperId) { (status) in
            
-            //Save Image
+            //Save Image on server
+            
+          /*  if let imageData = UIImagePNGRepresentation(drawImage) {
+                let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+                
+                let urlString = BaseUrl + MNAUrl_fileuploadOnServer
+                var request = URLRequest(url: URL(string: urlString)!)
+                request.httpMethod = "POST"
+               // request.httpBody = postString.data(using: .utf8)
+                request.httpBody = self.createRequestBodyWith( filePathKey: "", boundary: self.generateBoundaryString(), yourImage: drawImage, fileName: fileName)
+                
+              //  createRequestBodyWith(parameters:nil, filePathKey:yourKey, boundary:self.generateBoundaryString,
+
+                
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {
+                        print("error=(error)")
+                        return
+                    }
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                        print("statusCode should be 200, but is (httpStatus.statusCode)")
+                        print("response = (response)")
+                    }
+                    let responseString = String(data: data, encoding: .utf8)
+                    print("responseString = (responseString)")
+                }
+                task.resume()
+            }
+        */
+            
+            
+            //local save image
            // let imgfolderPath = CommonHelper.getApplicationDirectoryPath()
             let documentsUrl: URL = CommonHelper.getDocDirPath()
             let imgPath = documentsUrl.appendingPathComponent("CanvasImage/\(fileName!)")//imgfolderPath + fileName
@@ -754,56 +786,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }))
             self.window?.rootViewController?.present(alert, animated: true, completion: nil)
         }
-      /*  let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.getContext()
-        
-
-        guard let dict = CommonHelper.convertToDictionary(text: jsonString) else{
-            return
-        }
-        let annotationObject = dict["Annotation"]
-        
-        
-        let annotationsList:[NSManagedObject] = DBHelper.fetchRequestForAnnotation("Annotations",FilterExpression: "(newspaper_Id == \(newspaperId))")
-        if annotationsList.count > 0 {
-            
-            /*CommonHelper.fetchServerAnnotation(newspaperId, completion: { (status) in
-                
-                
-            })*/
-            
-            
-            
-            
-        }else{
-            /*CommonHelper.fetchServerAnnotation(newspaperId, completion: { (status) in
-                
-                
-            })*/
-            
-        
-            
-            let entityDescription = NSEntityDescription.entity(forEntityName: CDE_Annotations, in: context)
-            let anotation = NSManagedObject(entity: entityDescription!, insertInto: context)
-            
-            
-            anotation.setValue(newspaperId, forKey: "NewspaperId")
-            anotation.setValue(annotationObject, forKey: "annotationObject")
-            anotation.setValue(0, forKey: "annotation_Sync")
-            do {
-                try anotation.managedObjectContext?.save()
-            } catch {
-                print("Error occured during save entity")
-            }
-            
-        }
-        */
-        
+      
         
         
     }
     
+
+
+func createRequestBodyWith( filePathKey:String, boundary:String , yourImage:UIImage, fileName:String ) -> NSData{
     
+    let body = NSMutableData()
+    
+    /*for (key, value) in parameters {
+        body.appendString(string: "--\(boundary)\r\n")
+        body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+        body.appendString(string: "\(value)\r\n")
+    }*/
+    
+    body.appendString(string: "--\(boundary)\r\n")
+    
+    var mimetype = "image/png"
+    
+    let defFileName = fileName
+    
+    let imageData = UIImagePNGRepresentation(yourImage)
+    
+    body.appendString(string: "Content-Disposition: form-data; name=\"\(defFileName)\"; userfile=\"\(defFileName)\"\r\n")
+    body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
+    body.append(imageData!)
+    body.appendString(string: "\r\n")
+    
+    body.appendString(string: "--\(boundary)--\r\n")
+    
+    return body
+}
+
+
+
+func generateBoundaryString() -> String {
+    return "Boundary-\(NSUUID().uuidString)"
+}
+
+
+
+
+
+
+
+
+
     func pdf_DeleteCanvas(_ anotationId: String!, newsPaperId: Int, fileName: String!) {
         
     
@@ -957,3 +988,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 }
 
+extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
+}
+}
