@@ -91,5 +91,6 @@
 -(void)prepareToolbar;
 
 //Mahendra
+@property (nonatomic, readwrite) BOOL waitingForTextInput;
 -(void)updatePageNumberLabelWithPage:(NSUInteger)page;
 @end

@@ -397,6 +397,7 @@ BOOL dataExist ;
     
     if (self.annotationId!=nil) {
         UIAlertView* alert =[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Deleting this pushpin will also delete the comment. You cannot undo this operation." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES",nil ];
+        [alert setDelegate:self];
         [alert show];
         
     }
@@ -517,7 +518,10 @@ BOOL dataExist ;
     if (buttonIndex==1) {
         
         if (self.annotationId !=nil &&  [self.annotationId integerValue] != 0){//}&& [del.Annotations count]>0) {
-            [self.delegate DeleteCanvas:self.annotationId NewsPaperId:[self.newspaperId integerValue]];
+           
+            NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,self.annotationId];
+            
+            [self.delegate DeleteCanvas:[self.annotationId stringValue] NewsPaperId:[self.newspaperId integerValue] FileName:fileName];
             
             /*if ([CommonHelper deleteAnnotation:self.annotationId NewsPaperId:self.pdfReader.newspaperId]) {
                 [self.pdfReader deletePushPin:self.annotationId];

@@ -804,14 +804,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
-    func pdf_DeleteCanvas(_ anotationId: String! , newsPaperId  :Int) {
+    func pdf_DeleteCanvas(_ anotationId: String!, newsPaperId: Int, fileName: String!) {
+        
+    
         
         print("pdf_DeleteCanvas ---  \(anotationId) id \(newsPaperId)")
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
+        guard let anno = Int(anotationId) else{
+            return
+        }
         
         
+        CommonHelper.deleteServerAnnotation(anno, NewsPaperId: newsPaperId) { (status) in
+             print("deleteServerAnnotation")
+            
+            if status {
+                let documentsUrl: URL = CommonHelper.getDocDirPath()
+                let imgPath = documentsUrl.appendingPathComponent("CanvasImage/\(fileName!)")
+                FileHelper.deleteImageDocumentDirectoryByPath(imgPath)
+            }
+            
+        }
         
         
         
@@ -908,19 +923,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let context = appDelegate.getContext()
             //remove annotation Code
             //first delete annoatation from server
-            
-            
-            //delete from local
-            
-            CommonHelper.deleteAnnotationDB(Int(anotationId), NewsPaperId: Int(NewspaperId), completion: { (status) in
+            CommonHelper.deleteServerAnnotation(Int(anotationId), NewsPaperId: Int(NewspaperId), completion: { (status) in
                 
                 if status {
                     
-                    let alert = UIAlertController(title: "Alert", message: "Success.", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Delete", message: "Success.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                 }else{
-                    let alert = UIAlertController(title: "Alert", message: "Try Again.", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Delete", message: "Try Again.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                 }

@@ -19,6 +19,7 @@ let     MNAUrl_getAnnotations = "webservice_ios2.php?method=getAnnotations&encod
 
 let     MNAUrl_SaveAnnotationsOnServer = "webservice_ios2.php?method=annotation&encode=json" //{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":%@}"
 let     MNAUrl_DeleteAnnotationsOnServer = "webservice_ios2.php?method=annotation&encode=json" //{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\"
+let     MNAUrl_DeleteFileOnServer = "webservice_ios2.php?method=deleteFile&encode=json" //{\"FileName\":\"%@\"}
 let     MNAUrl_FeatchAnnotationsfromServer = "webservice_ios2.php?method=getAnnotations&encode=json"//{\"UserId\":\"%@\",\"NewspaperId\":%d}
 
 
