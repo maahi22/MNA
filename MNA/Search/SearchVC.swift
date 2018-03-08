@@ -445,6 +445,7 @@ extension  SearchVC: UIWebViewDelegate{
         
         var request = URLRequest(url: url! as URL)
         request.httpMethod = "GET"
+        URLCache.shared.removeAllCachedResponses()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
            
             guard let data2 = data, error == nil else {                                                 // check for fundamental networking error
