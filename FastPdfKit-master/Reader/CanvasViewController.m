@@ -50,7 +50,7 @@ BOOL dataExist ;
     opacity = 1.0;
     
     dataExist = NO;
-    if (self.mangeAnnotationObj != nil) {
+    if (self.mangeAnnotationObj != nil ) {
         dataExist = YES;
         NSString * jsonStr = [self.mangeAnnotationObj valueForKey:@"annotationObject"];
         NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];
