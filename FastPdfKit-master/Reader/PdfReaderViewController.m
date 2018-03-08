@@ -8,6 +8,8 @@
 
 #import "PdfReaderViewController.h"
 #import "CanvasViewController.h"
+#import "OverlayManager.h"
+
 
 
 @interface PdfReaderViewController ()
@@ -37,6 +39,8 @@
 @synthesize selectedArea;
 @synthesize currentPinTag;
 @synthesize dismisSts;
+@synthesize searchStr;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,6 +52,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     // Do any additional setup after loading the view.
     self.dismisSts = NO;
     blActivateComment=NO;
@@ -67,7 +74,31 @@
     longPress.minimumPressDuration = 1.0;
     [self.view addGestureRecognizer:longPress];
    
+    
+    
+    
+    
 }
+
+-(void)callOverlay{
+    if (searchStr.length >0){
+        // We are adding an image overlay on the first page on the bottom left corner
+        OverlayManager *ovManager = [[OverlayManager alloc] init];
+        ovManager.documentManager = self.documentManagerSearch;
+        ovManager.searchKeyword = searchStr;
+       // [self addOverlayDataSource:ovManager];
+        
+    }
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+   
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -387,6 +418,9 @@
     canvas.delegate = self;
     if (annotationId!=nil) {
         [canvas getCommentImage:annotationId];
+        canvas.annotationId = annotationId;
+    }else{
+        canvas.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
     }
     
     //customisation
@@ -398,7 +432,7 @@
     canvas.zoomScale = self.zoomScale;
     canvas.newspaperId = self.newspaperId;
     canvas.mangeAnnotationObj = self.mangeAnnotationObject;
-    canvas.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+    
     
     canvas.CanvasFilename = self.mangeAnnotationObject;
     //End
@@ -824,16 +858,16 @@
 -(void) documentViewController:(MFDocumentViewController *)dvc didReceiveTapOnPage:(NSUInteger)page atPoint:(CGPoint)point {
     
     
-    /*if(self.waitingForTextInput) {
+    if(self.waitingForTextInput) {
         
-        self.waitingForTextInput = false
+        self.waitingForTextInput = false ;
         
         TextDisplayViewController *controller = self.textDisplayViewController;
         controller.delegate = self;
         [controller updateWithTextOfPage:page];
         [self presentModalViewController:controller animated:YES];
         
-    }*/
+    }
 }
 
 -(void) documentViewController:(MFDocumentViewController *)dvc didReceiveTapAtPoint:(CGPoint)point {
@@ -842,10 +876,10 @@
         float zmScale=self.minZoomScale*self.zoomScale;
         float x1=point.x/zmScale;
         float y1=point.y/zmScale;
-        NSLog(@"Zoom : %.2f%%",self.zoomScale);
-        NSLog(@"x1:%.2f ; y1:%.2f",x1,y1);
-        NSLog(@"xAxispadding : %f ; yAxispadding: %f ",self.xAxispadding,self.yAxispadding);
-        NSLog(@"cropbox W: %f ; cropBox H: %f ",self.proofCropBox.size.width,self.proofCropBox.size.height);
+ //       NSLog(@"Zoom : %.2f%%",self.zoomScale);
+ //       NSLog(@"x1:%.2f ; y1:%.2f",x1,y1);
+ //       NSLog(@"xAxispadding : %f ; yAxispadding: %f ",self.xAxispadding,self.yAxispadding);
+ //       NSLog(@"cropbox W: %f ; cropBox H: %f ",self.proofCropBox.size.width,self.proofCropBox.size.height);
         //[self ShowCommentPopup:point AnnotationId:nil];
         if (self.yAxispadding>0 && y1>self.yAxispadding && y1<self.proofCropBox.size.height+self.yAxispadding) {
             [self addPushPin:point PushPinImage:@"ppbtn"];
@@ -858,7 +892,7 @@
             
         }
         else if (self.xAxispadding>0 && x1>self.xAxispadding && x1<self.proofCropBox.size.width+self.xAxispadding){
-            [self addPushPin:point PushPinImage:@"ppbtn.png"];
+            [self addPushPin:point PushPinImage:@"ppbtn"];
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -1101,17 +1135,18 @@
 }
 
 
--(void)SaveCanvaswithNewsid:(NSString *)newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
+-(void)SaveCanvaswithNewsid:(NSInteger )newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
     self.dismisSts = NO;
-    self.currentAnnotationId = anoatationId.integerValue;
-     NSLog(@"SaveCanvaswithNewsid pdf reader  %@  %@",newsId,jsonString);
-    NSInteger val = newsId.integerValue;
-    [self.pdfdelegate  Pdf_SaveCanvas:val JsonString:jsonString Draw:image FileName:fileName];
+    self.currentAnnotationId = [anoatationId integerValue];
+    //NSLog(@"SaveCanvaswithNewsid pdf reader  %ld  %@",(long)newsId,jsonString);
+    //NSInteger val = newsId.integerValue;
+    [self.pdfdelegate  Pdf_SaveCanvas:newsId JsonString:jsonString Draw:image FileName:fileName];
 }
--(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSString *)newsPaperId{
+-(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSInteger)newsPaperId FileName:(NSString *)fileName{
     self.dismisSts = NO;
-    NSLog(@"DeleteCanvas pdf reader");
-    [self.pdfdelegate Pdf_DeleteCanvas:anotationId NewsPaperId:newsPaperId];
+    NSLog(@"DeleteCanvas pdf reader  %i  %@ fileName %@",newsPaperId,anotationId ,fileName );
+    
+    [self.pdfdelegate Pdf_DeleteCanvas:anotationId NewsPaperId:newsPaperId FileName:fileName];
 }
 
 -(void)CancelCanvas:(NSInteger )tagId NewsPaperId:(NSString *)newsPaperId{

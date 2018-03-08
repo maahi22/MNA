@@ -21,7 +21,7 @@ class CommentsPopupView: UIViewController {
     var NotesDatetime = ""
     var newspaperId = 0
     var page = 0
-    var pdfReader:PdfReaderVC?
+    
     var  blDeletePushpin = false
     var isRevision = false
     var point:CGPoint = CGPoint()

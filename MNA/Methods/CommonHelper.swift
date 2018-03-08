@@ -414,30 +414,44 @@ class CommonHelper: NSObject {
     }
     
     
-  class  func deleteAnnotationDB(_ annotationId:Int, NewsPaperId:Int, completion: @escaping (_ Status :Bool) -> Void) {
+  class  func deleteServerAnnotation(_ annotationId:Int, NewsPaperId:Int, completion: @escaping (_ Status :Bool) -> Void) {
         
     //Getting Annotation List
     let annotationsList:[NSManagedObject] = DBHelper.fetchRequestForAnnotation("Annotations",FilterExpression: "(newspaper_Id == \(NewsPaperId))")
     if annotationsList.count > 0 {
-        var delMangeObj:NSManagedObject?
-        for anotation in annotationsList {
-            let idval  = anotation.value(forKey: "id") as! Int
-            if  idval == annotationId {
+       
+        var itemExist = false
+        let mangeObj:NSManagedObject = annotationsList[0]
+        guard let annojsonStr = mangeObj.value(forKey: "annotationObject") else{ return}
+        let arrAnnObj:NSMutableArray =  NSMutableArray(array: self.ConvertJsonStringToArray(annojsonStr as! String))
+        var arrAnnObj1 = NSMutableArray()
+        
+        if arrAnnObj.count > 0 {
+            
+            for dicAnnotate in arrAnnObj {
+                let dictOrignal = dicAnnotate as! NSDictionary
+                let id1 = dictOrignal.value(forKey: "id") as! Int
                 
-                delMangeObj = anotation
+                if id1 == annotationId {
+                    arrAnnObj1.add(dictOrignal)
+                    itemExist = true
+                }
                 
             }
-            
         }
         
-        if let del = delMangeObj {
+        
+        
+        if itemExist {
+          
+            let JsonSting1 = self.convertArraytoJsonString(arrAnnObj1)
+            
             let userId = DefaultDataManager.getUserName()
             let urlString = BaseUrl + MNAUrl_DeleteAnnotationsOnServer
-            let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":annotationId] as [String : Any]
+            let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":JsonSting1] as [String : Any]
             MNAConnectionHelper.GetDataFromJson(url: urlString, paramString: paramString, completion: { (responce, status) in
                 
-                
-               completion(status)
+                completion(status)
                 //success delete
                 
             })

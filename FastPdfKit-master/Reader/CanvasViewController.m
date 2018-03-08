@@ -298,16 +298,17 @@ BOOL dataExist ;
     float x1=self.point.x/zmScale;
     float y1=self.point.y/zmScale;
     
-    
-    NSNumber *annotationId=[self getAnnotationId:self.newspaperId];
-    if (self.annotationId!=nil) {
-        annotationId=self.annotationId;
+    NSNumber *annId=[self getAnnotationId:self.newspaperId];
+    if (self.annotationId != nil && [self.annotationId integerValue] != 0) {
+        annId = self.annotationId;
+    }else{
+        self.annotationId = annId;
     }
     
    // NSString *fileName2 = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,annotationId];
     
     
-    NSString *annotationJson=[NSString stringWithFormat:@"{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":[{\"id\":%@,\"type\":\"image\",\"PointX\":%f,\"PointY\":%f,\"createdOn\":%qi,\"pageNumber\":%d,\"annotationText\":\"\",\"imageName\":\"%@\",\"borderThickness\":0,\"drawingType \": \"p\",\"lineColor\":0,\"height \":0,\"width\":0,\"lineThickness \":0,\"xInMinus\" : false,\"yInMinus\":false}]}",self.userId,self.newspaperId,annotationId,x1,y1,(long long)ti,self.page,fileName];
+    NSString *annotationJson=[NSString stringWithFormat:@"{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":[{\"id\":%@,\"type\":\"image\",\"PointX\":%f,\"PointY\":%f,\"createdOn\":%qi,\"pageNumber\":%d,\"annotationText\":\"\",\"imageName\":\"%@\",\"borderThickness\":0,\"drawingType \": \"p\",\"lineColor\":0,\"height \":0,\"width\":0,\"lineThickness \":0,\"xInMinus\" : false,\"yInMinus\":false}]}",self.userId,self.newspaperId,annId,x1,y1,(long long)ti,self.page,fileName];
     
    
     UIGraphicsBeginImageContextWithOptions(self.mainImage.bounds.size, NO, 0.0);
@@ -316,7 +317,7 @@ BOOL dataExist ;
     UIGraphicsEndImageContext();
     
     
-    [self.delegate SaveCanvaswithNewsid:[self.newspaperId integerValue] JsonString:annotationJson AnnotationId:annotationId DrawImage:SaveImage  FileName:fileName];
+    [self.delegate SaveCanvaswithNewsid:[self.newspaperId integerValue] JsonString:annotationJson AnnotationId:annId DrawImage:SaveImage  FileName:fileName];
     
     [self dismissModalViewControllerAnimated:true];
     NSLog(@"save Canvas");
@@ -396,6 +397,7 @@ BOOL dataExist ;
     
     if (self.annotationId!=nil) {
         UIAlertView* alert =[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Deleting this pushpin will also delete the comment. You cannot undo this operation." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES",nil ];
+        [alert setDelegate:self];
         [alert show];
         
     }
@@ -514,8 +516,12 @@ BOOL dataExist ;
 #pragma delete pushpin
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     if (buttonIndex==1) {
-        if (self.annotationId !=nil){//}&& [del.Annotations count]>0) {
-            [self.delegate DeleteCanvas:self.annotationId NewsPaperId:self.newspaperId];
+        
+        if (self.annotationId !=nil &&  [self.annotationId integerValue] != 0){//}&& [del.Annotations count]>0) {
+           
+            NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,self.annotationId];
+            
+            [self.delegate DeleteCanvas:[self.annotationId stringValue] NewsPaperId:[self.newspaperId integerValue] FileName:fileName];
             
             /*if ([CommonHelper deleteAnnotation:self.annotationId NewsPaperId:self.pdfReader.newspaperId]) {
                 [self.pdfReader deletePushPin:self.annotationId];

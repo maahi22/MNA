@@ -46,7 +46,7 @@ static const NSUInteger FPKSearchViewModeFull = FPK_SEARCH_VIEW_MODE_FULL;
 @property (nonatomic, readwrite) NSUInteger currentSearchViewMode;
 
 @property (nonatomic, readwrite) BOOL thumbsViewVisible;
-@property (nonatomic, readwrite) BOOL waitingForTextInput;
+//@property (nonatomic, readwrite) BOOL waitingForTextInput;
 @property (nonatomic, readwrite) BOOL pdfOpen;
 @property (nonatomic, readwrite) BOOL willFollowLink;
 @property (nonatomic, readwrite) BOOL hudHidden;
