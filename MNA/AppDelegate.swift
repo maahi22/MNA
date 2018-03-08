@@ -11,7 +11,7 @@ import CoreData
 import IQKeyboardManagerSwift
 import UserNotifications
 import Reachability
-
+import Alamofire
 
 
 @UIApplicationMain
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         
-        
+        //self.uploadImage()
         
         
         //Create pdf directory for storing pdfs
@@ -746,7 +746,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         CommonHelper.saveServerAnnotations(jsonString: jsonString, NewsPaperId: newspaperId) { (status) in
            
             //Save Image on server
+            let url =  BaseUrl + MNAUrl_fileuploadOnServer
+            guard let data = UIImageJPEGRepresentation(drawImage, 0.9) else {
+                return
+            }
             
+            Alamofire.upload(multipartFormData: { (form) in
+                form.append(data, withName: "name", fileName: "file.jpg", mimeType: "image/jpg")
+            }, to: url, encodingCompletion: { result in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseString { response in
+                        print(response.value)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            })
           /*  if let imageData = UIImagePNGRepresentation(drawImage) {
                 let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
                 
@@ -798,40 +814,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 
 
-func createRequestBodyWith( filePathKey:String, boundary:String , yourImage:UIImage, fileName:String ) -> NSData{
+    func uploadImage(){
+        // User "authentication":
+        
+        
+        let url =  BaseUrl + MNAUrl_fileuploadOnServer
+        let image = UIImage(named: "tree.png")
+        
+        
+        guard let data = UIImageJPEGRepresentation(image!, 0.9) else {
+                return
+            }
+            
+            Alamofire.upload(multipartFormData: { (form) in
+                form.append(data, withName: "name", fileName: "file.jpg", mimeType: "image/jpg")
+            }, to: url, encodingCompletion: { result in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseString { response in
+                        print(response.value)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            })
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          /*  let parameters = nil
     
-    let body = NSMutableData()
-    
-    /*for (key, value) in parameters {
-        body.appendString(string: "--\(boundary)\r\n")
-        body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-        body.appendString(string: "\(value)\r\n")
-    }*/
-    
-    body.appendString(string: "--\(boundary)\r\n")
-    
-    var mimetype = "image/png"
-    
-    let defFileName = fileName
-    
-    let imageData = UIImagePNGRepresentation(yourImage)
-    
-    body.appendString(string: "Content-Disposition: form-data; name=\"\(defFileName)\"; userfile=\"\(defFileName)\"\r\n")
-    body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
-    body.append(imageData!)
-    body.appendString(string: "\r\n")
-    
-    body.appendString(string: "--\(boundary)--\r\n")
-    
-    return body
-}
-
-
-
-func generateBoundaryString() -> String {
-    return "Boundary-\(NSUUID().uuidString)"
-}
-
+            // Image to upload:
+             let imageToUploadURL = Bundle.main.url(forResource: "tree", withExtension: "png")
+        
+             // Server address (replace this with the address of your own server):
+             let url =  BaseUrl + MNAUrl_fileuploadOnServer
+        
+             // Use Alamofire to upload the image
+            Alamofire.upload(
+                     multipartFormData: { multipartFormData in
+                             // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
+                            multipartFormData.append(imageToUploadURL!, withName: "name")
+                             /*for (key, val) in parameters {
+                                    multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
+                                 }*/
+                   },
+                   to: url,
+                    encodingCompletion: { encodingResult in
+                        switch encodingResult {
+                        case .success(let upload, _, _):
+                            upload.responseJSON { response in
+                                 if let jsonResponse = response.result.value as? [String: Any] {
+                                     print(jsonResponse)
+                                 }
+                             }
+                         case .failure(let encodingError):
+                             print(encodingError)
+                         }
+                 }
+                 )*/
+        
+        
+        
+    }
 
 
 

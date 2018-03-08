@@ -16,6 +16,7 @@
 		031C794B1FFBEA910098F281 /* LazyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C794A1FFBEA910098F281 /* LazyImage.swift */; };
 		031C794D1FFBEA990098F281 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C794C1FFBEA990098F281 /* AppUtility.swift */; };
 		0F23C1541FFAA0D70011454E /* template in Resources */ = {isa = PBXBuildFile; fileRef = 0F23C1531FFAA0D70011454E /* template */; };
+		0F25FE4C2051B890001E8EB0 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F25FE482051B890001E8EB0 /* tree.png */; };
 		0F27DEA11FF6BDCF003C3243 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F27DEA01FF6BDCF003C3243 /* DBHelper.swift */; };
 		0F8C7763202A1282004C5C49 /* SwiftSignatureView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8C7764202A1282004C5C49 /* SwiftSignatureView.framework */; };
 		0FB34A562041223400345156 /* String+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB34A552041223400345156 /* String+Methods.swift */; };
@@ -153,6 +154,7 @@
 		031C794A1FFBEA910098F281 /* LazyImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyImage.swift; sourceTree = "<group>"; };
 		031C794C1FFBEA990098F281 /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		0F23C1531FFAA0D70011454E /* template */ = {isa = PBXFileReference; lastKnownFileType = folder; path = template; sourceTree = "<group>"; };
+		0F25FE482051B890001E8EB0 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
 		0F27DEA01FF6BDCF003C3243 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		0F8C7764202A1282004C5C49 /* SwiftSignatureView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftSignatureView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA08D242013ACE200734059 /* MNA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MNA-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 		1858E6491FF617CF00BCB854 /* MNA */ = {
 			isa = PBXGroup;
 			children = (
+				0F25FE482051B890001E8EB0 /* tree.png */,
 				0FCC3C83203B4674000DCEAE /* PdfReaderViewController.h */,
 				0FFAD92D203B35DC001C1C19 /* FastPdfKit.xcodeproj */,
 				18432F3B2036A8D80053B6D7 /* CanvasViewController.h */,
@@ -890,6 +893,7 @@
 				18B634BF1FFF879C004EFCC2 /* OP.storyboard in Resources */,
 				18584D731FFF9CFE00B69DB8 /* Detail.storyboard in Resources */,
 				183331722046709F0061228B /* CommentViewController.xib in Resources */,
+				0F25FE4C2051B890001E8EB0 /* tree.png in Resources */,
 				1868EFDD1FFB625B00180C10 /* Alert.storyboard in Resources */,
 				18E636541FFBA507008737D4 /* Comments.storyboard in Resources */,
 				1868EFED1FFB9A6D00180C10 /* Canvas.storyboard in Resources */,

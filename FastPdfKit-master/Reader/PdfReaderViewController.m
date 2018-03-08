@@ -882,7 +882,7 @@
         float y1=point.y/zmScale;
 
         if (self.yAxispadding>0 && y1>self.yAxispadding && y1<self.proofCropBox.size.height+self.yAxispadding) {
-            //[self addPushPin:point PushPinImage:@"ppbtn"];
+           
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -892,7 +892,7 @@
             
         }
         else if (self.xAxispadding>0 && x1>self.xAxispadding && x1<self.proofCropBox.size.width+self.xAxispadding){
-           // [self addPushPin:point PushPinImage:@"ppbtn"];
+           
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -901,7 +901,7 @@
             }
         }
         else if (self.xAxispadding==0 && self.yAxispadding==0){
-            //[self addPushPin:point PushPinImage:@"ppbtn"];
+            
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
