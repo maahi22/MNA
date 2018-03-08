@@ -41,6 +41,7 @@
 @synthesize dismisSts;
 @synthesize searchStr;
 
+@synthesize  updateAnnotationId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -342,7 +343,14 @@
     CommentViewController *commentView=[[CommentViewController alloc] init];
     commentView.delegate = self;
     if (annotationId!=nil) {
-      //  [commentView getCommentImage:annotationId];
+      
+        commentView.annotationId = annotationId;
+        self.updateAnnotationId = [annotationId integerValue];
+        commentView.updateAnnId = annotationId;
+    }else{
+        commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+        self.updateAnnotationId = 0;
+        commentView.updateAnnId = 0;
     }
     self.dismisSts = YES;
     //customisation
@@ -353,7 +361,7 @@
     commentView.zoomScale = self.zoomScale;
     commentView.newspaperId = self.newspaperId;
     commentView.mangeAnnotationObj = self.mangeAnnotationObject;
-    commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+    //commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
     //End
     
     if (self.mangeAnnotationObject != nil){
@@ -419,8 +427,12 @@
     if (annotationId!=nil) {
         [canvas getCommentImage:annotationId];
         canvas.annotationId = annotationId;
+        self.updateAnnotationId = [annotationId integerValue];
+        canvas.updateAnnId = annotationId;
     }else{
         canvas.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+        self.updateAnnotationId = 0;
+        canvas.updateAnnId = 0;
     }
     
     //customisation
@@ -1137,9 +1149,15 @@
 
 -(void)SaveCanvaswithNewsid:(NSInteger )newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
     self.dismisSts = NO;
-    self.currentAnnotationId = [anoatationId integerValue];
-    //NSLog(@"SaveCanvaswithNewsid pdf reader  %ld  %@",(long)newsId,jsonString);
-    //NSInteger val = newsId.integerValue;
+    
+    
+    if (self.updateAnnotationId >0){
+        self.updateAnnotationId = 0;
+    }else{
+       self.currentAnnotationId = [anoatationId integerValue] + 1;
+    }
+    
+    
     [self.pdfdelegate  Pdf_SaveCanvas:newsId JsonString:jsonString Draw:image FileName:fileName];
 }
 -(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSInteger)newsPaperId FileName:(NSString *)fileName{
@@ -1160,7 +1178,12 @@
 //CommentDelgate Method
 -(void)SaveComment:(NSString*)JsonString  CommentText:(NSString*)CommentText NewspaperId :(NSInteger)newsId AnnotationId:(NSNumber*)anoatationId{
     self.dismisSts = NO;
-    self.currentAnnotationId = [anoatationId integerValue];
+    if (self.updateAnnotationId >0){
+        self.updateAnnotationId = 0;
+    }else{
+        self.currentAnnotationId = [anoatationId integerValue] + 1;
+    }
+    
     [self.pdfdelegate Pdf_SaveComment:JsonString saveCommentText:CommentText NewspaperId:newsId];
 }
 

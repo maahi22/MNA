@@ -87,6 +87,7 @@
 -(void)addPushPin:(CGPoint) point Tag:(int) tagValue PushPinImage:(NSString *) image CommentType:(NSString *)commentType;
 
 //For Search
+@property (nonatomic, assign) NSInteger *updateAnnotationId;
 @property (nonatomic, retain) NSString *searchStr;
 @property (nonatomic, retain) MFDocumentManager *documentManagerSearch ;
 -(void)callOverlay;

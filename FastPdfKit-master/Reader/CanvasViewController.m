@@ -241,7 +241,7 @@ BOOL dataExist ;
     }
     
     if (self.mangeAnnotationObj == nil && self.annotationId > 0) {
-        NSInteger *value = self.annotationId.intValue;
+        NSInteger value = self.annotationId.intValue;
         return [NSNumber numberWithInt:value+1];
     }
     
@@ -261,7 +261,11 @@ BOOL dataExist ;
             }
         }
         
-        if (annotationId == 0) {
+        if (annotationId == 0 && self.annotationId > 0) {
+            NSInteger value = [self.annotationId integerValue];
+            annotationId = [NSNumber numberWithInt:value+1];
+            
+        }else if (annotationId == 0){
             NSDictionary *annObj = dictAnnotation.lastObject;
             annotationId = [NSNumber numberWithInt:[[annObj objectForKey:@"id"] integerValue] + 1];
             
@@ -277,7 +281,7 @@ BOOL dataExist ;
 
 - (IBAction)save:(id)sender {
     
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,self.annotationId];
+    
    // NSString *imgPath=[NSString stringWithFormat:@"%@/%@",[CommonHelper getApplicationDirectoryPath],fileName];
     
     NSDateFormatter *formatter;
@@ -305,8 +309,12 @@ BOOL dataExist ;
         self.annotationId = annId;
     }
     
-   // NSString *fileName2 = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,annotationId];
+    if (self.updateAnnId != nil && [self.updateAnnId integerValue] != 0) {
+            annId = self.updateAnnId;
+    }
     
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,annId];
+   
     
     NSString *annotationJson=[NSString stringWithFormat:@"{\"UserId\":\"%@\",\"NewspaperId\":%@,\"Annotation\":[{\"id\":%@,\"type\":\"image\",\"PointX\":%f,\"PointY\":%f,\"createdOn\":%qi,\"pageNumber\":%d,\"annotationText\":\"\",\"imageName\":\"%@\",\"borderThickness\":0,\"drawingType \": \"p\",\"lineColor\":0,\"height \":0,\"width\":0,\"lineThickness \":0,\"xInMinus\" : false,\"yInMinus\":false}]}",self.userId,self.newspaperId,annId,x1,y1,(long long)ti,self.page,fileName];
     
