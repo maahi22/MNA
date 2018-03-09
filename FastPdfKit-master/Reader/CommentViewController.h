@@ -41,7 +41,7 @@
 @property (nonatomic,retain) NSNumber *lastAnnotationId;
 @property (nonatomic,retain) NSNumber *newspaperId;
 @property (nonatomic, retain) NSString *PushPinId;
-
+@property (nonatomic,retain) NSNumber *updateAnnId;
 
 - (IBAction)dismissView:(id)sender;
 

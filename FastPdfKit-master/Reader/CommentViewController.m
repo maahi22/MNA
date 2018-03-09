@@ -128,6 +128,11 @@
             self.annotationId = annId;
         }
         
+        //For update
+        if (self.updateAnnId != nil && [self.updateAnnId integerValue] != 0) {
+            annId = self.updateAnnId;
+        }//END
+        
         
         NSString *strComment=[self.textViewComment.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         strComment=[strComment stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
@@ -156,13 +161,19 @@
 
 -(NSNumber *)getAnnotationId:(NSNumber *) newspaperId {
     
+    if (self.mangeAnnotationObj != nil &&  [self.updateAnnId integerValue] > 0){
+        return self.updateAnnId; //for update
+    }
+    
+    
+    
     if (self.mangeAnnotationObj == nil) {
         return [NSNumber numberWithInt:1];
     }
     
     if (self.mangeAnnotationObj == nil && self.annotationId > 0) {
-        NSInteger *value = self.annotationId.intValue;
-        return [NSNumber numberWithInt:value+1];
+        NSInteger value = self.annotationId.intValue;
+        return [NSNumber numberWithInt:(value+1)];
     }
     
     
@@ -178,11 +189,13 @@
             }
         }
         
-        
-        if (annotationId == 0) {
+        if (annotationId == 0 && self.annotationId > 0) {
+            NSInteger value = [self.annotationId integerValue];
+            annotationId = [NSNumber numberWithInt:(value+1)];
+            
+        }else if (annotationId == 0){
             NSDictionary *annObj = dictAnnotation.lastObject;
             annotationId = [NSNumber numberWithInt:[[annObj objectForKey:@"id"] integerValue] + 1];
-            
         }
         
     }else{

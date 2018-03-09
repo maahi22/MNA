@@ -50,6 +50,7 @@
 @property (retain, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (nonatomic, assign) CGPoint point;
 @property (nonatomic,retain) NSNumber *annotationId;
+@property (nonatomic,retain) NSNumber *updateAnnId;
 @property (nonatomic,retain) NSNumber *lastAnnotationId;
 @property (nonatomic,retain) NSNumber *newspaperId;
 

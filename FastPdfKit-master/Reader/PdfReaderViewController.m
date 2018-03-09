@@ -41,6 +41,7 @@
 @synthesize dismisSts;
 @synthesize searchStr;
 
+@synthesize  updateAnnotationId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -342,7 +343,14 @@
     CommentViewController *commentView=[[CommentViewController alloc] init];
     commentView.delegate = self;
     if (annotationId!=nil) {
-      //  [commentView getCommentImage:annotationId];
+      
+        commentView.annotationId = annotationId;
+        self.updateAnnotationId = [annotationId integerValue];
+        commentView.updateAnnId = annotationId;
+    }else{
+        commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+        self.updateAnnotationId = 0;
+        commentView.updateAnnId = 0;
     }
     self.dismisSts = YES;
     //customisation
@@ -353,28 +361,20 @@
     commentView.zoomScale = self.zoomScale;
     commentView.newspaperId = self.newspaperId;
     commentView.mangeAnnotationObj = self.mangeAnnotationObject;
-    commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+    //commentView.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
     //End
     
     if (self.mangeAnnotationObject != nil){
         
         NSString * jsonStr = [self.mangeAnnotationObject valueForKey:@"annotationObject"];
         NSArray *dictAnnotation = [self JsonStringToArray:jsonStr];
-        
-        
         if (dictAnnotation !=nil && dictAnnotation.count>0 && self.currentAnnotationId != nil) {
-            
             for (NSDictionary *annotationObj in dictAnnotation) {
                 if ([[annotationObj objectForKey:@"id"] integerValue] == self.currentAnnotationId) {
-                    
                     dismisSts = NO;
                 }
             }
-            
         }
-        
-        
-        
     }
     
     commentView.point=touchedPoint;
@@ -419,8 +419,12 @@
     if (annotationId!=nil) {
         [canvas getCommentImage:annotationId];
         canvas.annotationId = annotationId;
+        self.updateAnnotationId = [annotationId integerValue];
+        canvas.updateAnnId = annotationId;
     }else{
         canvas.annotationId = [NSNumber numberWithUnsignedInteger: self.currentAnnotationId];
+        self.updateAnnotationId = 0;
+        canvas.updateAnnId = 0;
     }
     
     //customisation
@@ -467,6 +471,11 @@
                                 [btn addTarget:self action:@selector(showComment:) forControlEvents:UIControlEventTouchUpInside];
                                 [btn addTarget:self action:@selector(dragPushPin:) forControlEvents:UIControlEventTouchDragOutside];
                                 btn.tag=1;
+                                if (self.currentAnnotationId > 0){//Add mahendra
+                                    btn.tag = self.currentAnnotationId;
+                                }
+                                
+                                
                                 
                                 if (![image isEqualToString:@"ppbtn"]) {
                                     minZmScale=self.minZoomScale;
@@ -496,11 +505,7 @@
                                 // animate
                                 self.currentPinTag = btn.tag;
                                 [vwxyz addSubview:btn];
-                                /*for (id a in [vwxyz subviews]) {
-                                 NSLog(@"%@",a);
-                                 if ([a isKindOfClass:[UIView class]]) {
-                                 }
-                                 }*/
+                                
                             }
                         }
                     }
@@ -786,17 +791,19 @@
         // do something using dictionary
     }
     
-    
-    
-   /* NSError *error = nil;
-    NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];*/
-    
     return jsonResponse;
 
 }
+
+- (NSDictionary *) json_StringToDictionary2 :(NSString*)jsonStr{
+    NSError *error;
+    NSData *objectData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData options:NSJSONReadingMutableContainers error:&error];
+    return (!json ? nil : json);
+}
+
+
+
 
 -(NSArray*)JsonStringToArray:(NSString*)JsonString{
     if ([JsonString isEqualToString:@""]){
@@ -813,10 +820,7 @@
 -(void)documentViewController:(MFDocumentViewController *)dvc didFocusOnPage:(NSUInteger)page{
    
     self.page = page;
- //   NSLog(@"%d",page);
- //   NSLog(@"Zoom : %.0f%%",self.zoomScale);
-    
-    
+ 
     
     if (isFirsttime) {
        
@@ -876,13 +880,9 @@
         float zmScale=self.minZoomScale*self.zoomScale;
         float x1=point.x/zmScale;
         float y1=point.y/zmScale;
- //       NSLog(@"Zoom : %.2f%%",self.zoomScale);
- //       NSLog(@"x1:%.2f ; y1:%.2f",x1,y1);
- //       NSLog(@"xAxispadding : %f ; yAxispadding: %f ",self.xAxispadding,self.yAxispadding);
- //       NSLog(@"cropbox W: %f ; cropBox H: %f ",self.proofCropBox.size.width,self.proofCropBox.size.height);
-        //[self ShowCommentPopup:point AnnotationId:nil];
+
         if (self.yAxispadding>0 && y1>self.yAxispadding && y1<self.proofCropBox.size.height+self.yAxispadding) {
-            [self addPushPin:point PushPinImage:@"ppbtn"];
+           
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -892,7 +892,7 @@
             
         }
         else if (self.xAxispadding>0 && x1>self.xAxispadding && x1<self.proofCropBox.size.width+self.xAxispadding){
-            [self addPushPin:point PushPinImage:@"ppbtn"];
+           
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -901,7 +901,7 @@
             }
         }
         else if (self.xAxispadding==0 && self.yAxispadding==0){
-            [self addPushPin:point PushPinImage:@"ppbtn"];
+            
             if (blActivateComment) {
                 [self ShowCommentPopup:point AnnotationId:nil];
             }
@@ -1137,9 +1137,31 @@
 
 -(void)SaveCanvaswithNewsid:(NSInteger )newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
     self.dismisSts = NO;
-    self.currentAnnotationId = [anoatationId integerValue];
-    //NSLog(@"SaveCanvaswithNewsid pdf reader  %ld  %@",(long)newsId,jsonString);
-    //NSInteger val = newsId.integerValue;
+    
+    
+    if (self.updateAnnotationId >0){
+        self.updateAnnotationId = 0;
+    }else{
+       self.currentAnnotationId = [anoatationId integerValue] + 1;
+    }
+    
+    
+    //Add push pin
+    NSDictionary *dictAnn = [self json_StringToDictionary2:jsonString];
+    NSArray* pinArray = [dictAnn objectForKey:@"Annotation"];
+    if ( [pinArray count]>0){
+        for (NSDictionary *pushpinObj in pinArray) {
+            if ([[pushpinObj objectForKey:@"pageNumber"] integerValue]== self.page) {
+                CGPoint point=CGPointMake([[pushpinObj objectForKey:@"PointX"] floatValue]*self.minZoomScale, [[pushpinObj objectForKey:@"PointY"] floatValue]*self.minZoomScale);
+                [self addPushPin:point Tag:[[pushpinObj objectForKey:@"id"] intValue]  PushPinImage:@"ppbtn" CommentType:[pushpinObj objectForKey:@"type"]];
+            }
+        }
+    }
+    //ENDED
+    
+    
+    
+    
     [self.pdfdelegate  Pdf_SaveCanvas:newsId JsonString:jsonString Draw:image FileName:fileName];
 }
 -(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSInteger)newsPaperId FileName:(NSString *)fileName{
@@ -1160,7 +1182,26 @@
 //CommentDelgate Method
 -(void)SaveComment:(NSString*)JsonString  CommentText:(NSString*)CommentText NewspaperId :(NSInteger)newsId AnnotationId:(NSNumber*)anoatationId{
     self.dismisSts = NO;
-    self.currentAnnotationId = [anoatationId integerValue];
+    if (self.updateAnnotationId >0){
+        self.updateAnnotationId = 0;
+    }else{
+        self.currentAnnotationId = [anoatationId integerValue] + 1;
+    }
+    
+    //Add push pin
+    NSDictionary *dictAnn = [self json_StringToDictionary2:JsonString];
+    NSArray* pinArray = [dictAnn objectForKey:@"Annotation"];
+    if ( [pinArray count]>0){
+        for (NSDictionary *pushpinObj in pinArray) {
+            if ([[pushpinObj objectForKey:@"pageNumber"] integerValue]== self.page) {
+                CGPoint point=CGPointMake([[pushpinObj objectForKey:@"PointX"] floatValue]*self.minZoomScale, [[pushpinObj objectForKey:@"PointY"] floatValue]*self.minZoomScale);
+                [self addPushPin:point Tag:[[pushpinObj objectForKey:@"id"] intValue]  PushPinImage:@"ppbtn" CommentType:[pushpinObj objectForKey:@"type"]];
+            }
+        }
+    }
+    //ENDED
+    //ENDED
+    
     [self.pdfdelegate Pdf_SaveComment:JsonString saveCommentText:CommentText NewspaperId:newsId];
 }
 
