@@ -909,9 +909,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
              print("deleteServerAnnotation")
             
             if status {
-                let documentsUrl: URL = CommonHelper.getDocDirPath()
-                let imgPath = documentsUrl.appendingPathComponent("CanvasImage/\(fileName!)")
+                //let documentsUrl: String =
+                let imgPath =  CommonHelper.getDocDirPathString("CanvasImage/\(fileName!)")//appendingPathComponent("CanvasImage/\(fileName!)")//appendingPathComponent("CanvasImage/\(fileName!)")
                 FileHelper.deleteImageDocumentDirectoryByPath(imgPath)
+                
+                
+                let alert = UIAlertController(title: "delete", message: "Canvas delete succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    
+                }))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
             
         }

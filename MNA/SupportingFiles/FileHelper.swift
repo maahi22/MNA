@@ -100,10 +100,10 @@ class FileHelper: NSObject {
         
     }
     
-    class func deleteImageDocumentDirectoryByPath(_ filePath :URL){
+    class func deleteImageDocumentDirectoryByPath(_ filePath :String){
         let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: "\(filePath)"){
-            try! fileManager.removeItem(at: filePath)
+        if fileManager.fileExists(atPath: filePath){
+            try! fileManager.removeItem(atPath: filePath)
         }
         
         

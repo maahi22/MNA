@@ -531,38 +531,7 @@ BOOL dataExist ;
             
             [self.delegate DeleteCanvas:[self.annotationId stringValue] NewsPaperId:[self.newspaperId integerValue] FileName:fileName];
             
-            /*if ([CommonHelper deleteAnnotation:self.annotationId NewsPaperId:self.pdfReader.newspaperId]) {
-                [self.pdfReader deletePushPin:self.annotationId];
-                [self.pdfReader dismissModalViewControllerAnimated:YES];
-                
-                NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",del.UserId,self.pdfReader.newspaperId,self.pdfReader.page,self.annotationId];
-                NSString *imgPath=[NSString stringWithFormat:@"%@/%@",[CommonHelper getApplicationDirectoryPath],fileName];
-                NSString *strUrl=[NSString stringWithFormat:@"%@webservice_ios2.php?method=deleteFile&encode=json",del.BaseURL];
-                NSString *jsonRequest=[NSString stringWithFormat:@"{\"FileName\":\"%@\"}",fileName];
-                NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-                
-                ASIHTTPRequest *request1 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:strUrl]];
-                [request1 addRequestHeader:@"User-Agent" value:@"ASIHTTPRequest"];
-                [request1 addRequestHeader:@"Content-Type" value:@"application/json"];
-                [request1 appendPostData:requestData];
-                //Customise our user agent, for no real reason
-                [request1 addRequestHeader:@"User-Agent" value:@"ASIHTTPRequest"];
-                // Start the request
-                [request1 startSynchronous];
-                NSString *result=[request1 responseString];
-                
-                if ([result isEqualToString:@"Success"]) {
-                    
-                }
-                if ([[NSFileManager defaultManager] fileExistsAtPath:imgPath]) {
-                    NSError *error=nil;
-                    [[NSFileManager defaultManager] removeItemAtPath:imgPath error:&error];
-                    if (error!=nil) {
-                        NSLog(@"%@",[error localizedDescription]);
-                    }
-                }
-                self.annotationId=nil;
-            }*/
+          
         }
     }
 }
