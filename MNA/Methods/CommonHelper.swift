@@ -495,7 +495,37 @@ class CommonHelper: NSObject {
         }else{
             
             if arrAnnObj1.count == 0 {
-                 completion(true)
+                
+                
+                let userId = DefaultDataManager.getUserName()
+                let urlString = BaseUrl + MNAUrl_SaveAnnotationsOnServer
+                let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":""] as [String : Any]
+                
+                MNAConnectionHelper.SaveAnnotationWithParam(url: urlString, paramString: paramString, completion: { (status) in
+            
+                    if status {
+                        
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let managedObjectContext = appDelegate.getContext()
+                        managedObjectContext.delete(mangeObj)
+                    
+                        //save the context
+                        do {
+                            try managedObjectContext.save()
+                            
+                        } catch let error as NSError  {
+                            print("Could not save \(error), \(error.userInfo)")
+                        } catch {
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                    
+                    completion(status)
+                })
             }
             
             completion(false)
