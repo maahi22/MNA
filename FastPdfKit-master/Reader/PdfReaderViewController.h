@@ -91,5 +91,6 @@
 @property (nonatomic, retain) NSString *searchStr;
 @property (nonatomic, retain) MFDocumentManager *documentManagerSearch ;
 -(void)callOverlay;
+-(void)updateMangeObjectData:(NSManagedObject*)mangeObj;
 
 @end

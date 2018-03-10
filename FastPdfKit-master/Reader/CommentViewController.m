@@ -320,20 +320,16 @@
 #pragma delete pushpin
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     if (buttonIndex==1) {
-        if (self.annotationId !=nil ){//}&& [self.annotationId count]>0) {
+        
+        NSLog(@"delete1 Comment %i",self.annotationId);
+        
+        if (self.annotationId !=nil &&  [self.annotationId integerValue] != 0){//}&& [self.annotationId count]>0)
            
+            [self.delegate DeleteComment:[self.newspaperId integerValue] AnnotationId:self.annotationId];
             
-            [self.delegate DeleteComment:self.newspaperId AnnotationId:self.annotationId];
-            
-            
-           /* if ([CommonHelper deleteAnnotation:self.annotationId NewsPaperId:self.pdfReader.newspaperId]) {
-                [self.pdfReader deletePushPin:self.annotationId];
-                if (self.pdfReader.popoverController1.popoverVisible) {
-                    [self.pdfReader.popoverController1 dismissPopoverAnimated:YES];
-                }
-                self.textViewComment.text=@"";
-                self.annotationId=nil;
-            }*/
+            //Dismiss view
+            [self dismissModalViewControllerAnimated:true];
+          
         }
     }
 }

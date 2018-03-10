@@ -631,30 +631,7 @@
     }
 }
 
--(void)deletePushPin:(NSNumber *) annotationId{
-    for (id v in self.view.subviews) {//self view
-        if ([v isKindOfClass:[UIScrollView class]]) {//scrollview in self
-            //[(UIScrollView*)v setAutoresizingMask:UIViewAutoresizingNone];
-            for (id vw in [v subviews]) {//FPKDetailView
-                for (id vwx in [vw subviews]) {//FPKIntermediateView
-                    for (id vwxy in [vwx subviews]) {//MFScrollDetailView
-                        for (id vwxyz in [vwxy subviews]) {//UIView
-                            if (![vwxyz isKindOfClass:[UIImageView class]]) {
-                                for (id a in [vwxyz subviews]) {
-                                    if ([a isKindOfClass:[UIButton class]]) {
-                                        if ([(UIButton *)a tag] ==[annotationId integerValue] ) {
-                                            [a removeFromSuperview];
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+
 
 -(void)showComment:(id) sender{
     if(self.popoverController1.popoverVisible)
@@ -763,15 +740,7 @@
     
     
     
-   /* if (del.Annotations !=nil && [del.Annotations count]>0) {
-        for (NSDictionary *pushpinObj in del.Annotations) {
-            if ([[pushpinObj objectForKey:@"pageNumber"] integerValue] ==page) {
-                CGPoint point=CGPointMake([[pushpinObj objectForKey:@"PointX"] floatValue]*self.minZoomScale, [[pushpinObj objectForKey:@"PointY"] floatValue]*self.minZoomScale);
-                [self addPushPin:point Tag:[[pushpinObj objectForKey:@"id"] intValue]  PushPinImage:@"ppbtn" CommentType:[pushpinObj objectForKey:@"type"]];
-                //[self addPushPin:point Tag:[[pushpinObj objectForKey:@"id"] intValue]  PushPinImage:@"ppbtn"];
-            }
-        }
-    }*/
+  
 }
 
 -(NSDictionary*)jsonStrToDictionart:(NSString*)jsonStr{
@@ -843,15 +812,7 @@
             
         }
         
-       /* del=(TBLITEAppDelegate*)[UIApplication sharedApplication].delegate;
-        if (del.Annotations !=nil && [del.Annotations count]>0) {
-            for (NSDictionary *pushpinObj in del.Annotations) {
-                if ([[pushpinObj objectForKey:@"pageNumber"] integerValue]==page) {
-                    CGPoint point=CGPointMake([[pushpinObj objectForKey:@"PointX"] floatValue]*self.minZoomScale, [[pushpinObj objectForKey:@"PointY"] floatValue]*self.minZoomScale);
-                    [self addPushPin:point Tag:[[pushpinObj objectForKey:@"id"] intValue]  PushPinImage:@"ppbtn" CommentType:[pushpinObj objectForKey:@"type"]];
-                }
-            }
-        }*/
+       
     }
     
     isFirsttime=NO;
@@ -1082,8 +1043,31 @@
 
 
 
-
-
+//Delete pin on bases of AnnotationId
+-(void)deletePushPin:(NSNumber *) annotationId{
+    for (id v in self.view.subviews) {//self view
+        if ([v isKindOfClass:[UIScrollView class]]) {//scrollview in self
+            //[(UIScrollView*)v setAutoresizingMask:UIViewAutoresizingNone];
+            for (id vw in [v subviews]) {//FPKDetailView
+                for (id vwx in [vw subviews]) {//FPKIntermediateView
+                    for (id vwxy in [vwx subviews]) {//MFScrollDetailView
+                        for (id vwxyz in [vwxy subviews]) {//UIView
+                            if (![vwxyz isKindOfClass:[UIImageView class]]) {
+                                for (id a in [vwxyz subviews]) {
+                                    if ([a isKindOfClass:[UIButton class]]) {
+                                        if ([(UIButton *)a tag] ==[annotationId integerValue] ) {
+                                            [a removeFromSuperview];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 //DELETE Pin With Tag id
@@ -1138,7 +1122,6 @@
 -(void)SaveCanvaswithNewsid:(NSInteger )newsId JsonString:(NSString *)jsonString AnnotationId:(NSNumber*)anoatationId  DrawImage:(UIImage*)image FileName:(NSString *)fileName{
     self.dismisSts = NO;
     
-    
     if (self.updateAnnotationId >0){
         self.updateAnnotationId = 0;
     }else{
@@ -1159,16 +1142,19 @@
     }
     //ENDED
     
-    
-    
-    
     [self.pdfdelegate  Pdf_SaveCanvas:newsId JsonString:jsonString Draw:image FileName:fileName];
 }
+
+
+
 -(void)DeleteCanvas:(NSString *)anotationId NewsPaperId:(NSInteger)newsPaperId FileName:(NSString *)fileName{
     self.dismisSts = NO;
     NSLog(@"DeleteCanvas pdf reader  %i  %@ fileName %@",newsPaperId,anotationId ,fileName );
-    
     [self.pdfdelegate Pdf_DeleteCanvas:anotationId NewsPaperId:newsPaperId FileName:fileName];
+    
+    
+    NSNumber *annId = [NSNumber numberWithInt:[anotationId intValue]];
+    [self deletePushPin:annId];
 }
 
 -(void)CancelCanvas:(NSInteger )tagId NewsPaperId:(NSString *)newsPaperId{
@@ -1200,7 +1186,6 @@
         }
     }
     //ENDED
-    //ENDED
     
     [self.pdfdelegate Pdf_SaveComment:JsonString saveCommentText:CommentText NewspaperId:newsId];
 }
@@ -1208,6 +1193,30 @@
 -(void)DeleteComment:(NSInteger)NewspaperId AnnotationId:(NSNumber*)anoatationId{
     self.dismisSts = NO;
     [self.pdfdelegate Pdf_DeleteComment:NewspaperId AnnotationId:[anoatationId integerValue]];
+   
+    NSNumber *annId = [NSNumber numberWithInt:[anoatationId intValue]];
+    [self deletePushPin:annId];
 }
+
+
+-(void)updateMangeObjectData:(NSManagedObject*)mangeObj{
+    
+    if (mangeObj != nil){
+        self.mangeAnnotationObject = mangeObj;
+        
+    }else{
+        self.mangeAnnotationObject = nil;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
 
 @end

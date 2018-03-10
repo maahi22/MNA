@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     var navController:UINavigationController?
-
+    var pdfViewController:PdfReaderViewController?
     
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -448,12 +448,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if documentManager != nil {
             
-            let pdfViewController:PdfReaderViewController = PdfReaderViewController.init(documentManager: documentManager)
+             pdfViewController = PdfReaderViewController.init(documentManager: documentManager)
          //   pdfViewController.pdFdelegate = self
-            pdfViewController.proofCropBox = cropBox
+            pdfViewController?.proofCropBox = cropBox
  //           pdfViewController.newspaperId = NewspaperId as NSNumber
-            pdfViewController.fileURL = (documentUrl as NSURL) as URL!
-            pdfViewController.fileName = documentName
+            pdfViewController?.fileURL = (documentUrl as NSURL) as URL!
+            pdfViewController?.fileName = documentName
             
             // We are adding an image overlay on the first page on the bottom left corner
            /* var ovManager:OverlayManager = OverlayManager()
@@ -461,28 +461,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             ovManager.searchKeyword = searchStr
             pdfViewController.add(ovManager)*/
             
-            pdfViewController.searchStr = searchStr
-            pdfViewController.documentManagerSearch = documentManager
+            pdfViewController?.searchStr = searchStr
+            pdfViewController?.documentManagerSearch = documentManager
             
-            pdfViewController.callOverlay()
+            pdfViewController?.callOverlay()
             
             
             //*****ZoomSize
+            if let pdf = pdfViewController{
             if (768 / cropBox.size.width) <= (1024 / cropBox.size.height) {
-                pdfViewController.minZoomScale = (Float(768 / cropBox.size.width))
-                pdfViewController.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.yAxispadding < 0) {
-                    pdfViewController.yAxispadding = 0
+                pdfViewController?.minZoomScale = (Float(768 / cropBox.size.width))
+                pdfViewController?.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.yAxispadding < 0) {
+                    pdfViewController?.yAxispadding = 0
                 }
-                pdfViewController.xAxispadding = 0
+                pdfViewController?.xAxispadding = 0
                 
             }else{
-                pdfViewController.minZoomScale = (Float(1024 / cropBox.size.height))
-                pdfViewController.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.xAxispadding < 0) {
-                    pdfViewController.xAxispadding = 0
+                pdfViewController?.minZoomScale = (Float(1024 / cropBox.size.height))
+                pdfViewController?.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.xAxispadding < 0) {
+                    pdfViewController?.xAxispadding = 0
                 }
-                pdfViewController.yAxispadding = 0
+                pdfViewController?.yAxispadding = 0
+            }
             }
             //*****END
             
@@ -490,11 +492,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
           //  documentManager.resourceFolder = "\(thumbnailsPath)" //String(contentsOf: thumbnailsPath)
             
             /** Set document id for thumbnail generation */
-            pdfViewController.documentId = documentName
-            pdfViewController.setMode(UInt(MFDocumentModeOverflow.rawValue))
+            pdfViewController?.documentId = documentName
+            pdfViewController?.setMode(UInt(MFDocumentModeOverflow.rawValue))
             
             /** Present the pdf on screen in a modal view */
-            self.navController?.pushViewController(pdfViewController, animated: false)
+            if let pdf = pdfViewController{
+                self.navController?.pushViewController(pdf, animated: false)
+            }
+            
             
         }else{
             
@@ -544,46 +549,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if documentManager != nil {
            
-            let pdfViewController:PdfReaderViewController = PdfReaderViewController.init(documentManager: documentManager)
+             pdfViewController = PdfReaderViewController.init(documentManager: documentManager)
           //  let pdfViewController:PdfReaderVC = PdfReaderVC.init(documentManager: documentManager)
-            pdfViewController.pdfdelegate = self
-            pdfViewController.proofCropBox = cropBox
-            pdfViewController.newspaperId = NewspaperId as NSNumber
-            pdfViewController.fileURL = (documentUrl as NSURL) as URL!
-            pdfViewController.fileName = documentName
+            pdfViewController?.pdfdelegate = self
+            pdfViewController?.proofCropBox = cropBox
+            pdfViewController?.newspaperId = NewspaperId as NSNumber
+            pdfViewController?.fileURL = (documentUrl as NSURL) as URL!
+            pdfViewController?.fileName = documentName
             
             //*****ZoomSize
+            if let pdf = pdfViewController{
             if (768 / cropBox.size.width) <= (1024 / cropBox.size.height) {
-                pdfViewController.minZoomScale = 1.0//(Float(768 / cropBox.size.width))
-                pdfViewController.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.yAxispadding < 0) {
-                    pdfViewController.yAxispadding = 0
+                pdfViewController?.minZoomScale = 1.0//(Float(768 / cropBox.size.width))
+                pdfViewController?.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.yAxispadding < 0) {
+                    pdfViewController?.yAxispadding = 0
                 }
-                pdfViewController.xAxispadding = 0
+                pdfViewController?.xAxispadding = 0
                 
             }else{
-                pdfViewController.minZoomScale = 1.0//(Float(1024 / cropBox.size.height))
-                pdfViewController.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.xAxispadding < 0) {
-                    pdfViewController.xAxispadding = 0
+                pdfViewController?.minZoomScale = 1.0//(Float(1024 / cropBox.size.height))
+                pdfViewController?.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.xAxispadding < 0) {
+                    pdfViewController?.xAxispadding = 0
                 }
-                pdfViewController.yAxispadding = 0
+                pdfViewController?.yAxispadding = 0
+            }
             }
             //*****END
             let userId = DefaultDataManager.getUserName()
-            pdfViewController.userId = userId
+            pdfViewController?.userId = userId
             /** Set resources folder on the manager */
             documentManager.resourceFolder = thumbnailsPath.path//"\(thumbnailsPath)" //String(contentsOf: thumbnailsPath)
 
             /** Set document id for thumbnail generation */
-            pdfViewController.documentId = documentName
-            pdfViewController.setMode(UInt(MFDocumentModeOverflow.rawValue))
+            pdfViewController?.documentId = documentName
+            pdfViewController?.setMode(UInt(MFDocumentModeOverflow.rawValue))
         //Send annoatation data to pdf
             
             if !DBHelper.IsEmpityAnnotations(Int64(NewspaperId)) {
                 
                 if  let mangeObject2:NSManagedObject = DBHelper.FetchAnnotationsListFromDbByNewsPaperId(Int64(NewspaperId)){
-                    pdfViewController.mangeAnnotationObject = mangeObject2
+                    pdfViewController?.mangeAnnotationObject = mangeObject2
                 }
             
             }
@@ -591,8 +598,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             
             /** Present the pdf on screen in a modal view */
-            self.navController?.pushViewController(pdfViewController, animated: false)
-            
+            if let pdf = pdfViewController{
+            self.navController?.pushViewController(pdf, animated: false)
+            }
             
             }else{
           
@@ -645,32 +653,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if documentManager != nil {
             
-        let pdfViewController:PdfReaderViewController = PdfReaderViewController.init(documentManager: documentManager)
+         pdfViewController = PdfReaderViewController.init(documentManager: documentManager)
          //   pdfViewController.pdFdelegate = self
-            pdfViewController.proofCropBox = cropBox
+            pdfViewController?.proofCropBox = cropBox
             
-            pdfViewController.fileURL = (documentUrl as NSURL) as URL!
-            pdfViewController.fileName = fileName
+            pdfViewController?.fileURL = (documentUrl as NSURL) as URL!
+            pdfViewController?.fileName = fileName
             
             
             
             
             //*****ZoomSize
+            if let pdf = pdfViewController{
             if (768 / cropBox.size.width) <= (1024 / cropBox.size.height) {
-                pdfViewController.minZoomScale = (Float(768 / cropBox.size.width))
-                pdfViewController.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.yAxispadding < 0) {
-                    pdfViewController.yAxispadding = 0
+                pdfViewController?.minZoomScale = (Float(768 / cropBox.size.width))
+                pdfViewController?.yAxispadding=((1024.0 - (Float(cropBox.size.height) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.yAxispadding < 0) {
+                    pdfViewController?.yAxispadding = 0
                 }
-                pdfViewController.xAxispadding = 0
+                pdfViewController?.xAxispadding = 0
                 
             }else{
-                pdfViewController.minZoomScale = (Float(1024 / cropBox.size.height))
-                pdfViewController.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdfViewController.minZoomScale))) / 2 ) / pdfViewController.minZoomScale
-                if (pdfViewController.xAxispadding < 0) {
-                    pdfViewController.xAxispadding = 0
+                pdfViewController?.minZoomScale = (Float(1024 / cropBox.size.height))
+                pdfViewController?.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
+                if (pdf.xAxispadding < 0) {
+                    pdfViewController?.xAxispadding = 0
                 }
-                pdfViewController.yAxispadding = 0
+                pdfViewController?.yAxispadding = 0
+            }
             }
             //*****END
             
@@ -678,12 +688,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             
             /** Set documet id for thumbnail generation */
-            pdfViewController.documentId = fileName
-            pdfViewController.setMode(UInt(MFDocumentModeOverflow.rawValue))
+            pdfViewController?.documentId = fileName
+            pdfViewController?.setMode(UInt(MFDocumentModeOverflow.rawValue))
             
             /** Present the pdf on screen in a modal view */
-            self.navController?.pushViewController(pdfViewController, animated: false)
-            
+            if let pdf = pdfViewController{
+            self.navController?.pushViewController(pdf, animated: false)
+            }
         }else{
             
             let documentsUrl: URL = CommonHelper.getDocDirPath()
@@ -919,6 +930,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     
                 }))
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                
+                self.updatemangeObj(newsPaperId)
             }
             
         }
@@ -954,7 +967,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.getContext()
             
-            //first Add annoatation in server
+            //first Add annoatation in server //add from local core data
             CommonHelper.saveServerAnnotations(jsonString: JsonString, NewsPaperId: newspaperId) { (status) in
                 
                 let alert = UIAlertController(title: "Alert", message: "Comment info save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
@@ -964,30 +977,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
             
-            //add from local core data
             
-            
-            
-            
-            
-            
-            
-          /*  CommonHelper.saveServerAnnotations(jsonString: JsonString, NewsPaperId: newspaperId, completion: { (status) in
-                //save
-            
-                if status {
-                    
-                    let alert = UIAlertController(title: "Alert", message: "Success.", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-                }else{
-                    let alert = UIAlertController(title: "Alert", message: "Try Again.", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-                }
-            
-            })
-            */
             
             
         }
@@ -1011,9 +1001,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         //remove annotation Confirmation
-        let alertController = UIAlertController(title: "Alert!", message: "Deleting this pushpin will also delete the comment. You cannot undo this operation.", preferredStyle: UIAlertControllerStyle.alert)
-        
-        let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.getContext()
             //remove annotation Code
@@ -1021,7 +1008,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             CommonHelper.deleteServerAnnotation(Int(anotationId), NewsPaperId: Int(NewspaperId), completion: { (status) in
                 
                 if status {
-                    
                     let alert = UIAlertController(title: "Delete", message: "Success.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -1031,24 +1017,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                 }
                 
-                
-                
+                self.updatemangeObj(Int(NewspaperId))
             })
-            
-            
-        }
-        
-        let NoAction = UIAlertAction(title: "NO", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
-            
-        }
-        alertController.addAction(yesAction)
-        alertController.addAction(NoAction)
-        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
+       
+    
+    
     }
+    
     
 
   //End Delegate method
+    
+    func updatemangeObj(_ newsId:Int){
+        
+        let annotationsList:[NSManagedObject] = DBHelper.fetchRequestForAnnotation("Annotations",FilterExpression: "(newspaper_Id == \(newsId))")
+        if annotationsList.count > 0 {
+            let manage = annotationsList[0]
+            pdfViewController?.updateMangeObjectData(manage)
+        }else{
+            pdfViewController?.updateMangeObjectData(nil)
+        }
+        
+    }
+    
+    
+    
+    
+    
     
 }
 
