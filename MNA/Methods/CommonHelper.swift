@@ -124,7 +124,11 @@ class CommonHelper: NSObject {
         return documentsUrl 
     }
     
-   
+    class func getDocDirPathString (_ fileName:String)-> String  {
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(fileName)
+        return paths
+    }
+    
     
    class func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask)
@@ -421,7 +425,7 @@ class CommonHelper: NSObject {
     if annotationsList.count > 0 {
        
         var itemExist = false
-        let mangeObj:NSManagedObject = annotationsList[0]
+        var mangeObj:NSManagedObject = annotationsList[0]
         guard let annojsonStr = mangeObj.value(forKey: "annotationObject") else{ return}
         let arrAnnObj:NSMutableArray =  NSMutableArray(array: self.ConvertJsonStringToArray(annojsonStr as! String))
         var arrAnnObj1 = NSMutableArray()
@@ -432,7 +436,7 @@ class CommonHelper: NSObject {
                 let dictOrignal = dicAnnotate as! NSDictionary
                 let id1 = dictOrignal.value(forKey: "id") as! Int
                 
-                if id1 == annotationId {
+                if id1 != annotationId {
                     arrAnnObj1.add(dictOrignal)
                     itemExist = true
                 }
@@ -446,17 +450,84 @@ class CommonHelper: NSObject {
           
             let JsonSting1 = self.convertArraytoJsonString(arrAnnObj1)
             
+            mangeObj.setValue(JsonSting1, forKey: "annotationObject")
+            
+            
             let userId = DefaultDataManager.getUserName()
+            let urlString = BaseUrl + MNAUrl_SaveAnnotationsOnServer
+            let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":JsonSting1] as [String : Any]
+            
+            MNAConnectionHelper.SaveAnnotationWithParam(url: urlString, paramString: paramString, completion: { (status) in
+                mangeObj.setValue(status, forKey: "annotation_Sync")
+                do {
+                    try mangeObj.managedObjectContext?.save()
+                } catch {
+                    print("Error occured during save entity")
+                }
+                completion(status)
+            })
+            
+            
+            
+           /* let userId = DefaultDataManager.getUserName()
             let urlString = BaseUrl + MNAUrl_DeleteAnnotationsOnServer
             let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":JsonSting1] as [String : Any]
             MNAConnectionHelper.GetDataFromJson(url: urlString, paramString: paramString, completion: { (responce, status) in
                 
+                if status {
+                    mangeObj.setValue(status, forKey: "annotation_Sync")
+                    do {
+                        try mangeObj.managedObjectContext?.save()
+                    } catch {
+                        print("Error occured during save entity")
+                    }
+                    
+                }
+                
+                
+                
+                
                 completion(status)
                 //success delete
                 
-            })
+            })*/
             
         }else{
+            
+            if arrAnnObj1.count == 0 {
+                
+                
+                let userId = DefaultDataManager.getUserName()
+                let urlString = BaseUrl + MNAUrl_SaveAnnotationsOnServer
+                let paramString = ["UserId":userId,"NewspaperId":NewsPaperId, "Annotation":""] as [String : Any]
+                
+                MNAConnectionHelper.SaveAnnotationWithParam(url: urlString, paramString: paramString, completion: { (status) in
+            
+                    if status {
+                        
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let managedObjectContext = appDelegate.getContext()
+                        managedObjectContext.delete(mangeObj)
+                    
+                        //save the context
+                        do {
+                            try managedObjectContext.save()
+                            
+                        } catch let error as NSError  {
+                            print("Could not save \(error), \(error.userInfo)")
+                        } catch {
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                    
+                    completion(status)
+                })
+            }
+            
             completion(false)
         }
         
