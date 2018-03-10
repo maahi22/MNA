@@ -409,24 +409,7 @@ BOOL dataExist ;
         [alert show];
         
     }
-    
-      NSLog(@"delete1 Canvas");
-    
-    
-   /* if (!del.isInternetActive) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection" message:@"This application requires a WiFi or cellular network to connect to the server. Please ensure that you have an active connection and/or Airplane mode is turned off." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        
-        //        [del.activityIndicator stopAnimating];
-    }
-    else{
-        if (self.annotationId!=nil) {
-            UIAlertView* alert =[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Deleting this pushpin will also delete the comment. You cannot undo this operation." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES",nil ];
-            [alert show];
-            
-        }
-    }*/
+
 }
 
 
@@ -525,13 +508,14 @@ BOOL dataExist ;
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     if (buttonIndex==1) {
         
+         NSLog(@"delete1 Canvas NN %i",self.annotationId);
+        
         if (self.annotationId !=nil &&  [self.annotationId integerValue] != 0){//}&& [del.Annotations count]>0) {
-           
             NSString *fileName = [NSString stringWithFormat:@"%@_%@_%d_%@.png",self.userId,self.newspaperId,self.page,self.annotationId];
-            
             [self.delegate DeleteCanvas:[self.annotationId stringValue] NewsPaperId:[self.newspaperId integerValue] FileName:fileName];
             
-          
+         //Dismiss view
+            [self dismissModalViewControllerAnimated:true];
         }
     }
 }
