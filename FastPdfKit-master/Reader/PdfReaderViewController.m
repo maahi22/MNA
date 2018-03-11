@@ -75,10 +75,6 @@
     longPress.minimumPressDuration = 1.0;
     [self.view addGestureRecognizer:longPress];
    
-    
-    
-    
-    
 }
 
 -(void)callOverlay{
@@ -95,11 +91,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-   
-    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
