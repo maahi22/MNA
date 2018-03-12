@@ -13,6 +13,7 @@
 #import <CoreData/CoreData.h>
 
 
+
 @protocol PdfReaderDelegate <NSObject>
 -(void)Pdf_ResetCanvas:(NSString*)selDictionary;
 -(void)Pdf_SaveCanvas:(NSInteger)newspaperId  JsonString:(NSString*)jsonString  Draw:(UIImage*)drawImage FileName:(NSString*)fileName;

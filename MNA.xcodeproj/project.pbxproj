@@ -149,6 +149,7 @@
 		031C79441FFBEA1E0098F281 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		031C794A1FFBEA910098F281 /* LazyImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyImage.swift; sourceTree = "<group>"; };
 		031C794C1FFBEA990098F281 /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		03EB584C2055486A0074938D /* ReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderViewController.h; sourceTree = "<group>"; };
 		0F23C1531FFAA0D70011454E /* template */ = {isa = PBXFileReference; lastKnownFileType = folder; path = template; sourceTree = "<group>"; };
 		0F25FE482051B890001E8EB0 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
 		0F27DEA01FF6BDCF003C3243 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
@@ -491,6 +492,7 @@
 			children = (
 				0F25FE482051B890001E8EB0 /* tree.png */,
 				0FCC3C83203B4674000DCEAE /* PdfReaderViewController.h */,
+				03EB584C2055486A0074938D /* ReaderViewController.h */,
 				0FFAD92D203B35DC001C1C19 /* FastPdfKit.xcodeproj */,
 				18432F3B2036A8D80053B6D7 /* CanvasViewController.h */,
 				18432F3C2036A8D80053B6D7 /* CanvasViewController.m */,

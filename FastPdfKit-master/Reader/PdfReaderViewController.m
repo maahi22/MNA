@@ -9,7 +9,9 @@
 #import "PdfReaderViewController.h"
 #import "CanvasViewController.h"
 #import "OverlayManager.h"
-
+#import <FastPdfKit/MFDocumentOverlayDataSource.h>
+#import "OverlayManager.h"
+#import <FastPdfKit/FPKGlyphBox.h>
 
 
 @interface PdfReaderViewController ()
@@ -723,16 +725,7 @@
             }
             
         }
-        
-        
-        
     }
-    
-    
-    
-    
-    
-  
 }
 
 -(NSDictionary*)jsonStrToDictionart:(NSString*)jsonStr{
