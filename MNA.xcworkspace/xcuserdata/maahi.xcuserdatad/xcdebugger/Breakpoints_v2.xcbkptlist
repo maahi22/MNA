@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.653809"
+            timestampString = "542906245.037753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "persistentContainer"
             landmarkType = "24">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.655519"
+            timestampString = "542906245.038366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.656911"
+            timestampString = "542906245.038784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.657959"
+            timestampString = "542906245.0395989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "666"
-            endingLineNumber = "666"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
             landmarkName = "openPDF(_:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6585521"
+            timestampString = "542906245.040292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "748"
-            endingLineNumber = "748"
-            landmarkName = "pdf_ResetCanvas(_:)"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
+            landmarkName = "pdf_SaveCanvas(_:jsonString:draw:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.661469"
+            timestampString = "542906245.040906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "760"
-            endingLineNumber = "760"
+            startingLineNumber = "778"
+            endingLineNumber = "778"
             landmarkName = "pdf_SaveCanvas(_:jsonString:draw:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,12 +842,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.661954"
+            timestampString = "542906245.0414439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "896"
-            endingLineNumber = "896"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "914"
+            endingLineNumber = "914"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1066,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.663003"
+            timestampString = "542906245.042172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "openPDF(_:fileName:NewspaperId:PageNo:searchStr:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1375,7 +1375,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "646"
             endingLineNumber = "646"
-            landmarkName = "-showComment:"
+            landmarkName = "-showCanvas:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1530,12 +1530,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.666326"
+            timestampString = "542906245.042974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "865"
-            endingLineNumber = "865"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MNA/AppDelegate.swift"
+            timestampString = "542906245.043543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1546,12 +1562,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.666885"
+            timestampString = "542906245.04405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "869"
-            endingLineNumber = "869"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "891"
+            endingLineNumber = "891"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1562,12 +1578,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.667329"
+            timestampString = "542906245.044489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "873"
-            endingLineNumber = "873"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "888"
+            endingLineNumber = "888"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1578,12 +1594,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6677279"
+            timestampString = "542906245.044961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "870"
-            endingLineNumber = "870"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "892"
+            endingLineNumber = "892"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1594,12 +1610,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.66824"
+            timestampString = "542906245.0453711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "874"
-            endingLineNumber = "874"
-            landmarkName = "uploadImage()"
+            startingLineNumber = "886"
+            endingLineNumber = "886"
+            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1610,28 +1626,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.668777"
+            timestampString = "542906245.04575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "868"
-            endingLineNumber = "868"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
             landmarkName = "uploadImage()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6693259"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "819"
-            endingLineNumber = "819"
-            landmarkName = "pdf_SaveCanvas(_:jsonString:draw:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1690,12 +1690,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6698149"
+            timestampString = "542906245.046199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "925"
-            endingLineNumber = "925"
-            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
+            startingLineNumber = "943"
+            endingLineNumber = "943"
+            landmarkName = "pdf_SaveComment(_:saveCommentText:newspaperId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1706,12 +1706,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6702141"
+            timestampString = "542906245.046646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
-            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
+            startingLineNumber = "941"
+            endingLineNumber = "941"
+            landmarkName = "pdf_SaveComment(_:saveCommentText:newspaperId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1722,12 +1722,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.670754"
+            timestampString = "542906245.047068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "910"
-            endingLineNumber = "910"
-            landmarkName = "pdf_DeleteCanvas(_:newsPaperId:fileName:)"
+            startingLineNumber = "928"
+            endingLineNumber = "928"
+            landmarkName = "pdf_SaveComment(_:saveCommentText:newspaperId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1930,13 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6716011"
+            timestampString = "542906245.047644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1033"
-            endingLineNumber = "1033"
-            landmarkName = "updatemangeObj(_:)"
-            landmarkType = "7">
+            startingLineNumber = "1015"
+            endingLineNumber = "1015">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1946,13 +1944,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.672053"
+            timestampString = "542906245.04798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1008"
-            endingLineNumber = "1008"
-            landmarkName = "pdf_DeleteComment(_:annotationId:)"
-            landmarkType = "7">
+            startingLineNumber = "1015"
+            endingLineNumber = "1015">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2143,7 +2139,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1195"
             endingLineNumber = "1195"
-            landmarkName = "-DeleteComment:AnnotationId:"
+            landmarkName = "-updateMangeObjectData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2159,8 +2155,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1197"
             endingLineNumber = "1197"
-            landmarkName = "-DeleteComment:AnnotationId:"
-            landmarkType = "7">
+            landmarkName = "PdfReaderViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2170,12 +2166,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MNA/AppDelegate.swift"
-            timestampString = "542357129.6738009"
+            timestampString = "542906245.0483921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "995"
-            endingLineNumber = "995"
-            landmarkName = "pdf_DeleteComment(_:annotationId:)"
+            startingLineNumber = "1013"
+            endingLineNumber = "1013"
+            landmarkName = "appendString(string:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
