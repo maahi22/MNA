@@ -465,7 +465,7 @@
                                 [btn addTarget:self action:@selector(showComment:) forControlEvents:UIControlEventTouchUpInside];
                                 [btn addTarget:self action:@selector(dragPushPin:) forControlEvents:UIControlEventTouchDragOutside];
                                 btn.tag=1;
-                                if (self.currentAnnotationId > 0){//Add mahendra
+                                if (self.currentAnnotationId > 0){//Add
                                     btn.tag = self.currentAnnotationId;
                                 }
                                 
@@ -676,7 +676,7 @@
     
     NSLog(@"%d",page);
     NSLog(@"Zoom : %.0f%%",self.zoomScale);
-     [self updatePageNumberLabelWithPage:page];//mahendra Added
+     [self updatePageNumberLabelWithPage:page];// Added
     
     
     for (id v in self.view.subviews) {//self view
@@ -856,7 +856,7 @@
             }
         }
         else{
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"You cannot place pushpins outside the active are of the artwork. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil,nil];
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"You cannot place pushpins outside the active area of the artwork. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil,nil];
             [alert show];
             
         }

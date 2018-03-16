@@ -309,7 +309,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print(userinfo)
         completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
     }
-    //Mahendra Customization
+    // Customization
     
     
     

@@ -90,7 +90,7 @@
 -(void)showWebView:(NSString *)path local:(BOOL)isLocal;
 -(void)prepareToolbar;
 
-//Mahendra
+//
 @property (nonatomic, readwrite) BOOL waitingForTextInput;
 -(void)updatePageNumberLabelWithPage:(NSUInteger)page;
 @end

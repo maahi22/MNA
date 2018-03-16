@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M34-R4-xxO">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                                <rect key="frame" x="0.0" y="44" width="1024" height="680"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="2IC-Bh-cEd" id="ctq-1h-LUC"/>
@@ -49,8 +49,8 @@
                         <constraints>
                             <constraint firstItem="M34-R4-xxO" firstAttribute="leading" secondItem="OKr-fd-UIV" secondAttribute="leading" id="1du-Vr-I7w"/>
                             <constraint firstItem="hZg-KP-VQj" firstAttribute="centerX" secondItem="OKr-fd-UIV" secondAttribute="centerX" id="9jq-6r-0gF"/>
-                            <constraint firstItem="M34-R4-xxO" firstAttribute="top" secondItem="OKr-fd-UIV" secondAttribute="top" id="EXV-c7-gmp"/>
                             <constraint firstItem="hZg-KP-VQj" firstAttribute="centerY" secondItem="OKr-fd-UIV" secondAttribute="centerY" id="O21-WE-qya"/>
+                            <constraint firstItem="M34-R4-xxO" firstAttribute="top" secondItem="OKr-fd-UIV" secondAttribute="top" constant="-20" id="dLb-5m-h6P"/>
                             <constraint firstItem="LCK-xA-r4b" firstAttribute="top" secondItem="M34-R4-xxO" secondAttribute="bottom" id="eJ7-zT-xdw"/>
                             <constraint firstItem="OKr-fd-UIV" firstAttribute="trailing" secondItem="M34-R4-xxO" secondAttribute="trailing" id="gb9-Qo-SHv"/>
                             <constraint firstItem="OKr-fd-UIV" firstAttribute="bottom" secondItem="LCK-xA-r4b" secondAttribute="bottom" id="n3G-ca-vso"/>
