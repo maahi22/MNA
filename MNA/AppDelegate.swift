@@ -37,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     
+    
+    
+    
+    
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
@@ -55,7 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         } else {
             // Fallback on earlier versions
             
-            
+            //iOS 9
+            let type: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
+            let setting = UIUserNotificationSettings(types: type, categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(setting)
+            UIApplication.shared.registerForRemoteNotifications()
             
         }
         
@@ -262,6 +272,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // MARK: - Push notification methods
     //Push Notification
     //https://makeapppie.com/2017/01/03/basic-push-notifications-in-ios-10-and-swift/
+    //https://www.intertech.com/Blog/push-notifications-tutorial-for-ios-9/
+    //https://eladnava.com/send-push-notifications-to-ios-devices-using-xcode-8-and-swift-3/
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("didFailToRegisterForRemoteNotificationsWithError Registration failed!")
     }
@@ -309,6 +322,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print(userinfo)
         completionHandler([UNNotificationPresentationOptions.alert,UNNotificationPresentationOptions.sound,UNNotificationPresentationOptions.badge])
     }
+    
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    //More detail   https://stackoverflow.com/questions/42688760/local-and-push-notifications-in-ios-9-and-10-using-swift3
     // Customization
     
     
