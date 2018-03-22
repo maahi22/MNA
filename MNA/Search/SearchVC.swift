@@ -384,7 +384,7 @@ extension  SearchVC: UIWebViewDelegate{
                         self.request?.cancel()
                         
                         DownloadHelper.deleteFileFromDocDirName(self.deletefileName)
-                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();"
+                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();$('.DownloadPercent').text('')"
                         self.webview.stringByEvaluatingJavaScript(from:script )
                         
                     }

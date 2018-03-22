@@ -22,22 +22,22 @@
                                 <rect key="frame" x="0.0" y="64" width="510" height="262"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="zXB-Wv-RRm" detailTextLabel="8cE-ka-H9L" style="IBUITableViewCellStyleSubtitle" id="I0i-Ef-0gF">
-                                        <rect key="frame" x="0.0" y="28" width="510" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="zXB-Wv-RRm" detailTextLabel="8cE-ka-H9L" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="I0i-Ef-0gF">
+                                        <rect key="frame" x="0.0" y="28" width="510" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I0i-Ef-0gF" id="PNG-Y8-ehE">
-                                            <rect key="frame" x="0.0" y="0.0" width="510" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="510" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zXB-Wv-RRm">
-                                                    <rect key="frame" x="15" y="3" width="31.5" height="19.5"/>
+                                                    <rect key="frame" x="15" y="28" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8cE-ka-H9L">
-                                                    <rect key="frame" x="15" y="22.5" width="53" height="18"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8cE-ka-H9L">
+                                                    <rect key="frame" x="15" y="50.5" width="53" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>

@@ -196,7 +196,7 @@ class AgendaVC: UIViewController, UIPopoverControllerDelegate, UIPopoverPresenta
         // navigationController?.pushViewController(ViewController,  animated: true)
         
         ViewController.modalPresentationStyle = .popover
-        ViewController.preferredContentSize = CGSize(width: (self.view.frame.size.width - 30), height: 600)
+        ViewController.preferredContentSize = CGSize(width: (self.view.frame.size.width - 200), height: 400)
         
         present(ViewController, animated: true, completion: nil)
         
@@ -204,14 +204,19 @@ class AgendaVC: UIViewController, UIPopoverControllerDelegate, UIPopoverPresenta
         popController?.permittedArrowDirections = .up
         popController?.delegate = self
         popController?.barButtonItem = sender
-        
-        
     }
     
     @IBAction func btnToolbarNoticeClicked(_ sender: UIBarButtonItem) {
         
         let mainStoryBoard = UIStoryboard(name: "Notice", bundle: nil)
         let ViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NoticeVC") as! NoticeVC
+        if sender.tag == 10 {
+           ViewController.urlString = "http://www.govmu.org/English/Pages/default.aspx"
+        }
+        else if sender.tag == 11{
+           ViewController.urlString = "http://parliamenttv.govmu.org/"
+        }
+        
         //navigationController?.pushViewController(ViewController,  animated: true)
         self.present(ViewController, animated: true, completion: {
             
@@ -446,7 +451,7 @@ extension  AgendaVC: UIWebViewDelegate{
                     let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                         
                         DownloadHelper.deleteFileFromDocDirName(self.deletefileName)
-                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();"
+                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();$('.DownloadPercent').text('');"
                         self.webview.stringByEvaluatingJavaScript(from:script )
                         self.request?.cancel()
                         

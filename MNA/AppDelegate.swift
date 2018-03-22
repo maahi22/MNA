@@ -284,11 +284,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         DefaultDataManager.SaveDeviceToken(deviceTokenString)
         print("didRegisterForRemoteNotificationsWithDeviceToken \(deviceTokenString)")
+        /*var presentedVC = self.window?.rootViewController
+        while (presentedVC!.presentedViewController != nil)  {
+            presentedVC = presentedVC!.presentedViewController
+        }
+        showAlertMessage(vc: presentedVC!, title: "Device Token", message: "\(deviceTokenString)")*/
         
+        let urlString = "http://demo.clavistechnologies.com/mnaapi/notification.php"
+        let params = ["device_token":"\(deviceTokenString)","user_id":"17"] as [String:Any]
+        Alamofire.request(urlString, method: .post, parameters:params,encoding: JSONEncoding.default, headers: nil).responseJSON {
+            response in
+            switch response.result {
+            case .success:
+                print(response)
+                
+                break
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
     
     
-    
+    // foreground (or if the app was in the background and the user clicks on the notification).
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+    }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
@@ -296,19 +318,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         print("\(userInfo)")
         
-        if let aps = userInfo ["aps"] as? NSDictionary {
+        /*if let aps = userInfo ["aps"] as? NSDictionary {
             //if let alert = aps["alert"] as? NSDictionary {
             //   if let message = alert["body"] as? NSString {
             
             if let url = aps["url"] as? NSString{
                 //image url
             }
-            
-            
-            
-            
+        }*/
+        // display the userInfo
+        if let notification = userInfo["aps"] as? NSDictionary,
+            let alert = notification["alert"] as? String {
+            /*var alertCtrl = UIAlertController(title: "Notification", message: alert as String, preferredStyle: UIAlertControllerStyle.alert)
+            alertCtrl.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))*/
+            // Find the presented VC...
+            var presentedVC = self.window?.rootViewController
+            while (presentedVC!.presentedViewController != nil)  {
+                presentedVC = presentedVC!.presentedViewController
+            }
+            //presentedVC!.present(alertCtrl, animated: true, completion: nil)
+            //showAlertMessage(vc: presentedVC!, title: "Notifications", message: alert)
+            showAlertMessage(vc: presentedVC!, title: "Notifications", message: alert, actionTitle: "Ok", handler: { (action) in
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            })
+            // call the completion handler
+            // -- pass in NoData, since no new data was fetched from the server.
+            completionHandler(UIBackgroundFetchResult.noData)
         }
-        
         
     }
     

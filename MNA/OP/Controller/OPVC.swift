@@ -161,7 +161,7 @@ extension  OPVC: UIWebViewDelegate{
                     let yesAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
                         
                         DownloadHelper.deleteFileFromDocDirName(self.deletefileName)
-                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();"
+                        let script = "$('#upProgress').css('display','none');$('.downloadBox').hide();$('.DownloadPercent').text('')"
                         self.webview.stringByEvaluatingJavaScript(from:script )
                         self.request?.cancel()
                     }

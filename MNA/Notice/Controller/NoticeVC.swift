@@ -19,6 +19,7 @@ class NoticeVC: UIViewController , NSURLConnectionDelegate, XMLParserDelegate {
     @IBOutlet weak var barbtnRewind: UIBarButtonItem!
     @IBOutlet weak var barbtnForwad: UIBarButtonItem!
     
+    var urlString:String = ""
     
     var mutableData:NSMutableData  = NSMutableData()
     var currentElementName:NSString = ""
@@ -37,7 +38,7 @@ class NoticeVC: UIViewController , NSURLConnectionDelegate, XMLParserDelegate {
         self.barbtnRewind.isEnabled = false
         self.barbtnForwad.isEnabled = false
         
-        let urlString = "http://www.govmu.org/English/Pages/default.aspx"//"http://mauritiusassembly.govmu.org/English/Pages/Ipad_Notices.aspx"//"http://mauritiusassembly.gov.mu/English/Pages/Ipad_Notices.aspx"
+        //let urlString = "http://www.govmu.org/English/Pages/default.aspx"//"http://mauritiusassembly.govmu.org/English/Pages/Ipad_Notices.aspx"//"http://mauritiusassembly.gov.mu/English/Pages/Ipad_Notices.aspx"
         
         if  urlString != nil {
             activityIndicator.startAnimating()

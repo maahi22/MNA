@@ -49,13 +49,20 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="cdm-Go-orA"/>
-                                            <barButtonItem title="Notice" id="85v-fJ-hnr">
+                                            <barButtonItem tag="10" title="Notice" id="85v-fJ-hnr">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="btnToolbarNoticeClicked:" destination="YSm-WK-MvT" id="U5r-Vf-g4V"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6B8-QU-LAh"/>
+                                            <barButtonItem tag="11" title="MNA TV" id="VJl-aa-w06">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="btnToolbarNoticeClicked:" destination="YSm-WK-MvT" id="Qx3-Px-JYb"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Y83-mz-3c7"/>
                                             <barButtonItem systemItem="search" id="If9-wR-hGB">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
