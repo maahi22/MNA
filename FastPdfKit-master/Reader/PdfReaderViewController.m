@@ -45,6 +45,10 @@
 
 @synthesize  updateAnnotationId;
 
+float scrollY=0;
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -53,11 +57,27 @@
     return self;
 }
 
+
+
+//Adding Scroll Delegates
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidScroll %@",scrollView.contentOffset.y);
+    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+    
+    scrollY = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidEndScrollingAnimation");
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    
+    scrollY = 0;
     // Do any additional setup after loading the view.
     self.dismisSts = NO;
     blActivateComment=NO;
@@ -71,11 +91,55 @@
     isFirsttime=YES;
     [self startSelectedArea:self.page];
     self.selectedArea=[[NSMutableArray alloc] init];
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+   /* UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self
                                                action:@selector(handleLongPressForNote:)];
     longPress.minimumPressDuration = 1.0;
-    [self.view addGestureRecognizer:longPress];
+    [self.view addGestureRecognizer:longPress];*/
+    
+    
+    for (id v in self.view.subviews) {//self view
+        if ([v isKindOfClass:[UIScrollView class]]) {//scrollview in self
+            //[(UIScrollView*)v setAutoresizingMask:UIViewAutoresizingNone];
+            for (id vw in [v subviews]) {//FPKDetailView
+                NSLog(@"%@",vw);
+                if ([vw isKindOfClass:[UIScrollView class]]) {
+                    UIScrollView *v = (UIScrollView *)vw;
+                    v.delegate = self;
+                }
+                for (id vwx in [vw subviews]) {//FPKIntermediateView
+                    NSLog(@"%@",vwx);
+                    if ([vwx isKindOfClass:[UIScrollView class]]) {
+                        UIScrollView *v = (UIScrollView *)vwx;
+                        v.delegate = self;
+                    }
+                    for (id vwxy in [vwx subviews]) {//MFScrollDetailView
+                        
+                        NSLog(@"%@",vwxy);
+                        if ([vwxy isKindOfClass:[UIScrollView class]]) {
+                            UIScrollView *v = (UIScrollView *)vwxy;
+                            v.delegate = self;
+                        }
+                        
+                        for (id vwxyz in [vwxy subviews]) {//UIView
+                            NSLog(@"%@",vwxyz);
+                            if ([vwxy isKindOfClass:[UIScrollView class]]) {
+                                UIScrollView *v = (UIScrollView *)vwxy;
+                                v.delegate = self;
+                            }
+                            
+                            if (![vwxyz isKindOfClass:[UIImageView class]]) {
+                                
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
    
 }
 
@@ -827,32 +891,36 @@
         float x1=point.x/zmScale;
         float y1=point.y/zmScale;
 
+      
+        
+        
+        
         if (self.yAxispadding>0 && y1>self.yAxispadding && y1<self.proofCropBox.size.height+self.yAxispadding) {
-           
+           CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:point AnnotationId:nil];
+                [self ShowCommentPopup:newPoint AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:point AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint AnnotationId:nil];
             }
             
         }
         else if (self.xAxispadding>0 && x1>self.xAxispadding && x1<self.proofCropBox.size.width+self.xAxispadding){
-           
+           CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:point AnnotationId:nil];
+                [self ShowCommentPopup:newPoint AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:point AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint AnnotationId:nil];
             }
         }
         else if (self.xAxispadding==0 && self.yAxispadding==0){
-            
+            CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:point AnnotationId:nil];
+                [self ShowCommentPopup:newPoint AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:point AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint AnnotationId:nil];
             }
         }
         else{
