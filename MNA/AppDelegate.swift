@@ -432,35 +432,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let urlForCopy = userDocumentURL.appendingPathComponent(folderName, isDirectory: true)
         if let bundleURL = Bundle.main.url(forResource: folderName, withExtension: "") {
             
-            /*  let paths = userDocumentURL.appendingPathComponent(folderName, isDirectory: true)
-             
-             let urlPath = NSURL.init(fileURLWithPath: urlForCopy)
-             
-             if fileMgr.contentsOfDirectory(at: urlForCopy, includingPropertiesForKeys: <#T##[URLResourceKey]?#>, options: FileManager.DirectoryEnumerationOptions)(atPath: urlPath ){
-             print("Already Exist Html file and removed created.")
-             try! fileMgr.removeItem(at: paths)
-             }else{
-             print("Already dictionary created.")
-             }
-             
-             */
-            
-            
-            
-            
-            
-            /* let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-             let url = URL(fileURLWithPath: path)
-             
-             let filePath = url.appendingPathComponent("\(folderName)").path
-             let fileManager = FileManager.default
-             if fileManager.fileExists(atPath: filePath) {
-             print("FILE AVAILABLE")
-             try! fileMgr.removeItem(at: filePath)
-             } else {
-             print("FILE NOT AVAILABLE")
-             }*/
-            
             // if exist we will copy it
             do {
                 try fileMgr.copyItem(at: bundleURL, to: urlForCopy)
@@ -588,12 +559,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let fileMgr = FileManager.default
         let documentName = "\(NewspaperId)"
+        let documentName2 = "\(fileName)"
         // let documentUrl = NSURL.fileURL(withPath: filePath)
         
         let path:URL = CommonHelper.getDocumentsDirectory()
         /** Set thumbnails path */
-        let thumbnailsPath = path.appendingPathComponent("\(documentName)")
-        
+        //let thumbnailsPath = path.appendingPathComponent("\(documentName)")
+         let thumbnailsPath = path.appendingPathComponent("pdffiles/\(documentName2)")
         /** Get document from the App Bundle */
         let documentUrl:URL = NSURL.fileURL(withPath: filePath)
         
@@ -613,7 +585,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             pdfViewController?.newspaperId = NewspaperId as NSNumber
             pdfViewController?.fileURL = (documentUrl as NSURL) as URL!
             pdfViewController?.fileName = documentName
-            
+
             //*****ZoomSize
             if let pdf = pdfViewController{
                 if (768 / cropBox.size.width) <= (1024 / cropBox.size.height) {
@@ -623,7 +595,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         pdfViewController?.yAxispadding = 0
                     }
                     pdfViewController?.xAxispadding = 0
-                    
+
                 }else{
                     pdfViewController?.minZoomScale = 1.0//(Float(1024 / cropBox.size.height))
                     pdfViewController?.xAxispadding=((768.0 - (Float(cropBox.size.width) * Float(pdf.minZoomScale))) / 2 ) / pdf.minZoomScale
@@ -638,23 +610,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             pdfViewController?.userId = userId
             /** Set resources folder on the manager */
             documentManager.resourceFolder = thumbnailsPath.path//"\(thumbnailsPath)" //String(contentsOf: thumbnailsPath)
-            
+
             /** Set document id for thumbnail generation */
             pdfViewController?.documentId = documentName
             pdfViewController?.setMode(UInt(MFDocumentModeOverflow.rawValue))
             //Send annoatation data to pdf
-            
+
             if !DBHelper.IsEmpityAnnotations(Int64(NewspaperId)) {
-                
+
                 if  let mangeObject2:NSManagedObject = DBHelper.FetchAnnotationsListFromDbByNewsPaperId(Int64(NewspaperId)){
                     pdfViewController?.mangeAnnotationObject = mangeObject2
                 }
             }
-            
+
             /** Present the pdf on screen in a modal view */
             if let pdf = pdfViewController{
                 self.navController?.pushViewController(pdf, animated: false)
             }
+
+            
+//            let  pdfView = ReaderViewController.init(documentManager: documentManager)
+//            if let pdf = pdfView{
+//                    self.navController?.pushViewController(pdf, animated: false)
+//                }
+            
             
         }else{
             
@@ -680,7 +659,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             })
         }
+   
+    
+    
+    
     }
+    
+    
+    
     
     func openPDF(_ filePath :String, fileName:String ){
         

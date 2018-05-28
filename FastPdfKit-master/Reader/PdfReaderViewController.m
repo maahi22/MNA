@@ -42,9 +42,7 @@
 @synthesize currentPinTag;
 @synthesize dismisSts;
 @synthesize searchStr;
-
 @synthesize  updateAnnotationId;
-
 float scrollY=0;
 
 
@@ -58,26 +56,25 @@ float scrollY=0;
 }
 
 
-
 //Adding Scroll Delegates
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"scrollViewDidScroll %@",scrollView.contentOffset.y);
-    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+    // NSLog(@"scrollViewDidScroll %@",scrollView.contentOffset.y);
+    // NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
     
     scrollY = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    NSLog(@"scrollViewDidEndScrollingAnimation");
+    //NSLog(@"scrollViewDidEndScrollingAnimation");
 }
-
+//ENDED
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     scrollY = 0;
+    
     // Do any additional setup after loading the view.
     self.dismisSts = NO;
     blActivateComment=NO;
@@ -91,12 +88,11 @@ float scrollY=0;
     isFirsttime=YES;
     [self startSelectedArea:self.page];
     self.selectedArea=[[NSMutableArray alloc] init];
-   /* UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+    /*UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                                initWithTarget:self
                                                action:@selector(handleLongPressForNote:)];
     longPress.minimumPressDuration = 1.0;
     [self.view addGestureRecognizer:longPress];*/
-    
     
     for (id v in self.view.subviews) {//self view
         if ([v isKindOfClass:[UIScrollView class]]) {//scrollview in self
@@ -139,6 +135,7 @@ float scrollY=0;
         }
     }
     
+    self.documentDelegate = self;
     
    
 }
@@ -394,7 +391,7 @@ float scrollY=0;
 
 
 //---Show comments popoverup---
--(void)ShowCommentPopup:(CGPoint) touchedPoint AnnotationId:(NSNumber *) annotationId{
+-(void)ShowCommentPopup:(CGPoint) touchedPoint Point2:(CGPoint) touchedPoint2   AnnotationId:(NSNumber *) annotationId{
     
     [self.popoverController1 dismissPopoverAnimated:YES];
     
@@ -435,7 +432,7 @@ float scrollY=0;
         }
     }
     
-    commentView.point=touchedPoint;
+    
     commentView.blDeletePushpin=YES;
     if ( ![commentView getComments:annotationId] ) {
         NSDateFormatter *formatter;
@@ -459,8 +456,8 @@ float scrollY=0;
     
     myrect.size.width = 0;
     myrect.size.height = 0;
-    myrect.origin.x =  self.zoomOffset.x>=touchedPoint.x?self.zoomOffset.x-touchedPoint.x:touchedPoint.x -self.zoomOffset.x;
-    myrect.origin.y=self.zoomOffset.y>=touchedPoint.y?self.zoomOffset.y-touchedPoint.y:touchedPoint.y -self.zoomOffset.y;
+    myrect.origin.x =  self.zoomOffset.x>=touchedPoint2.x?self.zoomOffset.x-touchedPoint2.x:touchedPoint2.x -self.zoomOffset.x;
+    myrect.origin.y=self.zoomOffset.y>=touchedPoint2.y?self.zoomOffset.y-touchedPoint2.y:touchedPoint2.y -self.zoomOffset.y;
     [self.popoverController1 presentPopoverFromRect:myrect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
     
@@ -470,7 +467,7 @@ float scrollY=0;
 
 
 //---show comment canvas---
--(void)ShowCommentCanvas:(CGPoint) touchedPoint AnnotationId:(NSNumber *) annotationId{
+-(void)ShowCommentCanvas:(CGPoint) touchedPoint  Point2:(CGPoint) touchedPoint2  AnnotationId:(NSNumber *) annotationId{
     
     CanvasViewController *canvas=[[CanvasViewController alloc] init];
     canvas.delegate = self;
@@ -487,7 +484,7 @@ float scrollY=0;
     
     //customisation
     canvas.tagId = self.currentPinTag;
-    canvas.point=touchedPoint;
+    canvas.point=touchedPoint2;
     canvas.page = self.page;
     canvas.userId = self.userId;
     canvas.minZoomScale1 = self.minZoomScale;
@@ -701,7 +698,9 @@ float scrollY=0;
     
     CGRect newFrame=CGRectMake((btnFrame.origin.x * self.zoomScale)+12* self.zoomScale , (btnFrame.origin.y * self.zoomScale)+30* self.zoomScale, btnFrame.size.width, btnFrame.size.height);
     CGPoint point=newFrame.origin;
-    [self ShowCommentPopup:point AnnotationId:[NSNumber numberWithInteger:annotationId]];
+    CGPoint newPoint = CGPointMake(point.x, point.y - scrollY);
+    
+    [self ShowCommentPopup:point  Point2:newPoint  AnnotationId:[NSNumber numberWithInteger:annotationId]];
     
 }
 
@@ -891,36 +890,35 @@ float scrollY=0;
         float x1=point.x/zmScale;
         float y1=point.y/zmScale;
 
-      
-        
-        
-        
         if (self.yAxispadding>0 && y1>self.yAxispadding && y1<self.proofCropBox.size.height+self.yAxispadding) {
-           CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
+           
+            CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:newPoint AnnotationId:nil];
+                [self ShowCommentPopup:newPoint  Point2:point  AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:newPoint AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint  Point2:point AnnotationId:nil];
             }
             
         }
         else if (self.xAxispadding>0 && x1>self.xAxispadding && x1<self.proofCropBox.size.width+self.xAxispadding){
-           CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
+           
+            CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:newPoint AnnotationId:nil];
+                [self ShowCommentPopup:newPoint  Point2:point AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:newPoint AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint  Point2:point AnnotationId:nil];
             }
         }
         else if (self.xAxispadding==0 && self.yAxispadding==0){
+            
             CGPoint newPoint = CGPointMake(x1, y1 + scrollY);
             if (blActivateComment) {
-                [self ShowCommentPopup:newPoint AnnotationId:nil];
+                [self ShowCommentPopup:newPoint  Point2:point AnnotationId:nil];
             }
             else{
-                [self ShowCommentCanvas:newPoint AnnotationId:nil];
+                [self ShowCommentCanvas:newPoint  Point2:point AnnotationId:nil];
             }
         }
         else{

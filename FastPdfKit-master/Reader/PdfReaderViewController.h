@@ -25,7 +25,7 @@
 @end
 
 
-@interface PdfReaderViewController : ReaderViewController<MFDocumentViewControllerDelegate,UIScrollViewDelegate,UIPopoverControllerDelegate,UIScrollViewDelegate,MFDocumentOverlayDataSource,MFMailComposeViewControllerDelegate,UIAlertViewDelegate, CanvasDelegate,CommentDelegate>{
+@interface PdfReaderViewController : ReaderViewController<MFDocumentViewControllerDelegate,UIPopoverControllerDelegate,UIScrollViewDelegate,MFDocumentOverlayDataSource,MFMailComposeViewControllerDelegate,UIAlertViewDelegate, CanvasDelegate,CommentDelegate>{
     
     BOOL blActivateComment;
     BOOL blActivateCanvas;
@@ -37,7 +37,6 @@
     BOOL isApprovedjob;
     BOOL isFirsttime;
     int counter;
-    
     
 }
 
